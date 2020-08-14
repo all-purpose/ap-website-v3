@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.barney {
+  @apply bg-purple-700
+}
+
+.skip-link {
+  @apply sr-only;
+
+  &:focus {
+    @apply not-sr-only;
+  }
+}

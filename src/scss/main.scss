@@ -1,0 +1,288 @@
+/*
+$$\    $$\                              
+$$ |   $$ |                             
+$$ |   $$ |$$$$$$\   $$$$$$\   $$$$$$$\ 
+\$$\  $$  |\____$$\ $$  __$$\ $$  _____|
+ \$$\$$  / $$$$$$$ |$$ |  \__|\$$$$$$\  
+  \$$$  / $$  __$$ |$$ |       \____$$\ 
+   \$  /  \$$$$$$$ |$$ |      $$$$$$$  |
+    \_/    \_______|\__|      \_______/ 
+*/
+
+/* Breakpoint sizes */
+$break-sm: 30rem;
+$break-md: 44rem;
+$break-lg: 62rem;
+
+/* Number of columns for each breakpoint (sm, md, lg) */
+$sm-num-cols: 4;
+$md-num-cols: 8;
+$lg-num-cols: 16;
+/* Grid column gap */
+$col-gap: 1rem;
+
+$calm-sage: #D6EBE2;
+$classic-blue: #2D2E7F;
+$ever-green: #14513F;
+$electric-blue: #423DD7;
+$sunny-yellow: #FFE072;
+$schoolbus-yellow: #FFAA05;
+$vibrant-red: #E94F2D;
+$dusty-rose: #E94F2D;
+$eggplant-purple: #48152F;
+$vanta-black: #070707;
+$white: #FFFFFF;
+$off-white: #FAF8F1;
+
+/*
+$$$$$$$\             $$$$$$\                     $$\   $$\               
+$$  __$$\           $$  __$$\                    $$ |  $$ |              
+$$ |  $$ | $$$$$$\  $$ /  \__|$$$$$$\  $$\   $$\ $$ |$$$$$$\    $$$$$$$\ 
+$$ |  $$ |$$  __$$\ $$$$\     \____$$\ $$ |  $$ |$$ |\_$$  _|  $$  _____|
+$$ |  $$ |$$$$$$$$ |$$  _|    $$$$$$$ |$$ |  $$ |$$ |  $$ |    \$$$$$$\  
+$$ |  $$ |$$   ____|$$ |     $$  __$$ |$$ |  $$ |$$ |  $$ |$$\  \____$$\ 
+$$$$$$$  |\$$$$$$$\ $$ |     \$$$$$$$ |\$$$$$$  |$$ |  \$$$$  |$$$$$$$  |
+\_______/  \_______|\__|      \_______| \______/ \__|   \____/ \_______/ 
+*/
+* {
+  box-sizing: border-box;
+}
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+main,
+menu,
+summary {
+  display: block;
+}
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+$$$$$$$$\                            
+\__$$  __|                           
+   $$ |$$\   $$\  $$$$$$\   $$$$$$\  
+   $$ |$$ |  $$ |$$  __$$\ $$  __$$\ 
+   $$ |$$ |  $$ |$$ /  $$ |$$$$$$$$ |
+   $$ |$$ |  $$ |$$ |  $$ |$$   ____|
+   $$ |\$$$$$$$ |$$$$$$$  |\$$$$$$$\ 
+   \__| \____$$ |$$  ____/  \_______|
+       $$\   $$ |$$ |                
+       \$$$$$$  |$$ |                
+        \______/ \__|                
+*/
+html {
+  font-family: 'Inter Regular', Helvetica, Arial, sans-serif;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1 {
+  font-weight: normal;
+  margin: 0 0 3rem 0;
+  padding:0;
+  font-family: 'GT Alpina Regular';
+  line-height: 120%;
+}
+header h1 {
+  margin-bottom: 0;
+}
+.belief {
+  font-weight: normal;
+  font-family: 'GT Alpina Regular';
+  line-height: 120%;
+  font-size: 2rem;
+}
+/* Medium */
+@media (min-width: $break-md) {
+  .belief {
+    font-size: 2.5rem;
+  }
+}
+h2,
+h3 {
+  font-weight: normal;
+  margin: 0 0 1rem 0;
+  padding:0;
+  font-family: 'GT Alpina Regular';
+  line-height: 120%;
+}
+p {
+  font-weight: normal;
+  padding:0;
+  margin: 0;
+  line-height: 140%;
+}
+h2 {
+  font-size: 1.5rem;
+  line-height: 120%;
+}
+h3 {
+  font-size: 1.25rem;
+  line-height: 120%;
+}
+p + p {
+  margin-top: 1.25em;
+}
+
+/*
+$$$$$$$$\ $$\                                                   
+\__$$  __|$$ |                                                  
+   $$ |   $$$$$$$\   $$$$$$\  $$$$$$\$$$$\   $$$$$$\   $$$$$$$\ 
+   $$ |   $$  __$$\ $$  __$$\ $$  _$$  _$$\ $$  __$$\ $$  _____|
+   $$ |   $$ |  $$ |$$$$$$$$ |$$ / $$ / $$ |$$$$$$$$ |\$$$$$$\  
+   $$ |   $$ |  $$ |$$   ____|$$ | $$ | $$ |$$   ____| \____$$\ 
+   $$ |   $$ |  $$ |\$$$$$$$\ $$ | $$ | $$ |\$$$$$$$\ $$$$$$$  |
+   \__|   \__|  \__| \_______|\__| \__| \__| \_______|\_______/ 
+*/
+.themeClassicBlue {
+  header,
+  #intro,
+  .profile-info,
+  .map {
+    background-color: $classic-blue;
+    color: $calm-sage;
+  }
+  .svg-logo path,
+  .svg-down-arrow polygon {
+    fill: $calm-sage;
+  }
+  #contact {
+    background-color: $calm-sage;
+    color: $classic-blue;
+    .svg-logo {
+      path,
+      rect {
+        fill: $classic-blue;
+      }
+    }
+  }
+}
+.themeCalmSage {
+  header,
+  #intro,
+  .profile-info,
+  .map {
+    background-color: $calm-sage;
+    color: $ever-green;
+  }
+  .svg-logo path,
+  .svg-down-arrow polygon {
+    fill: $ever-green;
+  }
+  #contact {
+    background-color: $ever-green;
+    color: $calm-sage;
+    .svg-logo {
+      path,
+      rect {
+        fill: $calm-sage;
+      }
+    }
+  }
+}
+.themeVibrantRed {
+  header,
+  #intro,
+  .profile-info,
+  .map {
+    background-color: $vibrant-red;
+    color: $off-white;
+  }
+  .svg-logo path,
+  .svg-down-arrow polygon {
+    fill: $off-white;
+  }
+  #contact {
+    background-color: $off-white;
+    color: $vibrant-red;
+    .svg-logo {
+      path,
+      rect {
+        fill: $vibrant-red;
+      }
+    }
+  }
+}
+.themeEverGreen {
+  header,
+  #intro,
+  .profile-info,
+  .map {
+    background-color: $ever-green;
+    color: $off-white;
+  }
+  .svg-logo path,
+  .svg-down-arrow polygon {
+    fill: $off-white;
+  }
+  #contact {
+    background-color: $off-white;
+    color: $ever-green;
+    .svg-logo {
+      path,
+      rect {
+        fill: $ever-green;
+      }
+    }
+  }
+}
+.themeEggplantPurple {
+  header,
+  #intro,
+  .profile-info,
+  .map {
+    background-color: $eggplant-purple;
+    color: $off-white;
+  }
+  .svg-logo path,
+  .svg-down-arrow polygon {
+    fill: $off-white;
+  }
+  #contact {
+    background-color: $off-white;
+    color: $eggplant-purple;
+    .svg-logo {
+      path,
+      rect {
+        fill: $eggplant-purple;
+      }
+    }
+  }
+}
+.themeSunnyYellow {
+  header,
+  #intro,
+  .profile-info,
+  .map {
+    background-color: $sunny-yellow;
+    color: $ever-green;
+  }
+  .svg-logo path,
+  .svg-down-arrow polygon {
+    fill: $ever-green;
+  }
+  #contact {
+    background-color: $ever-green;
+    color: $sunny-yellow;
+    .svg-logo {
+      path,
+      rect {
+        fill: $sunny-yellow;
+      }
+    }
+  }
+}
