@@ -33,6 +33,10 @@
   "devDependencies": {
     "prettier": "^2.0.5"
   },
+  "resolutions": {
+    "@prismicio/gatsby-source-prismic-graphql/**/dot-prop": "^5.1.1",
+    "gatsby/**/dot-prop": "^5.1.1"
+  },
   "keywords": [
     "gatsby"
   ],
