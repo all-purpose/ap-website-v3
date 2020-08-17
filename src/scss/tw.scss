@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.barney {
-  @apply bg-purple-700
+body {
+  color: #161616;
+  background-color: #fff;
+}
+
+.page-sections {
+  background-color: #fff;
+  color: #161616;
 }
 
 .skip-link {
@@ -13,3 +19,14 @@
     @apply not-sr-only;
   }
 }
+
+.multi-col-service-listing {
+  ul {
+    columns: 4 auto;
+    // column-gap: $col-gap;
+    li {
+      break-inside: avoid;
+    }
+  }
+}
+

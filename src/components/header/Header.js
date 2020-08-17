@@ -6,7 +6,7 @@ import SiteNav from '../siteNav/SiteNav';
 const Header = props =>  {
 
   return (
-    <header>
+    <header className="site-header">
       <SkipLinks />
       <div className="container">
         <div className="row">

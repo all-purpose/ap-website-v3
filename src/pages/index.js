@@ -1,10 +1,8 @@
-//import React, { useState, useEffect } from "react";
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { graphql } from 'gatsby';
 import Layout from "../components/layout/Layout";
 import PageHeader from '../components/pageHeader/PageHeader';
 import SliceZone from '../components/sliceZone/SliceZone';
-import '../css/fonts.css';
 import '../scss/main.scss';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
@@ -92,26 +90,19 @@ export const query = graphql`
 
 const IndexPage = props => {
 
-  // const themes = [
-  //   'ClassicBlue',
-  //   'CalmSage',
-  //   'VibrantRed',
-  //   'EverGreen',
-  //   'EggplantPurple',
-  //   'SunnyYellow'
-  // ];
+  const [selectedPalette, setSelectedPalette] = useState(null);
 
-  // const [selectedTheme, setSelectedTheme] = useState('');
-
-  // const getRandomTheme = () => {
-  //   var theme = themes[Math.floor(Math.random()*themes.length)];
-  //   setSelectedTheme(theme);
-  // }
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
 
   // Run theme selection once on mounting  
-  // useEffect(() => {    
-  //   getRandomTheme()  
-  // }, []);
+  useEffect(() => {    
+    const random = getRandomInt(1, 11); 
+    setSelectedPalette(`palette-${random}`);
+  }, []);
 
   const {
     _meta,
@@ -126,17 +117,15 @@ const IndexPage = props => {
     uid
   } = _meta;
 
-  return (
-    
-    <Layout type={type} uid={uid}>
+  return ( 
+    <Layout palette={selectedPalette} type={type} uid={uid}>
       <PageHeader
         pageType={type}
         title={page_title} 
         description={page_description} 
         heroImage={hero_image} />
-        <SliceZone body={body} />
+        <SliceZone body={body} pageType={type} uid={uid} />
     </Layout>
-
   );
 
 }

@@ -37,9 +37,7 @@ const VariableContentSection = ({containerCssClass, containerType, fields}) => {
 
   return (
     <div className={addCSSClasses(containerCssClass, containerType)}>
-      <div className="row">
-        {outputVariableContentItems(fields)}
-      </div>
+      {outputVariableContentItems(fields)}
     </div>
 
   );

@@ -1,0 +1,26 @@
+/* Reset Styles */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+main,
+menu,
+summary {
+  display: block;
+}

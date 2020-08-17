@@ -31,10 +31,12 @@ const PageHeader = ({ pageType, title, description, heroImage }) => {
 
     if (pageType === 'case_study') {
       return (
-        <h1>{title}</h1>
+        <h1 className="body-short-02">{title}</h1>
       )
     } else {
-      return <RichText render={title} />
+      return (
+        <RichText render={title} />
+      );
     }
 
   }

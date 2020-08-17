@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout/Layout';
 import SliceZone from '../components/sliceZone/SliceZone';
@@ -93,6 +93,20 @@ export const query = graphql`
 
 const Page = props => {
 
+  const [selectedPalette, setSelectedPalette] = useState(null);
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  // Run theme selection once on mounting  
+  useEffect(() => {    
+    const random = getRandomInt(1, 11); 
+    setSelectedPalette(`palette-${random}`);
+  }, []);
+
   const {
     _meta,
     page_title,
@@ -107,16 +121,14 @@ const Page = props => {
   } = _meta;
 
   return (
-    <>
-      <Layout type={type} uid={uid}>
-        <PageHeader 
-          pageType={type}
-          title={page_title} 
-          description={page_description} 
-          heroImage={page_header_hero_image} />
-        <SliceZone body={body} />
-      </Layout>
-    </>
+    <Layout palette={selectedPalette} type={type} uid={uid}>
+      <PageHeader 
+        pageType={type}
+        title={page_title} 
+        description={page_description} 
+        heroImage={page_header_hero_image} />
+      <SliceZone body={body} pageType={type} uid={uid} />
+    </Layout>
   );
 }
 
