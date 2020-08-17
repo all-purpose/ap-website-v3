@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: `http://allpurpose.io`,
@@ -57,7 +61,8 @@ module.exports = {
     {
       resolve: '@prismicio/gatsby-source-prismic-graphql',
       options: {
-        repositoryName: 'apwebsite',
+        repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         pages: [
           {
             type: 'Page', // need capitalize
