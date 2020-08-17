@@ -109,8 +109,6 @@ export const query = graphql`
 
 const CaseStudy = props => {
 
-  console.log(props);
-
   const {
     _meta, 
     project_name, 
@@ -129,28 +127,26 @@ const CaseStudy = props => {
   } = _meta;
 
   return (
-    <>
-      <Layout type={type} uid={uid}>
-        <PageHeader
-          pageType={type} 
-          title={project_name} 
-          description={case_study_brand_title} 
-          heroImage={null} />
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-6">
-              <h2>Our role</h2>
-              <RichText render={our_role} />
-            </div>
-            <div className="col-sm-12 col-md-6">
-              <h2>In a nutshell</h2>
-              <RichText render={in_a_nutshell} />
-            </div>
+    <Layout type={type} uid={uid}>
+      <PageHeader
+        pageType={type} 
+        title={project_name} 
+        description={case_study_brand_title} 
+        heroImage={null} />
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 col-md-6">
+            <h2 className="eyebrow">Our role</h2>
+            <RichText render={our_role} />
+          </div>
+          <div className="col-sm-12 col-md-6">
+            <h2 className="eyebrow">In a nutshell</h2>
+            <RichText render={in_a_nutshell} />
           </div>
         </div>
-        <SliceZone body={body} />
-      </Layout>
-    </>
+      </div>
+      <SliceZone palette={null} body={body} pageType={type} uid={uid} />
+    </Layout>
   )
 
 }

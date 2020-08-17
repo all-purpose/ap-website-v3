@@ -5,10 +5,10 @@ import CaseStudySection from '../caseStudySection/CaseStudySection';
 import CaseStudyExcerptListing from '../caseStudyExcerptListing/CaseStudyExcerptListing';
 import TeamListing from '../teamListing/TeamListing';
 
-const SliceZone = ({ body }) => {
+const SliceZone = ({ body, pageType, uid }) => {
 
   return (
-    <div>{body.map((bodyContent, i) => {
+    <div className="page-sections">{body.map((bodyContent, i) => {
 
       if (bodyContent.type === 'variable_content_section') {
         
@@ -45,6 +45,8 @@ const SliceZone = ({ body }) => {
         return ( 
           <CaseStudyExcerptListing 
             key={i}
+            pageType={pageType}
+            uid={uid}
             accessibleName={bodyContent.primary.section_accessible_name}
             fields={bodyContent.fields}
           />

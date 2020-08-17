@@ -1,8 +1,9 @@
 export const linkResolver = (doc) => {
-  // URL for a category type
-  // if (doc.type === 'category') {
-  //   return `/category/${doc.uid}`
-  // }
+  
+  // URL for a case study type
+  if (doc.type === 'case_study') {
+    return `/case-study/${doc.uid}`;
+  }
 
   // URL for a product type
   // if (doc.type === 'product') {
@@ -11,7 +12,7 @@ export const linkResolver = (doc) => {
 
   // URL for a page type
   if (doc.type === 'page') {
-    return `/${doc.uid}`
+    return `/${doc.uid}`;
   }
 
   // Backup for all other types

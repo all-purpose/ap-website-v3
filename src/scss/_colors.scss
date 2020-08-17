@@ -1,0 +1,141 @@
+$evergreen: #14513f;
+$navy: #2d2e7f;
+$ultraviolet: #423dd7;
+$eggplant: #48152f;
+$sage: #d6ebe2;
+$fire-coral: #c64708;
+$dusty-rose: #efc1b4;
+$bone: #faf8f1;
+$orange: #ffaa05;
+$yellow: #ffe072;
+
+// This could probably be a map function to avoid being so repetitive
+.palette-1 {
+  background-color: $yellow;
+  color: $evergreen;
+  .svg-logo {
+    path {
+      fill: $evergreen;
+    }
+  }
+  .page-header {
+    background-color: $yellow;
+  }
+}
+.palette-2 {
+  background-color: $orange;
+  color: $eggplant;
+  .svg-logo {
+    path {
+      fill: $eggplant;
+    }
+  }
+  .page-header {
+    background-color: $orange;
+  }
+}
+.palette-3 {
+  background-color: $bone;
+  color: $fire-coral;
+  .svg-logo {
+    path {
+      fill: $fire-coral;
+    }
+  }
+  .page-header {
+    background-color: $bone;
+  }
+}
+.palette-4 {
+  background-color: $dusty-rose;
+  color: $navy;
+  .svg-logo {
+    path {
+      fill: $navy;
+    }
+  }
+  .page-header {
+    background-color: $dusty-rose;
+  }
+}
+.palette-5 {
+  background-color: $fire-coral;
+  color: $bone;
+  .svg-logo {
+    path {
+      fill: $bone;
+    }
+  }
+  .page-header {
+    background-color: $fire-coral;
+  }
+}
+.palette-6 {
+  background-color: $ultraviolet;
+  color: $bone;
+  .svg-logo {
+    path {
+      fill: $bone;
+    }
+  }
+  .page-header {
+    background-color: $ultraviolet;
+  }
+}
+.palette-7 {
+  background-color: $navy;
+  color: $dusty-rose;
+  .svg-logo {
+    path {
+      fill: $dusty-rose;
+    }
+  }
+  .page-header {
+    background-color: $navy;
+  }
+}
+.palette-8 {
+  background-color: $sage;
+  color: $navy;
+  .svg-logo {
+    path {
+      fill: $navy;
+    }
+  }
+  .page-header {
+    background-color: $sage;
+  }
+}
+.palette-9 {
+  background-color: $evergreen;
+  color: $sage;
+  .svg-logo {
+    path {
+      fill: $sage;
+    }
+  }
+  .page-header {
+    background-color: $evergreen;
+  }
+}
+.palette-10 {
+  background-color: $eggplant;
+  color: $yellow;
+  .svg-logo {
+    path {
+      fill: $yellow;
+    }
+  }
+  .page-header {
+    background-color: $eggplant;
+  }
+}
+
+// Utility classes - if you nest these in the above declarations you can generate utility classes for each color palette
+
+// .bg-random {
+//   background-color: $background-color;
+// }
+// .color-random {
+//   color: $text-color;
+// }

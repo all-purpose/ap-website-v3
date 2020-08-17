@@ -1,7 +1,7 @@
 import React from 'react';
 import CaseStudyExcerpt from '../caseStudyExcerpt/caseStudyExcerpt';
 
-const CaseStudyExcerptListing = ({accessibleName, fields}) => {
+const CaseStudyExcerptListing = ({pageType, uid, accessibleName, fields}) => {
 
   const excerptListProps = {
     className: "case-study-excerpts row"
@@ -26,6 +26,8 @@ const CaseStudyExcerptListing = ({accessibleName, fields}) => {
           key={index}
           className="col-sm-6">
           <CaseStudyExcerpt
+            pageType={pageType}
+            uid={uid}
             link={`/case-study/${_meta.uid}`}
             image={case_study_excerpt_image}
             projectName={project_name}
