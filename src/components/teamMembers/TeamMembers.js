@@ -1,10 +1,10 @@
 import React from 'react';
 import TeamMember from '../teamMember/TeamMember';
 
-const TeamListing = ({accessibleName, fields}) => {
+const TeamMembers = ({accessibleName, fields}) => {
 
   const teamListProps = {
-    className: "team-listing row"
+    className: "team-member row"
   };
 
   if (accessibleName) {
@@ -42,4 +42,4 @@ const TeamListing = ({accessibleName, fields}) => {
 
 }
 
-export default TeamListing;
+export default TeamMembers;

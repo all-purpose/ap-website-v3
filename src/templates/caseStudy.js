@@ -18,68 +18,56 @@ export const query = graphql`
         edges {
           node {
             _meta {
-              uid,
               type
+              uid
             }
-            case_study_brand_title
+            background_header_color
+            case_study_page_title
+            highlight_color
             in_a_nutshell
             our_role
             project_name
-            background_header_color
             text_color
-            highlight_color
             body {
-              ... on PRISMIC_Case_studyBodyVariable_content_section {
-                type
-                fields {
-                  content_area
-                  variable_content_item_css_class
-                  variable_content_section_id
-                }
-                primary {
-                  variable_content_container_css_class
-                  variable_content_container_type
-                }
-              }
-              ... on PRISMIC_Case_studyBodyCase_study_section {
+              ... on PRISMIC_Case_studyBodyCase_study_main {
                 type
                 primary {
-                  section_container_type
                   section_content
-                  section_css_classes
+                  section_css_class
                   section_id
                   section_title
                 }
               }
-              ... on PRISMIC_Case_studyBodyImage_grid {
+              ... on PRISMIC_Case_studyBodyFlexible_content_section {
                 type
                 fields {
-                  grid_image
-                  grid_image_caption
+                  item_content
+                  item_css_class
+                  item_id
                 }
                 primary {
-                  image_grid_container_type
-                  image_grid_custom_css_class
-                  image_grid_section_id
-                }
-              }
-              ... on PRISMIC_Case_studyBodyFull_bleed_image {
-                type
-                primary {
-                  add_full_bleed_image
-                  full_bleed_image_caption
-                  full_bleed_image_custom_css_class
-                  full_bleed_image_id
+                  container_css_class
+                  container_id
                 }
               }
-              ... on PRISMIC_Case_studyBodyQuotation {
+              ... on PRISMIC_Case_studyBodyImage_group {
                 type
-                label
+                fields {
+                  image
+                  image_caption
+                }
                 primary {
-                  quotation_css_class
+                  section_css_class
+                  section_id
+                }
+              }
+              ... on PRISMIC_Case_studyBodyBlock_quote {
+                type
+                primary {
                   quote_author_citation
-                  quote_id
                   quote_text
+                  section_css_class
+                  section_id
                 }
               }
             }
