@@ -1,13 +1,13 @@
 import React from 'react';
 import {RichText} from 'prismic-reactjs';
 
-const CaseStudySection = ({ containerType, containerCssClass, containerId, title, content }) => {
+const CaseStudyPageSection = ({ containerType, containerCssClass, containerId, title, content }) => {
 
-  const outputSectionContainer = (containerType, containerCssClass, containerId, title, content) => {
+  const outputSectionContainer = (containerCssClass, containerId, title, content) => {
     
     if (containerId) {
       return (
-        <div id={containerId} className={addCSSClasses(containerCssClass, containerType)}>
+        <div id={containerId} className={addCSSClasses(containerCssClass)}>
           <div className="row">
               <div className="col-md-4">
                 <RichText render={title} />
@@ -20,7 +20,7 @@ const CaseStudySection = ({ containerType, containerCssClass, containerId, title
       );
     } else {
       return (
-        <div className={addCSSClasses(containerCssClass, containerType)}>
+        <div className={addCSSClasses(containerCssClass)}>
           <div class="col-md-4">
             <RichText render={title} />
           </div>
@@ -33,28 +33,19 @@ const CaseStudySection = ({ containerType, containerCssClass, containerId, title
     
   }
 
-  const addCSSClasses = (containerCssClass, containerType) => {
-    let className = 'case-study-section';
+  const addCSSClasses = (containerCssClass) => {
 
-    switch (containerType) {
-      case 'Grid-constrained': 
-        className += ' container'; 
-        break;
-      case 'Full Bleed': 
-        className += ' full-bleed';
-        break;
-      default:
-        break;
-    }
+    let className = 'case-study-section container';
+
     if (containerCssClass) {
       className += ` ${containerCssClass}`;
     }
+
     return className;
   }
 
   return (
     outputSectionContainer(
-      containerType, 
       containerCssClass, 
       containerId,
       title,
@@ -64,4 +55,4 @@ const CaseStudySection = ({ containerType, containerCssClass, containerId, title
 
 }
 
-export default CaseStudySection;
+export default CaseStudyPageSection;

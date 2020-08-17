@@ -14,41 +14,29 @@ export const query = graphql`
               uid
               type
             }
+            hero_image
             page_description
-            page_header_hero_image
             page_title
             body {
-              ... on PRISMIC_PageBodyVariable_content_section {
+              ... on PRISMIC_PageBodyCase_study_excerpts {
                 type
                 primary {
-                  variable_content_container_css_class
-                  variable_content_container_type
+                  section_accessible_name
                 }
-                fields {
-                  content_area
-                  variable_content_item_css_class
-                  variable_content_section_id
-                }
-              }
-              ... on PRISMIC_PageBodyCase_study_listing {
-                type
                 fields {
                   case_study {
                     ... on PRISMIC_Case_study {
-                      project_name
                       _meta {
                         uid
                       }
+                      project_name
                       case_study_excerpt_image
                       case_study_excerpt_roles
                     }
                   }
                 }
-                primary {
-                  section_accessible_name
-                }
               }
-              ... on PRISMIC_PageBodyTeam_listing {
+              ... on PRISMIC_PageBodyTeam_member_profiles {
                 type
                 primary {
                   section_accessible_name
@@ -62,26 +50,20 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PRISMIC_PageBodyImage_grid {
+              ... on PRISMIC_PageBodyFlexible_content_section {
                 type
                 primary {
-                  image_grid_container_type
-                  image_grid_custom_css_class
-                  image_grid_section_id
+                  container_css_class
+                  container_id
                 }
                 fields {
-                  grid_image
-                  grid_image_caption
+                  item_content
+                  item_css_class
+                  item_id
                 }
               }
-              ... on PRISMIC_PageBodyQuotation {
+              ... on PRISMIC_PageBodyImage_group {
                 type
-                primary {
-                  quotation_css_class
-                  quote_author_citation
-                  quote_id
-                  quote_text
-                }
               }
             }
           }

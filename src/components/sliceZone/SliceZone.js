@@ -1,38 +1,37 @@
 import React from 'react';
-import VariableContentSection from '../variableContentSection/VariableContentSection';
-import ImageGrid from '../imageGrid/ImageGrid';
-import CaseStudySection from '../caseStudySection/CaseStudySection';
-import CaseStudyExcerptListing from '../caseStudyExcerptListing/CaseStudyExcerptListing';
-import TeamListing from '../teamListing/TeamListing';
+import FlexibleContentSection from '../flexibleContentSection/FlexibleContentSection';
+import ImageGroup from '../imageGroup/ImageGroup';
+import CaseStudyPageSection from '../caseStudyPageSection/CaseStudyPageSection';
+import CaseStudyExcerpts from '../caseStudyExcerpts/CaseStudyExcerpts';
+import TeamMembers from '../teamMembers/TeamMembers';
 
 const SliceZone = ({ body, pageType, uid }) => {
 
   return (
     <div className="page-sections">{body.map((bodyContent, i) => {
 
-      if (bodyContent.type === 'variable_content_section') {
+      if (bodyContent.type === 'flexible_content_section') {
         
         return ( 
-          <VariableContentSection
+          <FlexibleContentSection
             key={i}
-            containerType={bodyContent.primary.variable_content_container_type} 
-            containerCssClass={bodyContent.primary.variable_content_container_css_class}
+            containerId={bodyContent.primary.container_id}
+            containerCssClass={bodyContent.primary.container_css_class}
             fields={bodyContent.fields}
           />
         );
-      } else if (bodyContent.type === 'image_grid') {
+      } else if (bodyContent.type === 'image_group') {
         return ( 
-          <ImageGrid 
+          <ImageGroup 
             key={i}
-            containerType={bodyContent.primary.image_grid_container_type}
-            containerId={bodyContent.primary.image_grid_section_id}
+            containerId={bodyContent.primary.section_id}
             fields={bodyContent.fields}
-            containerCssClass={bodyContent.primary.image_grid_custom_css_class}
+            containerCssClass={bodyContent.primary.section_css_class}
           />
         )
-      } else if (bodyContent.type === 'case_study_section') {
+      } else if (bodyContent.type === 'case_study_main') {
         return ( 
-          <CaseStudySection 
+          <CaseStudyPageSection 
             key={i}
             containerType={bodyContent.primary.section_container_type}
             containerCssClass={bodyContent.primary.section_css_classes}
@@ -41,9 +40,9 @@ const SliceZone = ({ body, pageType, uid }) => {
             content={bodyContent.primary.section_content}
           />
         )
-      } else if (bodyContent.type === 'case_study_listing') {
+      } else if (bodyContent.type === 'case_study_excerpts') {
         return ( 
-          <CaseStudyExcerptListing 
+          <CaseStudyExcerpts 
             key={i}
             pageType={pageType}
             uid={uid}
@@ -51,9 +50,9 @@ const SliceZone = ({ body, pageType, uid }) => {
             fields={bodyContent.fields}
           />
         )
-      } else if (bodyContent.type === 'team_listing') {
+      } else if (bodyContent.type === 'team_member_profiles') {
         return ( 
-          <TeamListing 
+          <TeamMembers 
             key={i}
             accessibleName={bodyContent.primary.section_accessible_name}
             fields={bodyContent.fields}

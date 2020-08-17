@@ -1,7 +1,7 @@
 import React from 'react';
 import CaseStudyExcerpt from '../caseStudyExcerpt/caseStudyExcerpt';
 
-const CaseStudyExcerptListing = ({pageType, uid, accessibleName, fields}) => {
+const CaseStudyExcerpts = ({pageType, uid, accessibleName, fields}) => {
 
   const excerptListProps = {
     className: "case-study-excerpts row"
@@ -50,4 +50,4 @@ const CaseStudyExcerptListing = ({pageType, uid, accessibleName, fields}) => {
 
 }
 
-export default CaseStudyExcerptListing;
+export default CaseStudyExcerpts;

@@ -12,72 +12,62 @@ export const query = graphql`
       allHome_pages {
         edges {
           node {
+            _meta {
+              uid
+              type
+            }
+            hero_image
             page_description
             page_title
-            hero_image
-            _meta {
-              type,
-              uid
-            }
             body {
-              ... on PRISMIC_Home_pageBodyVariable_content_section {
+              ... on PRISMIC_Home_pageBodyFlexible_content_section {
                 type
                 primary {
-                  variable_content_container_css_class
-                  variable_content_container_type
+                  container_css_class
+                  container_id
                 }
                 fields {
-                  content_area
-                  variable_content_item_css_class
-                  variable_content_section_id
+                  item_content
+                  item_css_class
+                  item_id
                 }
               }
-              ... on PRISMIC_Home_pageBodyCase_study_listing {
+              ... on PRISMIC_Home_pageBodyCase_study_excerpts {
                 type
+                primary {
+                  section_accessible_name
+                }
                 fields {
                   case_study {
                     ... on PRISMIC_Case_study {
-                      project_name
                       _meta {
                         uid
                       }
+                      project_name
                       case_study_excerpt_image
                       case_study_excerpt_roles
                     }
                   }
                 }
-                primary {
-                  section_accessible_name
-                }
               }
-              ... on PRISMIC_Home_pageBodyImage_grid {
+              ... on PRISMIC_Home_pageBodyBlock_quote {
                 type
                 primary {
-                  image_grid_container_type
-                  image_grid_custom_css_class
-                  image_grid_section_id
+                  quote_author_citation
+                  quote_text
+                  section_css_class
+                  section_id
+                }
+              }
+              ... on PRISMIC_Home_pageBodyImage_group {
+                type
+                primary {
+                  section_css_class
+                  section_id
                 }
                 fields {
-                  grid_image
-                  grid_image_caption
-                }
-              }
-              ... on PRISMIC_Home_pageBodyFull_bleed_image {
-                type
-                primary {
-                  full_bleed_image_id
-                  full_bleed_image_custom_css_class
-                  full_bleed_image_caption
-                  add_full_bleed_image
-                }
-              }
-              ... on PRISMIC_Home_pageBodyQuotation {
-                type
-                primary {
-                  quotation_css_class
-                  quote_author_citation
-                  quote_id
-                  quote_text
+                  image
+                  image_caption
                 }
               }
             }
