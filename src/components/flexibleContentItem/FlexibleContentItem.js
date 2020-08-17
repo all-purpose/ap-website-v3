@@ -46,7 +46,7 @@ const FlexibleContentItem = ({ field }) => {
   }
 
   const outputItemContent = (type, itemContent) => {
-    console.log(itemContent);
+    
     if (type === 'image') {
       const image = itemContent[0];
       return (

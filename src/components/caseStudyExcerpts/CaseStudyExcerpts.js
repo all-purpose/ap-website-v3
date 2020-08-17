@@ -14,8 +14,6 @@ const CaseStudyExcerpts = ({pageType, uid, accessibleName, fields}) => {
   const outputCaseStudyExcerpts = fields => {
     return fields.map((field, index) => {
 
-      console.log(field);
-
       const {
         _meta,
         case_study_excerpt_image,

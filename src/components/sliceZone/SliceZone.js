@@ -10,8 +10,6 @@ const SliceZone = ({ body, pageType, uid }) => {
   return (
     <div className="page-sections">{body.map((bodyContent, i) => {
 
-      console.log(bodyContent.type);
-
       if (bodyContent.type === 'flexible_content_section') {
         
         return ( 
