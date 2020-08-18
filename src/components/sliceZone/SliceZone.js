@@ -7,6 +7,10 @@ import TeamMembers from '../teamMembers/TeamMembers';
 
 const SliceZone = ({ body, pageType, uid }) => {
 
+  if (!body) {
+    return false;
+  }
+
   return (
     <div className="page-sections">{body.map((bodyContent, i) => {
 

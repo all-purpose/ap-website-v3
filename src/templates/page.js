@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout/Layout';
 import SliceZone from '../components/sliceZone/SliceZone';
+import ContactPageContent from '../components/contactPageContent/ContactPageContent'
 import PageHeader from '../components/pageHeader/PageHeader';
 
 export const query = graphql`
@@ -102,6 +103,18 @@ const Page = props => {
     type
   } = _meta;
 
+  const outputPageContent = (uid, type, body) => {
+    if (uid === 'contact') {
+      return (
+        <ContactPageContent />
+      )
+    } else {
+      return (
+        <SliceZone body={body} pageType={type} uid={uid} />
+      )
+    }
+  }
+
   return (
     <Layout palette={selectedPalette} type={type} uid={uid}>
       <PageHeader 
@@ -109,7 +122,7 @@ const Page = props => {
         title={page_title} 
         description={page_description} 
         heroImage={page_header_hero_image} />
-      <SliceZone body={body} pageType={type} uid={uid} />
+      {outputPageContent(uid, type, body)}
     </Layout>
   );
 }
