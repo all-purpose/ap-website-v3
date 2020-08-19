@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link, StaticQuery, graphql} from 'gatsby';
+import React from "react"
+import { Link, StaticQuery, graphql } from "gatsby"
 
 const navigationQuery = graphql`
 {
@@ -37,38 +37,42 @@ const navigationQuery = graphql`
       }
     }
   }
-}
-`;
+`
 
 const SiteNav = () => {
-
-  const outputNavLinks = data => {
-    return data.prismic.allNavigations.edges[0].node.navigation_links.map(link => {
-      return (
-        <li key={link.page_link._meta.uid}>
-          <Link to={`/${link.page_link._meta.uid}`}>
-            {link.nav_link_label}
-          </Link>
-        </li>
-      )
-    });
+  const outputNavLinks = (data) => {
+    return data.prismic.allNavigations.edges[0].node.navigation_links.map(
+      (link) => {
+        return (
+          <li key={link.page_link._meta.uid}>
+            <Link to={`/${link.page_link._meta.uid}`}>
+              {link.nav_link_label}
+            </Link>
+          </li>
+        )
+      }
+    )
   }
 
   return (
-    <StaticQuery 
-      query={`${navigationQuery}`} 
-      render={data => {
+    <StaticQuery
+      query={`${navigationQuery}`}
+      render={(data) => {
         return (
           <>
-          <nav aria-label={data.prismic.allNavigations.edges[0].node.navigation_accessible_name}>
-            <ul>{outputNavLinks(data)}</ul>
-          </nav>
+            <nav
+              aria-label={
+                data.prismic.allNavigations.edges[0].node
+                  .navigation_accessible_name
+              }
+            >
+              <ul>{outputNavLinks(data)}</ul>
+            </nav>
           </>
         )
-      }} 
+      }}
     />
   )
-
 }
 
-export default SiteNav;
+export default SiteNav

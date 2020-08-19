@@ -1,0 +1,28 @@
+.grid-col {
+  border-left: solid black 1px;
+  height: 100%;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.grid-col:last-of-type {
+  border-right: solid black 1px;
+}
+
+.grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vw;
+  width: 100vw;
+  pointer-events: none;
+}
+
+.grid .container,
+.grid .row {
+  height: 100vh;
+}
+
+// .grid ~ * {
+//   position: relative;
+// }
