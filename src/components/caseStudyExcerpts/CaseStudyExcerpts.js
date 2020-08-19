@@ -40,12 +40,9 @@ const CaseStudyExcerpts = ({pageType, uid, accessibleName, fields}) => {
   }
   
   return (
-    <div className="container">
-      <ul {...excerptListProps}>
-        {outputCaseStudyExcerpts(fields)}
-      </ul>
-    </div>
-
+    <ul {...excerptListProps}>
+      {outputCaseStudyExcerpts(fields)}
+    </ul>
   );
 
 }

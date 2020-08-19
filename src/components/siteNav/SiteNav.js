@@ -11,7 +11,22 @@ const navigationQuery = graphql`
           navigation_links {
             nav_link_label
             page_link {
+              ... on PRISMIC_Contact_page {
+                _meta {
+                  uid
+                }
+              }
               ... on PRISMIC_Page {
+                _meta {
+                  uid
+                }
+              }
+              ... on PRISMIC_Team_page {
+                _meta {
+                  uid
+                }
+              }
+              ... on PRISMIC_Work_page {
                 _meta {
                   uid
                 }
