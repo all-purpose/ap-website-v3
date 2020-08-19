@@ -33,7 +33,7 @@ const PageHeader = ({ pageType, title, description, heroImage }) => {
 
   return outputHeader(
     heroImage,
-    <div className="container">
+    <div>
       {outputTitle(pageType, title)}
       <RichText render={description} />
     </div>

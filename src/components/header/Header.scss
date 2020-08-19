@@ -1,9 +1,19 @@
 .site-header {
   padding-top: 32px;
   padding-bottom: 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .svg-logo {
   width: 160px;
   transform: translateY(-8px);
+}
+
+.site-header nav {
+  position: relative;
+  z-index: 10;
 }

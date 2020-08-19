@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import { graphql } from 'gatsby';
-import Layout from '../components/layout/Layout';
-import PageHeaderGeneral from '../components/pageHeader/PageHeaderGeneral';
-import CaseStudyExcerpts from '../components/caseStudyExcerpts/CaseStudyExcerpts';
+import React, { useState, useEffect } from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/layout/Layout"
+import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
+import CaseStudyExcerpts from "../components/caseStudyExcerpts/CaseStudyExcerpts"
 
 export const query = graphql`
-  query WorkPageQuery { 
+  query WorkPageQuery {
     prismic {
       allWork_pages {
         edges {
@@ -34,55 +34,48 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-const WorkPage = props => {
-
-  const [selectedPalette, setSelectedPalette] = useState(null);
+const WorkPage = (props) => {
+  const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min
   }
 
-  // Run theme selection once on mounting  
-  useEffect(() => {    
-    const random = getRandomInt(1, 11); 
-    setSelectedPalette(`palette-${random}`);
-  }, []);
+  // Run theme selection once on mounting
+  useEffect(() => {
+    const random = getRandomInt(1, 11)
+    setSelectedPalette(`palette-${random}`)
+  }, [])
 
   const {
     _meta,
     page_title,
     page_description,
     accessible_name,
-    case_studies
-  } = props.data.prismic.allWork_pages.edges[0].node;
+    case_studies,
+  } = props.data.prismic.allWork_pages.edges[0].node
 
-  const {
-    uid,
-    type
-  } = _meta;
+  const { uid, type } = _meta
 
   return (
     <Layout palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral 
-        title={page_title} 
-        description={page_description} 
-      />
+      <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections">
-        <div className="container">
+        <div className="container py-24">
           <CaseStudyExcerpts
             pageType={type}
-            uid={uid} 
+            uid={uid}
             accessibleName={accessible_name}
             fields={case_studies}
           />
         </div>
       </div>
     </Layout>
-  );
+  )
 }
 
-export default WorkPage;
+export default WorkPage
