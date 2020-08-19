@@ -71,6 +71,24 @@ module.exports = {
             component: require.resolve('./src/templates/page.js')
           },
           {
+            type: 'Team Page', // need capitalize
+            match: '/team',
+            previewPath: '/',
+            component: require.resolve('./src/templates/teamPage.js')
+          },
+          {
+            type: 'Work Page', // need capitalize
+            match: '/work',
+            previewPath: '/',
+            component: require.resolve('./src/templates/workPage.js')
+          },
+          {
+            type: 'Contact Page', // need capitalize
+            match: '/contact',
+            previewPath: '/',
+            component: require.resolve('./src/templates/contactPage.js')
+          },
+          {
             type: 'Case Study', // need capitalize
             match: '/case-study/:uid',
             previewPath: '/case-study',

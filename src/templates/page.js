@@ -19,38 +19,6 @@ export const query = graphql`
             page_description
             page_title
             body {
-              ... on PRISMIC_PageBodyCase_study_excerpts {
-                type
-                primary {
-                  section_accessible_name
-                }
-                fields {
-                  case_study {
-                    ... on PRISMIC_Case_study {
-                      _meta {
-                        uid
-                      }
-                      project_name
-                      case_study_excerpt_image
-                      case_study_excerpt_roles
-                    }
-                  }
-                }
-              }
-              ... on PRISMIC_PageBodyTeam_member_profiles {
-                type
-                primary {
-                  section_accessible_name
-                }
-                fields {
-                  team_member {
-                    ... on PRISMIC_Team_member {
-                      name
-                      photo
-                    }
-                  }
-                }
-              }
               ... on PRISMIC_PageBodyFlexible_content_section {
                 type
                 primary {

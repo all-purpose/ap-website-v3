@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { graphql } from 'gatsby';
 import Layout from "../components/layout/Layout";
-import PageHeader from '../components/pageHeader/PageHeader';
-import SliceZone from '../components/sliceZone/SliceZone';
+import PageHeaderHome from '../components/pageHeader/PageHeaderHome';
+import HomePageServices from '../components/homePageContent/HomePageServices';
+import HomePageProjects from '../components/homePageContent/HomePageProjects';
+import HomePageDesignGood from '../components/homePageContent/HomePageDesignGood';
 import '../scss/main.scss';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
@@ -16,58 +18,32 @@ export const query = graphql`
               uid
               type
             }
-            hero_image
-            page_description
-            page_title
-            body {
-              ... on PRISMIC_Home_pageBodyFlexible_content_section {
-                type
-                primary {
-                  container_css_class
-                  container_id
-                }
-                fields {
-                  item_content
-                  item_css_class
-                  item_id
-                }
-              }
-              ... on PRISMIC_Home_pageBodyCase_study_excerpts {
-                type
-                primary {
-                  section_accessible_name
-                }
-                fields {
-                  case_study {
-                    ... on PRISMIC_Case_study {
-                      _meta {
-                        uid
-                      }
-                      project_name
-                      case_study_excerpt_image
-                      case_study_excerpt_roles
-                    }
+            home_page_title
+            home_page_description
+            home_services_brand_title
+            home_services_section_title
+            home_services_category_listing {
+              service_category_title
+              services_listing
+            }
+            home_services_listing
+            home_design_good_section_title
+            home_design_good_description
+            home_design_good_logos {
+              logo_image
+            }
+            home_projects_brand_title
+            home_projects_listing_accessible_name
+            home_projects_section_title
+            projects_listing {
+              case_study {
+                ... on PRISMIC_Case_study {
+                  _meta {
+                    uid
                   }
-                }
-              }
-              ... on PRISMIC_Home_pageBodyBlock_quote {
-                type
-                primary {
-                  quote_author_citation
-                  quote_text
-                  section_css_class
-                  section_id
-                }
-              }
-              ... on PRISMIC_Home_pageBodyImage_group {
-                type
-                primary {
-                  section_css_class
-                  section_id
-                }
-                fields {
-                  image
-                  image_caption
+                  project_name
+                  case_study_excerpt_image
+                  case_study_excerpt_roles
                 }
               }
             }
@@ -96,10 +72,19 @@ const IndexPage = props => {
 
   const {
     _meta,
-    page_title,
-    page_description,
-    hero_image,
-    body
+    home_page_title,
+    home_page_description,
+    home_services_section_title,
+    home_services_brand_title,
+    home_services_category_listing,
+    home_services_listing,
+    home_projects_section_title,
+    home_projects_brand_title,
+    home_projects_listing_accessible_name,
+    projects_listing,
+    home_design_good_section_title,
+    home_design_good_description,
+    home_design_good_logos
   } = props.data.prismic.allHome_pages.edges[0].node;
 
   const {
@@ -109,12 +94,31 @@ const IndexPage = props => {
 
   return ( 
     <Layout palette={selectedPalette} type={type} uid={uid}>
-      <PageHeader
-        pageType={type}
-        title={page_title} 
-        description={page_description} 
-        heroImage={hero_image} />
-        <SliceZone body={body} pageType={type} uid={uid} />
+      <PageHeaderHome
+        title={home_page_title} 
+        description={home_page_description} 
+      />
+      <div className="page-sections">
+        <HomePageServices 
+          sectionTitle={home_services_section_title}
+          brandTitle={home_services_brand_title}
+          serviceCategoryListings={home_services_category_listing}
+          servicesListing={home_services_listing}
+        />
+        <HomePageProjects 
+          pageType={type}
+          uid={uid}
+          sectionTitle={home_projects_section_title}
+          brandTitle={home_projects_brand_title}
+          projectsAccessibleName={home_projects_listing_accessible_name}
+          projects={projects_listing}
+        />
+        <HomePageDesignGood 
+          sectionTitle={home_design_good_section_title}
+          description={home_design_good_description}
+          logos={home_design_good_logos}
+        />
+      </div>
     </Layout>
   );
 
