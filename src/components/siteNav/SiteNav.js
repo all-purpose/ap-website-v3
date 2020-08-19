@@ -37,6 +37,7 @@ const navigationQuery = graphql`
       }
     }
   }
+}
 `
 
 const SiteNav = () => {
