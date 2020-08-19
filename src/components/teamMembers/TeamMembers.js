@@ -15,7 +15,8 @@ const TeamMembers = ({accessibleName, fields}) => {
     return fields.map((field, index) => {
       const {
         name,
-        photo
+        photo,
+        specialties_list
       } = field.team_member;
 
       return (
@@ -25,6 +26,7 @@ const TeamMembers = ({accessibleName, fields}) => {
           <TeamMember
             name={name}
             photo={photo}
+            specialties={specialties_list}
           />
         </li>
       );

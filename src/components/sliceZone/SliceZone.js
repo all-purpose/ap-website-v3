@@ -2,8 +2,6 @@ import React from 'react';
 import FlexibleContentSection from '../flexibleContentSection/FlexibleContentSection';
 import ImageGroup from '../imageGroup/ImageGroup';
 import CaseStudyPageSection from '../caseStudyPageSection/CaseStudyPageSection';
-import CaseStudyExcerpts from '../caseStudyExcerpts/CaseStudyExcerpts';
-import TeamMembers from '../teamMembers/TeamMembers';
 
 const SliceZone = ({ body, pageType, uid }) => {
 
@@ -42,24 +40,6 @@ const SliceZone = ({ body, pageType, uid }) => {
             containerId={bodyContent.primary.section_id}
             title={bodyContent.primary.section_title}
             content={bodyContent.primary.section_content}
-          />
-        )
-      } else if (bodyContent.type === 'case_study_excerpts') {
-        return ( 
-          <CaseStudyExcerpts 
-            key={i}
-            pageType={pageType}
-            uid={uid}
-            accessibleName={bodyContent.primary.section_accessible_name}
-            fields={bodyContent.fields}
-          />
-        )
-      } else if (bodyContent.type === 'team_member_profiles') {
-        return ( 
-          <TeamMembers 
-            key={i}
-            accessibleName={bodyContent.primary.section_accessible_name}
-            fields={bodyContent.fields}
           />
         )
       } else {

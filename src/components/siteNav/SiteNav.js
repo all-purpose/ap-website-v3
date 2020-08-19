@@ -2,19 +2,33 @@ import React from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 
 const navigationQuery = graphql`
-  {
-    prismic {
-      allNavigations {
-        edges {
-          node {
-            navigation_accessible_name
-            navigation_links {
-              nav_link_label
-              page_link {
-                ... on PRISMIC_Page {
-                  _meta {
-                    uid
-                  }
+{
+  prismic {
+    allNavigations {
+      edges {
+        node {
+          navigation_accessible_name
+          navigation_links {
+            nav_link_label
+            page_link {
+              ... on PRISMIC_Contact_page {
+                _meta {
+                  uid
+                }
+              }
+              ... on PRISMIC_Page {
+                _meta {
+                  uid
+                }
+              }
+              ... on PRISMIC_Team_page {
+                _meta {
+                  uid
+                }
+              }
+              ... on PRISMIC_Work_page {
+                _meta {
+                  uid
                 }
               }
             }
