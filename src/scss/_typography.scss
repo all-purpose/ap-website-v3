@@ -1,7 +1,7 @@
-@import 'fonts.scss';
+@import "fonts.scss";
 
-$serif: 'Heldane Text Medium';
-$sans: 'Inter';
+$serif: "Heldane Text Medium";
+$sans: "Inter";
 
 html {
   font-size: 62.5%; // Makes it so rem font sizea are 1/10 of pixel counterparts. E.g. 16px = 1.6rem;
@@ -31,11 +31,10 @@ body {
 }
 
 .heading-02 {
-  font-size: 6.4rem; // 64px 
+  font-size: 6.4rem; // 64px
   line-height: 1.125; // 72px
   font-family: $serif;
 }
-
 
 .body-01 {
   // font-size 16px
@@ -62,18 +61,19 @@ body {
   font-weight: 600;
   font-family: $sans;
   margin-bottom: 0;
+  font-style: normal;
 
-//   Set margin on next sibling
-  & + * {
-    margin-top: 0.8rem;
-  }
+  // //   Set margin on next sibling
+  // & + * {
+  //   margin-top: 0.8rem;
+  // }
 }
 
 // Utility
 .sans {
-  font-family: $sans!important;
+  font-family: $sans !important;
 }
 
 .serif {
-  font-family: $serif!important;
+  font-family: $serif !important;
 }

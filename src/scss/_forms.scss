@@ -1,0 +1,12 @@
+.form-field {
+  display: block;
+  width: 100%;
+  border: solid 1px grey;
+  padding: 8px;
+  border-radius: 0px;
+}
+
+.form-field:focus {
+  outline: none;
+  border-style: dashed;
+}
