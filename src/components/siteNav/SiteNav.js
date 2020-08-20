@@ -46,7 +46,7 @@ const SiteNav = () => {
       (link) => {
         return (
           <li key={link.page_link._meta.uid}>
-            <Link to={`/${link.page_link._meta.uid}`}>
+            <Link to={`/${link.page_link._meta.uid}`} className="nav-link">
               {link.nav_link_label}
             </Link>
           </li>

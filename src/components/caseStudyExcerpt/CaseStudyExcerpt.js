@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import "./CaseStudyExcerpt.scss"
 
 const CaseStudyExcerpt = ({
   pageType,
@@ -28,7 +29,7 @@ const CaseStudyExcerpt = ({
           <img className="w-full mb-4" src={image.url} alt={image.alt} />
         </div>
         {outputCaseStudyExcerptHeading(pageType, uid, projectName)}
-        <div className="case-study-excerpt-roles body-short-02">{roles}</div>
+        <div className="case-study-excerpt-roles body-01 ">{roles}</div>
       </Link>
     </div>
   )

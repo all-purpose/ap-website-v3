@@ -13,7 +13,7 @@ const PageHeaderHome = ({ title, description }) => {
           <div className="display-02">
             <RichText render={title} />
           </div>
-          <div className="body-short-02">
+          <div className="body-short-02 col-md-8">
             <RichText render={description} />
           </div>
         </div>
