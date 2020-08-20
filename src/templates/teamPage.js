@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout/Layout';
 import PageHeaderGeneral from '../components/pageHeader/PageHeaderGeneral';
 import TeamMembers from '../components/teamMembers/TeamMembers';
+import CallToAction from '../components/callToAction/CallToAction';
 
 export const query = graphql`
   query TeamPageQuery { 
@@ -23,6 +24,23 @@ export const query = graphql`
                   name
                   photo
                   specialties_list
+                }
+              }
+            }
+            call_to_action {
+              ... on PRISMIC_Call_to_action {
+                call_to_action_statement
+                call_to_action_buttons {
+                  button_action_text
+                  button_sub_text
+                  button_link_target {
+                    ... on PRISMIC_Contact_page {
+                      _meta {
+                        uid
+                      }
+                    }
+                  }
+                  
                 }
               }
             }
@@ -54,7 +72,8 @@ const TeamPage = props => {
     page_title,
     page_description,
     accessible_name,
-    team_profiles
+    team_profiles,
+    call_to_action
   } = props.data.prismic.allTeam_pages.edges[0].node;
 
   const {
@@ -74,6 +93,9 @@ const TeamPage = props => {
           fields={team_profiles}
         />
       </div>
+      <CallToAction
+        callToAction={call_to_action}
+      />
     </Layout>
   );
 }

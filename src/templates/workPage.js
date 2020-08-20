@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout/Layout"
 import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
 import CaseStudyExcerpts from "../components/caseStudyExcerpts/CaseStudyExcerpts"
+import CallToAction from '../components/callToAction/CallToAction';
 
 export const query = graphql`
   query WorkPageQuery {
@@ -26,6 +27,23 @@ export const query = graphql`
                   project_name
                   case_study_excerpt_image
                   case_study_excerpt_roles
+                }
+              }
+            }
+            call_to_action {
+              ... on PRISMIC_Call_to_action {
+                call_to_action_statement
+                call_to_action_buttons {
+                  button_action_text
+                  button_sub_text
+                  button_link_target {
+                    ... on PRISMIC_Contact_page {
+                      _meta {
+                        uid
+                      }
+                    }
+                  }
+                  
                 }
               }
             }
@@ -57,6 +75,7 @@ const WorkPage = (props) => {
     page_description,
     accessible_name,
     case_studies,
+    call_to_action
   } = props.data.prismic.allWork_pages.edges[0].node
 
   const { uid, type } = _meta
@@ -74,6 +93,9 @@ const WorkPage = (props) => {
           />
         </div>
       </div>
+      <CallToAction
+        callToAction={call_to_action}
+      />
     </Layout>
   )
 }

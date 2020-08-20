@@ -5,6 +5,7 @@ import PageHeaderHome from '../components/pageHeader/PageHeaderHome';
 import HomePageServices from '../components/homePageContent/HomePageServices';
 import HomePageProjects from '../components/homePageContent/HomePageProjects';
 import HomePageDesignGood from '../components/homePageContent/HomePageDesignGood';
+import CallToAction from '../components/callToAction/CallToAction';
 import '../scss/main.scss';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
@@ -47,6 +48,23 @@ export const query = graphql`
                 }
               }
             }
+            call_to_action {
+              ... on PRISMIC_Call_to_action {
+                call_to_action_statement
+                call_to_action_buttons {
+                  button_action_text
+                  button_sub_text
+                  button_link_target {
+                    ... on PRISMIC_Contact_page {
+                      _meta {
+                        uid
+                      }
+                    }
+                  }
+                  
+                }
+              }
+            }
           }
         }
       }
@@ -84,7 +102,8 @@ const IndexPage = props => {
     projects_listing,
     home_design_good_section_title,
     home_design_good_description,
-    home_design_good_logos
+    home_design_good_logos,
+    call_to_action
   } = props.data.prismic.allHome_pages.edges[0].node;
 
   const {
@@ -117,6 +136,9 @@ const IndexPage = props => {
           sectionTitle={home_design_good_section_title}
           description={home_design_good_description}
           logos={home_design_good_logos}
+        />
+        <CallToAction
+          callToAction={call_to_action}
         />
       </div>
     </Layout>
