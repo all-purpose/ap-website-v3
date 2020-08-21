@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'gatsby';
 
 const CaseStudyInPageNav = ({navAccessibleName, inPageNavItems}) => {
 
@@ -11,9 +12,9 @@ const CaseStudyInPageNav = ({navAccessibleName, inPageNavItems}) => {
     return inPageNavItems.map((navItem, i) => {
         return (
           <li key={i}>
-            <a href={`#${navItem.navigation_section_id}`}>
+            <Link to={`#${navItem.navigation_section_id}`}>
               {navItem.navigation_label}
-            </a>
+            </Link>
           </li>
         )
       }
