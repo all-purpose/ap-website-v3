@@ -172,10 +172,6 @@ const CaseStudy = props => {
     nextCase_study
   } = props.data.prismic;
 
-  console.log('Prev: ', prevCase_study);
-  console.log('Next: ', nextCase_study);
-  
-
   const {
     type,
     uid

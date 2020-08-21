@@ -3,9 +3,6 @@ import {Link} from 'gatsby';
 
 const CaseStudyPagination = ({prevCaseStudy, nextCaseStudy}) => {
 
-  console.log(prevCaseStudy);
-  console.log(nextCaseStudy);
-
   const outputPrevCaseStudyLink = (prevCaseStudy) => {
 
     if (!prevCaseStudy) {
