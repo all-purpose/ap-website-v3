@@ -15,7 +15,7 @@ const HomePageServices = ({
       const { service_category_title, services_listing } = categoryListing
 
       return (
-        <div key={i} className="col-sm-6 col-lg-3">
+        <div key={i} className="col-6 col-lg-3">
           <div className="sr-only">
             <RichText render={service_category_title} />
           </div>

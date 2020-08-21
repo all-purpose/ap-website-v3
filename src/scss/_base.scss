@@ -30,3 +30,27 @@ summary {
 a:hover:not(.nav-link) {
   text-decoration: underline;
 }
+
+.skip-links {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.page-sections {
+  color: #161616;
+  position: relative;
+  z-index: 10;
+}
+
+@include md-down {
+  .container {
+    max-width: calc(100vw - 48px) !important;
+  }
+}
+
+@include xs {
+  .container {
+    max-width: 100% !important;
+  }
+}

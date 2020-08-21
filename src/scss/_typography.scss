@@ -16,12 +16,36 @@ body {
   font-size: 9.6rem; // 96px
   line-height: 1;
   font-family: $serif;
+  @include lg-only {
+    font-size: 8rem; //80px
+  }
+  @include md-only {
+    font-size: 7.2rem; //72px
+  }
+  @include sm-only {
+    font-size: 6.4rem; //64px
+  }
+  @include xs {
+    font-size: 5.6rem; //56px
+  }
 }
 
 .display-02 {
   font-size: 11.2rem; // 112px
   line-height: 1;
   font-family: $serif;
+  @include lg-only {
+    font-size: 9.6rem; //96px
+  }
+  @include md-only {
+    font-size: 8rem; //80px
+  }
+  @include sm-only {
+    font-size: 7.2rem; //72px
+  }
+  @include xs {
+    font-size: 6.4rem; //64px
+  }
 }
 
 .heading-01 {
@@ -49,18 +73,27 @@ body {
   font-family: $sans;
   font-weight: 300;
 }
-
 .body-long-02 {
   font-size: 2.4rem; // 24px
   line-height: 1.5; // 36px
   font-family: $sans;
   font-weight: 300;
 }
+
+.body-long-02,
+.body-short-02 {
+  @include md-only {
+    font-size: 2rem; //20px;
+  }
+  @include sm-down {
+    font-size: 1.8rem;
+  }
+}
 .eyebrow {
   font-size: 1.4rem; // 14px
   font-weight: 600;
   font-family: $sans;
-  margin-bottom: 0;
+  margin-bottom: 8px;
   font-style: normal;
 
   // //   Set margin on next sibling

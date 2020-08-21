@@ -1,10 +1,9 @@
-import React from 'react';
-import {RichText} from 'prismic-reactjs';
+import React from "react"
+import { RichText } from "prismic-reactjs"
 
-const CaseStudyDetails = ({ourRole, inANutshell}) => {
-
+const CaseStudyDetails = ({ ourRole, inANutshell }) => {
   return (
-    <div className="container">
+    <div className="container py-24">
       <div className="row">
         <div className="role col-sm-12 col-md-6">
           <h2 className="role-title eyebrow">Our role</h2>
@@ -21,7 +20,6 @@ const CaseStudyDetails = ({ourRole, inANutshell}) => {
       </div>
     </div>
   )
-
 }
 
-export default CaseStudyDetails;
+export default CaseStudyDetails

@@ -57,6 +57,10 @@ $palettes: (
   $fontcolor: nth($colors, 2);
 
   .palette-#{$name} {
+    &.site {
+      --bg-color: #{$bgcolor};
+      --font-color: #{$fontcolor};
+    }
     .apply-color-theme,
     .form-field {
       background-color: $bgcolor;
@@ -64,9 +68,23 @@ $palettes: (
       border-color: $fontcolor;
     }
 
+    *:focus {
+      outline: none;
+      outline-style: dotted;
+      outline-width: 2px;
+      outline-color: $fontcolor;
+    }
+
     .apply-color-theme--inverse {
       background-color: $fontcolor;
       color: $bgcolor;
+    }
+    .apply-color-theme--font {
+      color: $fontcolor;
+    }
+
+    .nav-link {
+      color: $fontcolor;
     }
 
     a.apply-color-theme:hover {
