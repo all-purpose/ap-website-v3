@@ -3,6 +3,7 @@ import FlexibleContentSection from '../flexibleContentSection/FlexibleContentSec
 import ImageGroup from '../imageGroup/ImageGroup';
 import Quotation from '../quotation/Quotation';
 import CaseStudyPageSection from '../caseStudyPageContent/caseStudyPageSection';
+import VideoEmbed from '../videoEmbed/VideoEmbed';
 
 const SliceZone = ({ body, pageType, uid }) => {
 
@@ -50,6 +51,15 @@ const SliceZone = ({ body, pageType, uid }) => {
             containerCssClass={bodyContent.primary.section_css_class}
             quoteAuthorCitation={bodyContent.primary.quote_author_citation}
             quoteText={bodyContent.primary.quote_text}
+          />
+        )
+      } else if (bodyContent.type === 'video_embed') {
+        return ( 
+          <VideoEmbed 
+            key={i}
+            containerId={bodyContent.primary.section_id}
+            containerCssClass={bodyContent.primary.section_css_class}
+            embedCode={bodyContent.primary.video_embed_code}
           />
         )
       } else {
