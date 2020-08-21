@@ -1,79 +1,90 @@
-import React from 'react';
-import {RichText} from 'prismic-reactjs';
+import React from "react"
+import { RichText } from "prismic-reactjs"
+import "./CallToAction.scss"
 
-const CallToAction = ({callToAction}) => {
-
+const CallToAction = ({ callToAction }) => {
   const {
     call_to_action_css_class,
     call_to_action_statement,
-    call_to_action_buttons
-  } = callToAction;
+    call_to_action_buttons,
+  } = callToAction
 
   const addCTACSSClasses = (cssClass) => {
-    
-    let className = 'cta apply-color-theme';
+    let className = "cta apply-color-theme"
 
     if (cssClass) {
-      className += ` ${cssClass}`;
+      className += ` ${cssClass}`
     }
-    return className;
+    return className
   }
 
-  const outputCallToActionButtons = call_to_action_buttons => {
+  const outputCallToActionButtons = (call_to_action_buttons) => {
     return call_to_action_buttons.map((call_to_action_button, i) => {
-
-      let ctaBtnLinkTarget = '';
+      let ctaBtnLinkTarget = ""
 
       const {
         button_action_text,
         button_sub_text,
-        button_link_target
-      } = call_to_action_button;
+        button_link_target,
+      } = call_to_action_button
 
-      const ctaBtnActionText = button_action_text ? button_action_text : '';
+      const ctaBtnActionText = button_action_text ? button_action_text : ""
 
       try {
-        ctaBtnLinkTarget = button_link_target._meta.uid;
-      } catch(err) {
-        console.error(err);
-        return false;
+        ctaBtnLinkTarget = button_link_target._meta.uid
+      } catch (err) {
+        console.error(err)
+        return false
       }
 
       if (button_sub_text) {
         return (
-          <div key={i} className="cta-link">
-            <a href={`/${ctaBtnLinkTarget}`}>
-              <h3 className="cta-link-action-text">
-                {ctaBtnActionText}
-              </h3>
-              <div className="cta-link-sub-text">
-                <RichText render={button_sub_text} />
+          <div key={i} className="col-sm-6">
+            <a
+              href={`/${ctaBtnLinkTarget}`}
+              className="cta-link border apply-color-theme"
+            >
+              <div className="cta-link__inner h-100">
+                <h3 className="cta-link-action-text body-short-02 serif">
+                  {ctaBtnActionText}
+                </h3>
+                <div className="cta-link-sub-text">
+                  <RichText render={button_sub_text} />
+                </div>
               </div>
             </a>
           </div>
         )
       } else {
         return (
-          <div key={i} className="cta-link">
-            <a href={`/${ctaBtnLinkTarget}`}>{ctaBtnActionText}</a>
+          <div key={i}>
+            <a href={`/${ctaBtnLinkTarget}`} className="cta-link">
+              {ctaBtnActionText} ->{" "}
+            </a>
           </div>
         )
       }
-    });
+    })
   }
 
   return (
-    <div className={addCTACSSClasses(call_to_action_css_class)}>
+    <div
+      className={`cta-section ${addCTACSSClasses(call_to_action_css_class)}`}
+    >
       <div className="container">
-        <div className="cta-statement display-01">
-          <RichText render={call_to_action_statement} />
+        <div className="row">
+          <div className="cta-statement display-01 col-md-6">
+            <RichText render={call_to_action_statement} />
+          </div>
+          <div className="cta-buttons col-md-6">
+            <div className="row">
+              {outputCallToActionButtons(call_to_action_buttons)}
+            </div>
+          </div>
         </div>
-        <div className="cta-buttons">
-          {outputCallToActionButtons(call_to_action_buttons)}
-        </div> 
       </div>
     </div>
   )
 }
 
-export default CallToAction;
+export default CallToAction

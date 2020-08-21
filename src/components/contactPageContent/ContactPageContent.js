@@ -2,12 +2,12 @@ import React from "react"
 
 const ContactPageContent = (props) => {
   return (
-    <div className="contact-content">
+    <div className="contact-content clear-grid">
       <div className="row">
         <div className="col-md-6">
-          <address className="mb-16">
+          <address className="mb-8">
             <h3 className="eyebrow">The Office</h3>
-            <h2 className="heading-01">
+            <h2 className="body-short-02 serif">
               402 West Pender Street
               <br />
               Vancouver, BC
@@ -17,32 +17,41 @@ const ContactPageContent = (props) => {
             Unceded territories of the xʷməθkʷəy̓əm (Musqueam), Skwxwú7mesh
             (Squamish) and səl̓ílwətaʔɬ (Tseil-Waututh) Nations.
           </p>
+          <h3 className="eyebrow mt-16 block">Email</h3>
+          <a href="mailto:info@allpurpose.io" className="body-short-02 serif">
+            info@allpurpose.io
+          </a>
           {/* <a>Learn more -> </a> */}
         </div>
         <div className="col-md-6">
-          <form>
-            <label>
-              <span className="eyebrow">Your name</span>
+          <form name="contact" method="POST" data-netlify="true">
+            <label className="form-field-label">
+              <span className="eyebrow">Name</span>
               <input
                 className="form-field apply-color-theme body-short-01"
                 name="name"
                 type="text"
               />
             </label>
-            <label>
-              <span className="eyebrow">Your Email</span>
+            <label className="form-field-label">
+              <span className="eyebrow">Email</span>
               <input
                 className="form-field apply-color-theme body-short-01"
                 name="email"
                 type="email"
               />
             </label>
-            <label>
+            <label className="form-field-label">
               <span>
-                <span className="eyebrow">Your Message</span>
+                <span className="eyebrow">Message</span>
                 <textarea className="form-field apply-color-theme body-short-01"></textarea>
               </span>
             </label>
+            <input
+              type="submit"
+              value="Send"
+              className="apply-color-theme--inverse button"
+            />
           </form>
         </div>
       </div>

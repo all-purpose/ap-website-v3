@@ -63,8 +63,26 @@ $palettes: (
       color: $fontcolor;
       border-color: $fontcolor;
     }
+
+    .apply-color-theme--inverse {
+      background-color: $fontcolor;
+      color: $bgcolor;
+    }
+
+    a.apply-color-theme:hover {
+      background-color: $fontcolor;
+      color: $bgcolor;
+      text-decoration: none;
+    }
+
+    .form-field:focus {
+      outline-color: $fontcolor;
+    }
     .border-solid {
       border-color: $fontcolor;
+    }
+    hr.theme-color {
+      border-top: solid 1px $fontcolor;
     }
     // a:hover {
     //   color: $fontcolor;
