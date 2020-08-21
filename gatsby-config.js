@@ -92,6 +92,7 @@ module.exports = {
             type: 'Case Study', // need capitalize
             match: '/case-study/:uid',
             previewPath: '/case-study',
+            sortBy: 'order_ASC',
             component: require.resolve('./src/templates/caseStudy.js')
           }
       ]

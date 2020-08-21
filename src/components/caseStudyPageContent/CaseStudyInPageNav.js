@@ -1,4 +1,9 @@
-import React from "react"
+import React from 'react';
+import {Link} from 'gatsby';
+
+const CaseStudyInPageNav = ({navAccessibleName, inPageNavItems}) => {
+
+  const outputInPageNavLinks = inPageNavItems => {
 
 const CaseStudyInPageNav = ({ navAccessibleName, inPageNavItems }) => {
   const outputInPageNavLinks = (inPageNavItems) => {
@@ -7,17 +12,15 @@ const CaseStudyInPageNav = ({ navAccessibleName, inPageNavItems }) => {
     }
 
     return inPageNavItems.map((navItem, i) => {
-      return (
-        <li key={i} className="col-sm-3">
-          <a
-            className="apply-color-theme--font"
-            href={`#${navItem.navigation_section_id}`}
-          >
-            {navItem.navigation_label} ->
-          </a>
-        </li>
-      )
-    })
+        return (
+          <li key={i}>
+            <Link to={`#${navItem.navigation_section_id}`}>
+              {navItem.navigation_label}
+            </Link>
+          </li>
+        )
+      }
+    )
   }
 
   return (
@@ -29,4 +32,4 @@ const CaseStudyInPageNav = ({ navAccessibleName, inPageNavItems }) => {
   )
 }
 
-export default CaseStudyInPageNav
+export default CaseStudyInPageNav;

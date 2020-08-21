@@ -6,14 +6,12 @@ import PageHeaderCaseStudy from "../components/pageHeader/PageHeaderCaseStudy"
 import CaseStudyDetails from "../components/caseStudyPageContent/CaseStudyDetails"
 import CaseStudyInPageNav from "../components/caseStudyPageContent/CaseStudyInPageNav"
 import SliceZone from "../components/sliceZone/SliceZone"
+import CaseStudyPagination from "../components/caseStudyPageContent/CaseStudyPagination"
 import CallToAction from "../components/callToAction/CallToAction"
 
 const CustomStyleWrapper = styled.div`
   .apply-color-theme {
     background-color: ${(props) => props.bgColor};
-    color: ${(props) => props.textColor};
-  }
-  .apply-color-theme--font {
     color: ${(props) => props.textColor};
   }
   .page-title,
@@ -29,6 +27,11 @@ const CustomStyleWrapper = styled.div`
   .role-desc {
     color: ${(props) => props.textColor};
   }
+
+  .pagination {
+    background-color: ${(props) => props.textColor};
+    color: ${(props) => props.bgColor};
+  }
 `
 
 export const query = graphql`
@@ -40,7 +43,7 @@ export const query = graphql`
     $paginationNextLang: String!
   ) {
     prismic {
-      allCase_studys(uid: $uid) {
+      allCase_studys(uid: $uid, sortBy: order_ASC) {
         edges {
           node {
             _meta {
@@ -92,6 +95,14 @@ export const query = graphql`
                 primary {
                   quote_author_citation
                   quote_text
+                  section_css_class
+                  section_id
+                }
+              }
+              ... on PRISMIC_Case_studyBodyVideo_embed {
+                type
+                primary {
+                  video_embed_code
                   section_css_class
                   section_id
                 }
@@ -163,6 +174,8 @@ const CaseStudy = (props) => {
     in_page_navigation,
   } = props.data.prismic.allCase_studys.edges[0].node
 
+  const { prevCase_study, nextCase_study } = props.data.prismic
+
   const { type, uid } = _meta
 
   return (
@@ -182,6 +195,10 @@ const CaseStudy = (props) => {
           inPageNavItems={in_page_navigation}
         />
         <SliceZone palette={null} body={body} pageType={type} uid={uid} />
+        <CaseStudyPagination
+          prevCaseStudy={prevCase_study}
+          nextCaseStudy={nextCase_study}
+        />
         <CallToAction callToAction={call_to_action} />
       </Layout>
     </CustomStyleWrapper>
