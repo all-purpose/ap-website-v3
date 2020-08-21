@@ -90,6 +90,14 @@ export const query = graphql`
                   section_id
                 }
               }
+              ... on PRISMIC_Case_studyBodyVideo_embed {
+                type
+                primary {
+                  video_embed_code
+                  section_css_class
+                  section_id
+                }
+              }
             }
             call_to_action {
               ... on PRISMIC_Call_to_action {
