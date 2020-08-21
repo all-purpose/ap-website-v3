@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'gatsby';
 import {RichText} from 'prismic-reactjs';
 
 const CallToAction = ({callToAction}) => {
@@ -42,20 +43,20 @@ const CallToAction = ({callToAction}) => {
       if (button_sub_text) {
         return (
           <div key={i} className="cta-link">
-            <a href={`/${ctaBtnLinkTarget}`}>
+            <Link to={`/${ctaBtnLinkTarget}`}>
               <h3 className="cta-link-action-text">
                 {ctaBtnActionText}
               </h3>
               <div className="cta-link-sub-text">
                 <RichText render={button_sub_text} />
               </div>
-            </a>
+            </Link>
           </div>
         )
       } else {
         return (
           <div key={i} className="cta-link">
-            <a href={`/${ctaBtnLinkTarget}`}>{ctaBtnActionText}</a>
+            <Link to={`/${ctaBtnLinkTarget}`}>{ctaBtnActionText}</Link>
           </div>
         )
       }
