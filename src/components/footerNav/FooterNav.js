@@ -66,7 +66,7 @@ const FooterNav = () => {
                 data.prismic.allFooters.edges[0].node.footer_navigation_accessible_name
               }
             >
-              <ul className="apply-color-theme">{outputNavLinks(data)}</ul>
+            <ul>{outputNavLinks(data)}</ul>
             </nav>
           </>
         )

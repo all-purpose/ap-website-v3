@@ -5,7 +5,7 @@ import LandAcknowledgement from '../landAcknowledgement/LandAcknowledgement';
 
 const Footer = () =>  {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer apply-color-theme">
       <div className="container">
         <div className="row">
           <div className="col-md-6">

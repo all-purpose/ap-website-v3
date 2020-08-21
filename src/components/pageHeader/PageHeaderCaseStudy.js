@@ -1,23 +1,22 @@
 import React from "react"
 import { RichText } from "prismic-reactjs"
+import "./PageHeader.scss"
 
-const PageHeaderGeneral = ({ title, description }) => {
-  // If no title or description just pass empty array to RichText component
+const PageHeaderCaseStudy = ({ title, description }) => {
+
   title = title ? title : []
   description = description ? description : []
 
   return (
     <div className="page-header apply-color-theme">
       <div className="container">
+        <h1 className="page-title body-short-02">{title}</h1>
         <div className="display-02">
-          <RichText render={title} />
-        </div>
-        <div className="body-short-02">
           <RichText render={description} />
-        </div>
+        </div> 
       </div>
-    </div>
+    </div>    
   )
 }
 
-export default PageHeaderGeneral
+export default PageHeaderCaseStudy;

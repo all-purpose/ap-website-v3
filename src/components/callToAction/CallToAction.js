@@ -11,7 +11,7 @@ const CallToAction = ({callToAction}) => {
 
   const addCTACSSClasses = (cssClass) => {
     
-    let className = 'cta';
+    let className = 'cta apply-color-theme';
 
     if (cssClass) {
       className += ` ${cssClass}`;

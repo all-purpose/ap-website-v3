@@ -57,9 +57,6 @@ $palettes: (
   $fontcolor: nth($colors, 2);
 
   .palette-#{$name} {
-    .page-header,
-    footer,
-    .cta,
     .apply-color-theme,
     .form-field {
       background-color: $bgcolor;
