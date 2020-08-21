@@ -67,7 +67,7 @@ const SiteNav = () => {
                   .navigation_accessible_name
               }
             >
-              <ul className="apply-color-theme">{outputNavLinks(data)}</ul>
+              <ul>{outputNavLinks(data)}</ul>
             </nav>
           </>
         )

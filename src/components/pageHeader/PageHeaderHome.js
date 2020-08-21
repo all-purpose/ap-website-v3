@@ -7,7 +7,7 @@ const PageHeaderHome = ({ title, description }) => {
   description = description ? description : []
 
   return (
-    <div className="page-header">
+    <div className="page-header apply-color-theme">
       <div className="container">
         <div className="col-md-11">
           <div className="display-02">

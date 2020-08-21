@@ -1,7 +1,8 @@
 import React from 'react';
 import FlexibleContentSection from '../flexibleContentSection/FlexibleContentSection';
 import ImageGroup from '../imageGroup/ImageGroup';
-import CaseStudyPageSection from '../caseStudyPageSection/CaseStudyPageSection';
+import Quotation from '../quotation/Quotation';
+import CaseStudyPageSection from '../caseStudyPageContent/caseStudyPageSection';
 
 const SliceZone = ({ body, pageType, uid }) => {
 
@@ -35,11 +36,20 @@ const SliceZone = ({ body, pageType, uid }) => {
         return ( 
           <CaseStudyPageSection 
             key={i}
-            containerType={bodyContent.primary.section_container_type}
             containerCssClass={bodyContent.primary.section_css_classes}
             containerId={bodyContent.primary.section_id}
             title={bodyContent.primary.section_title}
             content={bodyContent.primary.section_content}
+          />
+        )
+      } else if (bodyContent.type === 'block_quote') {
+        return ( 
+          <Quotation 
+            key={i}
+            containerId={bodyContent.primary.section_id}
+            containerCssClass={bodyContent.primary.section_css_class}
+            quoteAuthorCitation={bodyContent.primary.quote_author_citation}
+            quoteText={bodyContent.primary.quote_text}
           />
         )
       } else {

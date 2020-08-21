@@ -1,9 +1,29 @@
 import React from 'react';
 import {graphql} from 'gatsby';
-import {RichText} from 'prismic-reactjs';
+import styled from "styled-components"
 import Layout from '../components/layout/Layout';
-import PageHeader from '../components/pageHeader/PageHeader';
+import PageHeaderCaseStudy from '../components/pageHeader/PageHeaderCaseStudy';
+import CaseStudyDetails from '../components/caseStudyPageContent/CaseStudyDetails';
+import CaseStudyInPageNav from '../components/caseStudyPageContent/CaseStudyInPageNav';
 import SliceZone from '../components/sliceZone/SliceZone';
+import CallToAction from '../components/callToAction/CallToAction';
+
+const CustomStyleWrapper = styled.div`
+  .apply-color-theme {
+    background-color: ${props => props.bgColor};  
+    color: ${props => props.textColor}
+  }
+  .page-title, .nutshell-title, .role-title, .case-study-section-title {
+    color: ${props => props.highlightColor}
+  }
+  .svg-logo path {
+    fill: ${props => props.textColor}
+  }
+  .nutshell-desc, .role-desc {
+    color: ${props => props.textColor}
+  }
+  
+`;
 
 export const query = graphql`
   query CaseStudyQuery(
@@ -71,6 +91,28 @@ export const query = graphql`
                 }
               }
             }
+            call_to_action {
+              ... on PRISMIC_Call_to_action {
+                call_to_action_statement
+                call_to_action_buttons {
+                  button_action_text
+                  button_sub_text
+                  button_link_target {
+                    ... on PRISMIC_Contact_page {
+                      _meta {
+                        uid
+                      }
+                    }
+                  }
+                  
+                }
+              }
+            }
+            accessible_name
+            in_page_navigation {
+              navigation_label
+              navigation_section_id
+            }
           }
         }
       }
@@ -92,7 +134,6 @@ export const query = graphql`
       }
     }
   }
-
 `;
 
 const CaseStudy = props => {
@@ -100,13 +141,16 @@ const CaseStudy = props => {
   const {
     _meta, 
     project_name, 
-    case_study_brand_title, 
+    case_study_page_title, 
     our_role, 
     in_a_nutshell,
     background_header_color,
     text_color,
     highlight_color, 
-    body
+    body,
+    call_to_action,
+    accessible_name,
+    in_page_navigation
   } = props.data.prismic.allCase_studys.edges[0].node;
 
   const {
@@ -115,26 +159,31 @@ const CaseStudy = props => {
   } = _meta;
 
   return (
-    <Layout type={type} uid={uid}>
-      <PageHeader
-        pageType={type} 
-        title={project_name} 
-        description={case_study_brand_title} 
-        heroImage={null} />
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12 col-md-6">
-            <h2 className="eyebrow">Our role</h2>
-            <RichText render={our_role} />
-          </div>
-          <div className="col-sm-12 col-md-6">
-            <h2 className="eyebrow">In a nutshell</h2>
-            <RichText render={in_a_nutshell} />
-          </div>
-        </div>
-      </div>
-      <SliceZone palette={null} body={body} pageType={type} uid={uid} />
-    </Layout>
+    <CustomStyleWrapper bgColor={background_header_color} textColor={text_color} highlightColor={highlight_color}>
+      <Layout type={type} uid={uid}>
+        <PageHeaderCaseStudy
+          title={project_name} 
+          description={case_study_page_title} 
+        />
+        <CaseStudyDetails
+          ourRole={our_role}
+          inANutshell={in_a_nutshell}
+        />
+        <CaseStudyInPageNav
+          navAccessibleName={accessible_name}
+          inPageNavItems={in_page_navigation}
+        />
+        <SliceZone 
+          palette={null} 
+          body={body} 
+          pageType={type} 
+          uid={uid} 
+        />
+        <CallToAction 
+          callToAction={call_to_action}
+        />
+      </Layout>
+    </CustomStyleWrapper>
   )
 
 }
