@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: `http://allpurpose.io`,
@@ -57,7 +61,8 @@ module.exports = {
     {
       resolve: '@prismicio/gatsby-source-prismic-graphql',
       options: {
-        repositoryName: 'apwebsite',
+        repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
         pages: [
           {
             type: 'Page', // need capitalize
@@ -66,9 +71,28 @@ module.exports = {
             component: require.resolve('./src/templates/page.js')
           },
           {
+            type: 'Team Page', // need capitalize
+            match: '/team',
+            previewPath: '/',
+            component: require.resolve('./src/templates/teamPage.js')
+          },
+          {
+            type: 'Work Page', // need capitalize
+            match: '/work',
+            previewPath: '/',
+            component: require.resolve('./src/templates/workPage.js')
+          },
+          {
+            type: 'Contact Page', // need capitalize
+            match: '/contact',
+            previewPath: '/',
+            component: require.resolve('./src/templates/contactPage.js')
+          },
+          {
             type: 'Case Study', // need capitalize
             match: '/case-study/:uid',
             previewPath: '/case-study',
+            sortBy: 'order_ASC',
             component: require.resolve('./src/templates/caseStudy.js')
           }
       ]

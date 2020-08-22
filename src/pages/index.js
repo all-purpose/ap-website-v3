@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { graphql } from 'gatsby';
 import Layout from "../components/layout/Layout";
-import PageHeader from '../components/pageHeader/PageHeader';
-import SliceZone from '../components/sliceZone/SliceZone';
+import PageHeaderHome from '../components/pageHeader/PageHeaderHome';
+import HomePageServices from '../components/homePageContent/HomePageServices';
+import HomePageProjects from '../components/homePageContent/HomePageProjects';
+import HomePageDesignGood from '../components/homePageContent/HomePageDesignGood';
+import CallToAction from '../components/callToAction/CallToAction';
 import '../scss/main.scss';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
@@ -12,72 +15,53 @@ export const query = graphql`
       allHome_pages {
         edges {
           node {
-            page_description
-            page_title
-            hero_image
             _meta {
-              type,
               uid
+              type
             }
-            body {
-              ... on PRISMIC_Home_pageBodyVariable_content_section {
-                type
-                primary {
-                  variable_content_container_css_class
-                  variable_content_container_type
-                }
-                fields {
-                  content_area
-                  variable_content_item_css_class
-                  variable_content_section_id
+            home_page_title
+            home_page_description
+            home_services_brand_title
+            home_services_section_title
+            home_services_category_listing {
+              service_category_title
+              services_listing
+            }
+            home_services_listing
+            home_design_good_section_title
+            home_design_good_description
+            home_design_good_logos {
+              logo_image
+            }
+            home_projects_brand_title
+            home_projects_listing_accessible_name
+            home_projects_section_title
+            projects_listing {
+              case_study {
+                ... on PRISMIC_Case_study {
+                  _meta {
+                    uid
+                  }
+                  project_name
+                  case_study_excerpt_image
+                  case_study_excerpt_roles
                 }
               }
-              ... on PRISMIC_Home_pageBodyCase_study_listing {
-                type
-                fields {
-                  case_study {
-                    ... on PRISMIC_Case_study {
-                      project_name
+            }
+            call_to_action {
+              ... on PRISMIC_Call_to_action {
+                call_to_action_statement
+                call_to_action_buttons {
+                  button_action_text
+                  button_sub_text
+                  button_link_target {
+                    ... on PRISMIC_Contact_page {
                       _meta {
                         uid
                       }
-                      case_study_excerpt_image
-                      case_study_excerpt_roles
                     }
                   }
-                }
-                primary {
-                  section_accessible_name
-                }
-              }
-              ... on PRISMIC_Home_pageBodyImage_grid {
-                type
-                primary {
-                  image_grid_container_type
-                  image_grid_custom_css_class
-                  image_grid_section_id
-                }
-                fields {
-                  grid_image
-                  grid_image_caption
-                }
-              }
-              ... on PRISMIC_Home_pageBodyFull_bleed_image {
-                type
-                primary {
-                  full_bleed_image_id
-                  full_bleed_image_custom_css_class
-                  full_bleed_image_caption
-                  add_full_bleed_image
-                }
-              }
-              ... on PRISMIC_Home_pageBodyQuotation {
-                type
-                primary {
-                  quotation_css_class
-                  quote_author_citation
-                  quote_id
-                  quote_text
+                  
                 }
               }
             }
@@ -106,10 +90,20 @@ const IndexPage = props => {
 
   const {
     _meta,
-    page_title,
-    page_description,
-    hero_image,
-    body
+    home_page_title,
+    home_page_description,
+    home_services_section_title,
+    home_services_brand_title,
+    home_services_category_listing,
+    home_services_listing,
+    home_projects_section_title,
+    home_projects_brand_title,
+    home_projects_listing_accessible_name,
+    projects_listing,
+    home_design_good_section_title,
+    home_design_good_description,
+    home_design_good_logos,
+    call_to_action
   } = props.data.prismic.allHome_pages.edges[0].node;
 
   const {
@@ -119,12 +113,34 @@ const IndexPage = props => {
 
   return ( 
     <Layout palette={selectedPalette} type={type} uid={uid}>
-      <PageHeader
-        pageType={type}
-        title={page_title} 
-        description={page_description} 
-        heroImage={hero_image} />
-        <SliceZone body={body} pageType={type} uid={uid} />
+      <PageHeaderHome
+        title={home_page_title} 
+        description={home_page_description} 
+      />
+      <div className="page-sections">
+        <HomePageServices 
+          sectionTitle={home_services_section_title}
+          brandTitle={home_services_brand_title}
+          serviceCategoryListings={home_services_category_listing}
+          servicesListing={home_services_listing}
+        />
+        <HomePageProjects 
+          pageType={type}
+          uid={uid}
+          sectionTitle={home_projects_section_title}
+          brandTitle={home_projects_brand_title}
+          projectsAccessibleName={home_projects_listing_accessible_name}
+          projects={projects_listing}
+        />
+        <HomePageDesignGood 
+          sectionTitle={home_design_good_section_title}
+          description={home_design_good_description}
+          logos={home_design_good_logos}
+        />
+        <CallToAction
+          callToAction={call_to_action}
+        />
+      </div>
     </Layout>
   );
 

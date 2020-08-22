@@ -1,15 +1,15 @@
 import React from 'react';
-import FooterLinks from '../footerLinks/FooterLinks';
+import FooterNav from '../footerNav/FooterNav';
 import LandAcknowledgement from '../landAcknowledgement/LandAcknowledgement';
 
 
 const Footer = () =>  {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer apply-color-theme">
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <FooterLinks />
+            <FooterNav />
           </div>
           <div className="col-md-6">
             <LandAcknowledgement />

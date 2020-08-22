@@ -4,13 +4,12 @@ import { Link, StaticQuery, graphql } from "gatsby"
 const navigationQuery = graphql`
   {
     prismic {
-      allNavigations {
+      allFooters {
         edges {
           node {
-            navigation_accessible_name
-            navigation_links {
-              nav_link_label
-              page_link {
+            footer_nav {
+              navigation_label
+              navigation_link {
                 ... on PRISMIC_Contact_page {
                   _meta {
                     uid
@@ -33,6 +32,7 @@ const navigationQuery = graphql`
                 }
               }
             }
+            footer_navigation_accessible_name
           }
         }
       }
@@ -40,14 +40,14 @@ const navigationQuery = graphql`
   }
 `
 
-const SiteNav = () => {
+const FooterNav = () => {
   const outputNavLinks = (data) => {
-    return data.prismic.allNavigations.edges[0].node.navigation_links.map(
+    return data.prismic.allFooters.edges[0].node.footer_nav.map(
       (link) => {
         return (
-          <li key={link.page_link._meta.uid}>
-            <Link to={`/${link.page_link._meta.uid}`} className="nav-link">
-              {link.nav_link_label}
+          <li key={link.navigation_link._meta.uid}>
+            <Link to={`/${link.navigation_link._meta.uid}`} className="nav-link">
+              {link.navigation_label}
             </Link>
           </li>
         )
@@ -63,11 +63,10 @@ const SiteNav = () => {
           <>
             <nav
               aria-label={
-                data.prismic.allNavigations.edges[0].node
-                  .navigation_accessible_name
+                data.prismic.allFooters.edges[0].node.footer_navigation_accessible_name
               }
             >
-              <ul>{outputNavLinks(data)}</ul>
+            <ul>{outputNavLinks(data)}</ul>
             </nav>
           </>
         )
@@ -76,4 +75,4 @@ const SiteNav = () => {
   )
 }
 
-export default SiteNav
+export default FooterNav

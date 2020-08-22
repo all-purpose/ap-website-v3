@@ -9,127 +9,219 @@ $bone: #faf8f1;
 $orange: #ffaa05;
 $yellow: #ffe072;
 
+$palettes: (
+  1: (
+    $yellow,
+    $evergreen,
+  ),
+  2: (
+    $orange,
+    $eggplant,
+  ),
+  3: (
+    $bone,
+    $fire-coral,
+  ),
+  4: (
+    $dusty-rose,
+    $navy,
+  ),
+  5: (
+    $fire-coral,
+    $bone,
+  ),
+  6: (
+    $ultraviolet,
+    $bone,
+  ),
+  7: (
+    $navy,
+    $dusty-rose,
+  ),
+  8: (
+    $sage,
+    $navy,
+  ),
+  9: (
+    $evergreen,
+    $sage,
+  ),
+  10: (
+    $eggplant,
+    $yellow,
+  ),
+);
+
+@each $name, $colors in $palettes {
+  $bgcolor: nth($colors, 1);
+  $fontcolor: nth($colors, 2);
+
+  .palette-#{$name} {
+    .apply-color-theme,
+    .form-field {
+      background-color: $bgcolor;
+      color: $fontcolor;
+      border-color: $fontcolor;
+    }
+    .border-solid {
+      border-color: $fontcolor;
+    }
+    // a:hover {
+    //   color: $fontcolor;
+    // }
+    .svg-logo {
+      path {
+        fill: $fontcolor;
+      }
+    }
+  }
+}
+
 // This could probably be a map function to avoid being so repetitive
-.palette-1 {
-  background-color: $yellow;
-  color: $evergreen;
-  .svg-logo {
-    path {
-      fill: $evergreen;
-    }
-  }
-  .page-header {
-    background-color: $yellow;
-  }
-}
-.palette-2 {
-  background-color: $orange;
-  color: $eggplant;
-  .svg-logo {
-    path {
-      fill: $eggplant;
-    }
-  }
-  .page-header {
-    background-color: $orange;
-  }
-}
-.palette-3 {
-  background-color: $bone;
-  color: $fire-coral;
-  .svg-logo {
-    path {
-      fill: $fire-coral;
-    }
-  }
-  .page-header {
-    background-color: $bone;
-  }
-}
-.palette-4 {
-  background-color: $dusty-rose;
-  color: $navy;
-  .svg-logo {
-    path {
-      fill: $navy;
-    }
-  }
-  .page-header {
-    background-color: $dusty-rose;
-  }
-}
-.palette-5 {
-  background-color: $fire-coral;
-  color: $bone;
-  .svg-logo {
-    path {
-      fill: $bone;
-    }
-  }
-  .page-header {
-    background-color: $fire-coral;
-  }
-}
-.palette-6 {
-  background-color: $ultraviolet;
-  color: $bone;
-  .svg-logo {
-    path {
-      fill: $bone;
-    }
-  }
-  .page-header {
-    background-color: $ultraviolet;
-  }
-}
-.palette-7 {
-  background-color: $navy;
-  color: $dusty-rose;
-  .svg-logo {
-    path {
-      fill: $dusty-rose;
-    }
-  }
-  .page-header {
-    background-color: $navy;
-  }
-}
-.palette-8 {
-  background-color: $sage;
-  color: $navy;
-  .svg-logo {
-    path {
-      fill: $navy;
-    }
-  }
-  .page-header {
-    background-color: $sage;
-  }
-}
-.palette-9 {
-  background-color: $evergreen;
-  color: $sage;
-  .svg-logo {
-    path {
-      fill: $sage;
-    }
-  }
-  .page-header {
-    background-color: $evergreen;
-  }
-}
-.palette-10 {
-  background-color: $eggplant;
-  color: $yellow;
-  .svg-logo {
-    path {
-      fill: $yellow;
-    }
-  }
-  .page-header {
-    background-color: $eggplant;
-  }
-}
+// .palette-1 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $yellow;
+//     color: $evergreen;
+//     border-color: $evergreen;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $evergreen;
+//     }
+//   }
+// }
+// .palette-2 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme,
+//   .form-field {
+//     background-color: $orange;
+//     color: $eggplant;
+//     border-color: $eggplant;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $eggplant;
+//     }
+//   }
+// }
+// .palette-3 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $bone;
+//     color: $fire-coral;
+//     border-color: $fire-coral;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $fire-coral;
+//     }
+//   }
+// }
+// .palette-4 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $dusty-rose;
+//     color: $navy;
+//     border-color: $navy;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $navy;
+//     }
+//   }
+// }
+// .palette-5 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $fire-coral;
+//     color: $bone;
+//     border-color: $bone;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $bone;
+//     }
+//   }
+// }
+// .palette-6 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $ultraviolet;
+//     color: $bone;
+//     border-color: $bone;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $bone;
+//     }
+//   }
+// }
+// .palette-7 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $navy;
+//     color: $dusty-rose;
+//     border-color: $dusty-rose;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $dusty-rose;
+//     }
+//   }
+// }
+// .palette-8 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $sage;
+//     color: $navy;
+//     border-color: $navy;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $navy;
+//     }
+//   }
+// }
+// .palette-9 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $evergreen;
+//     color: $sage;
+//     border-color: $sage;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $sage;
+//     }
+//   }
+// }
+// .palette-10 {
+//   .page-header,
+//   footer,
+//   .apply-color-theme {
+//     background-color: $eggplant;
+//     color: $yellow;
+//     border-color: $yellow;
+//   }
+//   a:hover {
+//     color: $eggplant;
+//   }
+//   .svg-logo {
+//     path {
+//       fill: $yellow;
+//     }
+//   }
+// }
 
 // Utility classes - if you nest these in the above declarations you can generate utility classes for each color palette
 

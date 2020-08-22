@@ -1,12 +1,12 @@
 import React from 'react';
 import {RichText} from 'prismic-reactjs';
 
-const VariableContentItem = ({ field }) => {
+const FlexibleContentItem = ({ field }) => {
 
   const item = {
-    itemContent: field.content_area,
-    itemCssClass: field.variable_content_item_css_class,
-    itemId: field.variable_content_section_id
+    itemContent: field.item_content,
+    itemCssClass: field.item_css_class,
+    itemId: field.item_id
   }
 
   const {
@@ -46,6 +46,7 @@ const VariableContentItem = ({ field }) => {
   }
 
   const outputItemContent = (type, itemContent) => {
+    
     if (type === 'image') {
       const image = itemContent[0];
       return (
@@ -66,4 +67,4 @@ const VariableContentItem = ({ field }) => {
 
 }
 
-export default VariableContentItem;
+export default FlexibleContentItem;
