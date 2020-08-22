@@ -1,5 +1,5 @@
 import React from 'react';
-import CaseStudyExcerpt from '../caseStudyExcerpt/caseStudyExcerpt';
+import CaseStudyExcerpt from '../caseStudyExcerpt/CaseStudyExcerpt';
 
 const CaseStudyExcerpts = ({pageType, uid, accessibleName, fields}) => {
 
