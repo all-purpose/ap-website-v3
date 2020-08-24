@@ -5,7 +5,7 @@ import Quotation from '../quotation/Quotation';
 import CaseStudyPageSection from '../caseStudyPageContent/CaseStudyPageSection';
 import VideoEmbed from '../videoEmbed/VideoEmbed';
 
-const SliceZone = ({ body, pageType, uid }) => {
+const SliceZone = ({ body }) => {
 
   if (!body) {
     return false;
