@@ -1,9 +1,7 @@
 import React from "react"
-
-import "./CallToAction.scss"
-
 import { Link } from "gatsby"
 import { RichText } from "prismic-reactjs"
+import "./CallToAction.scss"
 
 const CallToAction = ({ callToAction }) => {
   const {
@@ -13,7 +11,7 @@ const CallToAction = ({ callToAction }) => {
   } = callToAction
 
   const addCTACSSClasses = (cssClass) => {
-    let className = "cta apply-color-theme"
+    let className = "cta"
 
     if (cssClass) {
       className += ` ${cssClass}`
@@ -63,7 +61,9 @@ const CallToAction = ({ callToAction }) => {
 
   return (
     <div
-      className={`cta-section ${addCTACSSClasses(call_to_action_css_class)}`}
+      className={`cta-section apply-color-theme ${addCTACSSClasses(
+        call_to_action_css_class
+      )}`}
     >
       <div className="container">
         <div className="row">

@@ -2,10 +2,10 @@ import React from 'react';
 import FlexibleContentSection from '../flexibleContentSection/FlexibleContentSection';
 import ImageGroup from '../imageGroup/ImageGroup';
 import Quotation from '../quotation/Quotation';
-import CaseStudyPageSection from '../caseStudyPageContent/caseStudyPageSection';
+import CaseStudyPageSection from '../caseStudyPageContent/CaseStudyPageSection';
 import VideoEmbed from '../videoEmbed/VideoEmbed';
 
-const SliceZone = ({ body, pageType, uid }) => {
+const SliceZone = ({ body }) => {
 
   if (!body) {
     return false;
