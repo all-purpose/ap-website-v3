@@ -30,6 +30,11 @@ const navigationQuery = graphql`
                     uid
                   }
                 }
+                ... on PRISMIC_News_page {
+                  _meta {
+                    uid
+                  }
+                }
               }
             }
             footer_navigation_accessible_name
