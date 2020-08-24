@@ -1,0 +1,111 @@
+// Breakpoints
+// Extra small <576px
+// Small ≥576px
+// Medium ≥768px
+// Large ≥992px
+// Extra large ≥1200px
+
+$xs-max: 575px;
+$sm-min: 576px;
+$sm-max: 767px;
+$md-min: 768px;
+$md-max: 991px;
+$lg-min: 992px;
+$lg-max: 1199px;
+$xl-min: 1200px;
+
+@mixin xs {
+  @media (max-width: $xs-max) {
+    @content;
+  }
+}
+
+@mixin sm-only {
+  @media (min-width: $sm-min) and (max-width: $sm-max) {
+    @content;
+  }
+}
+
+@mixin sm-up {
+  @media (min-width: $sm-min) {
+    @content;
+  }
+}
+
+@mixin sm-down {
+  @media (max-width: $sm-max) {
+    @content;
+  }
+}
+
+@mixin md-only {
+  @media (min-width: $md-min) and (max-width: $md-max) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: $md-min) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media (max-width: $md-max) {
+    @content;
+  }
+}
+
+@mixin lg-only {
+  @media (min-width: $lg-min) and (max-width: $lg-max) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: $lg-min) {
+    @content;
+  }
+}
+
+@mixin lg-down {
+  @media (max-width: $lg-max) {
+    @content;
+  }
+}
+
+@mixin xl-only {
+  @media (min-width: $xl-min) {
+    @content;
+  }
+}
+
+body::before {
+  position: fixed;
+  content: "foo";
+  top: 8px;
+  left: 8px;
+  pointer-events: none;
+  background-color: rgba(255, 0, 255, 0.2);
+  border: solid 1px rba(255, 0, 255);
+  z-index: 1000000000000;
+  color: rgb(109, 21, 109);
+  padding: 10px;
+
+  @include xs {
+    content: "Extra small <576px";
+  }
+
+  @include sm-only {
+    content: "Small ≥576px";
+  }
+  @include md-only {
+    content: "Medium ≥768px";
+  }
+  @include lg-only {
+    content: "Large ≥992px";
+  }
+  @include xl-only {
+    content: "Extra large ≥1200px";
+  }
+}

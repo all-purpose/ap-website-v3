@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
+import "./SiteNav.scss"
 
 const navigationQuery = graphql`
   {
@@ -41,12 +42,14 @@ const navigationQuery = graphql`
 `
 
 const SiteNav = () => {
+  const [navOpen, setNavOpen] = useState(false)
+
   const outputNavLinks = (data) => {
     return data.prismic.allNavigations.edges[0].node.navigation_links.map(
       (link) => {
         return (
           <li key={link.page_link._meta.uid}>
-            <Link to={`/${link.page_link._meta.uid}`} className="nav-link">
+            <Link to={`/${link.page_link._meta.uid}`} className="nav-link ">
               {link.nav_link_label}
             </Link>
           </li>
@@ -55,13 +58,28 @@ const SiteNav = () => {
     )
   }
 
+  const handleNavToggle = () => {
+    setNavOpen(!navOpen)
+    console.log("handleNavToggle")
+  }
+
+  // const NavLinks = () => {
+  //   return (
+
+  //   )
+  // }
+
   return (
     <StaticQuery
       query={`${navigationQuery}`}
       render={(data) => {
         return (
-          <>
+          <div className={`nav-wrapper   ${navOpen ? "open" : "closed"}`}>
+            <button className="nav-toggle " onClick={handleNavToggle}>
+              {navOpen ? "Close" : "Menu"}
+            </button>
             <nav
+              className={`nav   ${navOpen ? "open" : "closed"}`}
               aria-label={
                 data.prismic.allNavigations.edges[0].node
                   .navigation_accessible_name
@@ -69,7 +87,7 @@ const SiteNav = () => {
             >
               <ul>{outputNavLinks(data)}</ul>
             </nav>
-          </>
+          </div>
         )
       }}
     />

@@ -4,9 +4,19 @@
   border: solid 1px grey;
   padding: 8px;
   border-radius: 0px;
+  @extend .apply-color-theme;
 }
 
 .form-field:focus {
-  outline: none;
-  border-style: dashed;
+  outline-width: 2px;
+  outline-style: double;
+}
+
+.form-field-label {
+  margin-bottom: 16px;
+  display: block;
+}
+
+input[type="submit"] {
+  padding: 8px 24px;
 }

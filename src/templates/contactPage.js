@@ -50,8 +50,10 @@ const ContactPage = (props) => {
     <Layout palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections apply-color-theme ">
-        <div className="container py-48 border-solid border-t">
+        <div className="container pb-48">
+          <hr className="theme-color mb-48 mt-0" />
           <ContactPageContent />
+          <hr className="theme-color mt-48 mb-0" />
         </div>
       </div>
     </Layout>
