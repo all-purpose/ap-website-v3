@@ -1,9 +1,5 @@
-import React from 'react';
-import {Link} from 'gatsby';
-
-const CaseStudyInPageNav = ({navAccessibleName, inPageNavItems}) => {
-
-  const outputInPageNavLinks = inPageNavItems => {
+import React from "react"
+import { Link } from "gatsby"
 
 const CaseStudyInPageNav = ({ navAccessibleName, inPageNavItems }) => {
   const outputInPageNavLinks = (inPageNavItems) => {
@@ -12,24 +8,23 @@ const CaseStudyInPageNav = ({ navAccessibleName, inPageNavItems }) => {
     }
 
     return inPageNavItems.map((navItem, i) => {
-        return (
-          <li key={i}>
-            <Link to={`#${navItem.navigation_section_id}`}>
-              {navItem.navigation_label}
-            </Link>
-          </li>
-        )
-      }
-    )
+      return (
+        <li key={i}>
+          <Link to={`#${navItem.navigation_section_id}`}>
+            {navItem.navigation_label}
+          </Link>
+        </li>
+      )
+    })
   }
 
   return (
-    <nav className="case-study-nav" aria-label={navAccessibleName}>
+    <nav aria-label={navAccessibleName}>
       <div className="container">
-        <ul className="row py-8">{outputInPageNavLinks(inPageNavItems)}</ul>
+        <ul>{outputInPageNavLinks(inPageNavItems)}</ul>
       </div>
     </nav>
   )
 }
 
-export default CaseStudyInPageNav;
+export default CaseStudyInPageNav

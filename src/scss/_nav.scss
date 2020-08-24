@@ -26,6 +26,10 @@
   }
 }
 
+.nav-link {
+  color: var(--font-color);
+}
+
 @include sm-down {
   .nav-link {
     color: var(--bg-color) !important;

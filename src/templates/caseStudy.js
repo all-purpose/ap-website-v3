@@ -10,6 +10,10 @@ import CaseStudyPagination from "../components/caseStudyPageContent/CaseStudyPag
 import CallToAction from "../components/callToAction/CallToAction"
 
 const CustomStyleWrapper = styled.div`
+  .site {
+    --bg-color: ${(props) => props.bgColor};
+    --font-color: ${(props) => props.textColor};
+  }
   .apply-color-theme {
     background-color: ${(props) => props.bgColor};
     color: ${(props) => props.textColor};
