@@ -39,8 +39,8 @@ a:hover:not(.nav-link) {
 
 .page-sections {
   color: #161616;
-  position: relative;
-  z-index: 10;
+  // position: relative;
+  // z-index: 10;
 }
 
 @include md-down {
