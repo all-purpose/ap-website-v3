@@ -2,20 +2,37 @@ import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/Layout"
 import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
-import ContactPageContent from "../components/contactPageContent/ContactPageContent"
+import CallToAction from '../components/callToAction/CallToAction';
+import NewsArticlesExcerpts from "../components/newsArticlesExcerpts/NewsArticlesExcerpts"
 
-export const query = graphql`
-  query ContactPageQuery {
+export const pageQuery = graphql`
+  query NewsPageQuery {
     prismic {
-      allContact_pages {
+      allNews_pages {
         edges {
           node {
             _meta {
-              type
               uid
             }
             page_description
             page_title
+            call_to_action {
+              ... on PRISMIC_Call_to_action {
+                call_to_action_statement
+                call_to_action_buttons {
+                  button_action_text
+                  button_sub_text
+                  button_link_target {
+                    ... on PRISMIC_Contact_page {
+                      _meta {
+                        uid
+                      }
+                    }
+                  }
+                  
+                }
+              }
+            }
           }
         }
       }
@@ -23,7 +40,8 @@ export const query = graphql`
   }
 `
 
-const ContactPage = (props) => {
+const NewsPage = (props) => {
+
   const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
@@ -42,22 +60,24 @@ const ContactPage = (props) => {
     _meta,
     page_title,
     page_description,
-  } = props.data.prismic.allContact_pages.edges[0].node
+    call_to_action
+  } = props.data.prismic.allNews_pages.edges[0].node
 
   const { uid, type } = _meta
 
   return (
     <Layout palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral title={page_title} description={page_description} />
-      <div className="page-sections apply-color-theme ">
-        <div className="container pb-48">
-          <hr className="theme-color mb-48 mt-0" />
-          <ContactPageContent />
-          <hr className="theme-color mt-48 mb-0" />
+      <div className="page-sections">
+        <div className="container py-24">
+          <NewsArticlesExcerpts />
         </div>
       </div>
+      <CallToAction 
+        callToAction={call_to_action}
+      />
     </Layout>
   )
 }
 
-export default ContactPage
+export default NewsPage

@@ -26,7 +26,12 @@ const CaseStudyExcerpt = ({
     <div className="case-study-excerpt clear-grid">
       <Link to={link}>
         <div className="case-study-excerpt-image">
-          <img className="w-full mb-4" src={image.url} alt={image.alt} />
+          <img
+            className="w-full mb-4"
+            loading="lazy"
+            src={image.url}
+            alt={image.alt}
+          />
         </div>
         {outputCaseStudyExcerptHeading(pageType, uid, projectName)}
         <div className="case-study-excerpt-roles body-01 ">{roles}</div>

@@ -1,0 +1,17 @@
+.cta-section {
+  padding: 96px 0;
+}
+
+// Change this once adding custom CTA classes is defined
+.team_page .cta-statement p {
+  // color: orange !important;
+  @extend .heading-01;
+  font-family: $serif;
+  @extend .clear-grid;
+  // font-size: 4.8rem;
+}
+
+.team_page .cta-link {
+  display: block;
+  padding: 16px;
+}

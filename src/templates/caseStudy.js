@@ -1,35 +1,42 @@
-import React from 'react';
-import {graphql} from 'gatsby';
+import React from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
-import Layout from '../components/layout/Layout';
-import PageHeaderCaseStudy from '../components/pageHeader/PageHeaderCaseStudy';
-import CaseStudyDetails from '../components/caseStudyPageContent/CaseStudyDetails';
-import CaseStudyInPageNav from '../components/caseStudyPageContent/CaseStudyInPageNav';
-import SliceZone from '../components/sliceZone/SliceZone';
-import CaseStudyPagination from '../components/caseStudyPageContent/CaseStudyPagination';
-import CallToAction from '../components/callToAction/CallToAction';
+import Layout from "../components/layout/Layout"
+import PageHeaderCaseStudy from "../components/pageHeader/PageHeaderCaseStudy"
+import CaseStudyDetails from "../components/caseStudyPageContent/CaseStudyDetails"
+import CaseStudyInPageNav from "../components/caseStudyPageContent/CaseStudyInPageNav"
+import SliceZone from "../components/sliceZone/SliceZone"
+import CaseStudyPagination from "../components/caseStudyPageContent/CaseStudyPagination"
+import CallToAction from "../components/callToAction/CallToAction"
 
 const CustomStyleWrapper = styled.div`
-  .apply-color-theme {
-    background-color: ${props => props.bgColor};  
-    color: ${props => props.textColor};
+  .site {
+    --bg-color: ${(props) => props.bgColor};
+    --font-color: ${(props) => props.textColor};
   }
-  .page-title, .nutshell-title, .role-title, .case-study-section-title {
-    color: ${props => props.highlightColor};
+  .apply-color-theme {
+    background-color: ${(props) => props.bgColor};
+    color: ${(props) => props.textColor};
+  }
+  .page-title,
+  .nutshell-title,
+  .role-title,
+  .case-study-section-title {
+    color: ${(props) => props.highlightColor};
   }
   .svg-logo path {
-    fill: ${props => props.textColor};
+    fill: ${(props) => props.textColor};
   }
-  .nutshell-desc, .role-desc {
-    color: ${props => props.textColor};
+  .nutshell-desc,
+  .role-desc {
+    color: ${(props) => props.textColor};
   }
 
   .pagination {
-    background-color: ${props => props.textColor};
-    color: ${props => props.bgColor};
+    background-color: ${(props) => props.textColor};
+    color: ${(props) => props.bgColor};
   }
-  
-`;
+`
 
 export const query = graphql`
   query CaseStudyQuery(
@@ -118,7 +125,6 @@ export const query = graphql`
                       }
                     }
                   }
-                  
                 }
               }
             }
@@ -130,7 +136,10 @@ export const query = graphql`
           }
         }
       }
-      prevCase_study: case_study(uid: $paginationPreviousUid, lang: $paginationPreviousLang) {
+      prevCase_study: case_study(
+        uid: $paginationPreviousUid
+        lang: $paginationPreviousLang
+      ) {
         project_name
         _meta {
           uid
@@ -138,7 +147,10 @@ export const query = graphql`
           type
         }
       }
-      nextCase_study: case_study(uid: $paginationNextUid, lang: $paginationNextLang) {
+      nextCase_study: case_study(
+        uid: $paginationNextUid
+        lang: $paginationNextLang
+      ) {
         project_name
         _meta {
           uid
@@ -148,67 +160,53 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-const CaseStudy = props => {
-
+const CaseStudy = (props) => {
   const {
-    _meta, 
-    project_name, 
-    case_study_page_title, 
-    our_role, 
+    _meta,
+    project_name,
+    case_study_page_title,
+    our_role,
     in_a_nutshell,
     background_header_color,
     text_color,
-    highlight_color, 
+    highlight_color,
     body,
     call_to_action,
     accessible_name,
-    in_page_navigation
-  } = props.data.prismic.allCase_studys.edges[0].node;
+    in_page_navigation,
+  } = props.data.prismic.allCase_studys.edges[0].node
 
-  const {
-    prevCase_study,
-    nextCase_study
-  } = props.data.prismic;
+  const { prevCase_study, nextCase_study } = props.data.prismic
 
-  const {
-    type,
-    uid
-  } = _meta;
+  const { type, uid } = _meta
 
   return (
-    <CustomStyleWrapper bgColor={background_header_color} textColor={text_color} highlightColor={highlight_color}>
+    <CustomStyleWrapper
+      bgColor={background_header_color}
+      textColor={text_color}
+      highlightColor={highlight_color}
+    >
       <Layout type={type} uid={uid}>
         <PageHeaderCaseStudy
-          title={project_name} 
-          description={case_study_page_title} 
+          title={project_name}
+          description={case_study_page_title}
         />
-        <CaseStudyDetails
-          ourRole={our_role}
-          inANutshell={in_a_nutshell}
-        />
+        <CaseStudyDetails ourRole={our_role} inANutshell={in_a_nutshell} />
         <CaseStudyInPageNav
           navAccessibleName={accessible_name}
           inPageNavItems={in_page_navigation}
         />
-        <SliceZone 
-          palette={null} 
-          body={body} 
-          pageType={type} 
-          uid={uid} 
-        />
+        <SliceZone palette={null} body={body} pageType={type} uid={uid} />
         <CaseStudyPagination
           prevCaseStudy={prevCase_study}
           nextCaseStudy={nextCase_study}
         />
-        <CallToAction 
-          callToAction={call_to_action}
-        />
+        <CallToAction callToAction={call_to_action} />
       </Layout>
     </CustomStyleWrapper>
   )
-
 }
 
-export default CaseStudy;
+export default CaseStudy

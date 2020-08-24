@@ -1,9 +1,9 @@
-import React from 'react';
-import FooterNav from '../footerNav/FooterNav';
-import LandAcknowledgement from '../landAcknowledgement/LandAcknowledgement';
+import React from "react"
+import FooterNav from "../footerNav/FooterNav"
+import LandAcknowledgement from "../landAcknowledgement/LandAcknowledgement"
+import "./Footer.scss"
 
-
-const Footer = () =>  {
+const Footer = () => {
   return (
     <footer className="site-footer apply-color-theme">
       <div className="container">
@@ -11,14 +11,13 @@ const Footer = () =>  {
           <div className="col-md-6">
             <FooterNav />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 body-01">
             <LandAcknowledgement />
           </div>
         </div>
       </div>
     </footer>
-  );
-
+  )
 }
 
-export default Footer;
+export default Footer
