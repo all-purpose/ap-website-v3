@@ -42,6 +42,7 @@ const navigationQuery = graphql`
 `
 
 const SiteNav = () => {
+
   const [navOpen, setNavOpen] = useState(false)
 
   const outputNavLinks = (data) => {
@@ -62,12 +63,6 @@ const SiteNav = () => {
     setNavOpen(!navOpen)
     console.log("handleNavToggle")
   }
-
-  // const NavLinks = () => {
-  //   return (
-
-  //   )
-  // }
 
   return (
     <StaticQuery

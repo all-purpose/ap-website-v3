@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import {graphql} from 'gatsby';
 import Layout from '../components/layout/Layout';
+import PageHeaderGeneral from '../components/pageHeader/PageHeaderGeneral';
 import SliceZone from '../components/sliceZone/SliceZone';
+import CallToAction from '../components/callToAction/CallToAction';
 
 export const query = graphql`
   query NewsArticleQuery(
     $uid: String
-    $paginationPreviousUid: String!
-    $paginationPreviousLang: String!
-    $paginationNextUid: String!
-    $paginationNextLang: String!
   ) {
     prismic {
       allNews_articles(uid: $uid) {
@@ -18,7 +17,10 @@ export const query = graphql`
             _meta {
               type
               uid
+              firstPublicationDate
             }
+            article_feature_text
+            article_title
             body {
               ... on PRISMIC_News_articleBodyFlexible_content_section {
                 type
@@ -33,21 +35,24 @@ export const query = graphql`
                 }
               }
             }
+            call_to_action {
+              ... on PRISMIC_Call_to_action {
+                call_to_action_statement
+                call_to_action_buttons {
+                  button_action_text
+                  button_sub_text
+                  button_link_target {
+                    ... on PRISMIC_Contact_page {
+                      _meta {
+                        uid
+                      }
+                    }
+                  }
+                  
+                }
+              }
+            }
           }
-        }
-      }
-      prevCase_study: news_article(uid: $paginationPreviousUid, lang: $paginationPreviousLang) {
-        _meta {
-          uid
-          lang
-          type
-        }
-      }
-      nextCase_study: news_article(uid: $paginationNextUid, lang: $paginationNextLang) {
-        _meta {
-          uid
-          lang
-          type
         }
       }
     }
@@ -56,44 +61,54 @@ export const query = graphql`
 
 const NewsArticle = props => {
 
+  const [selectedPalette, setSelectedPalette] = useState(null)
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min
+  }
+
+  // Run theme selection once on mounting
+  useEffect(() => {
+    const random = getRandomInt(1, 11)
+    setSelectedPalette(`palette-${random}`)
+  }, [])
+
   const {
-    _meta, 
+    _meta,
+    article_title,
+    article_feature_text,
+    call_to_action,
     body
   } = props.data.prismic.allNews_articles.edges[0].node;
 
-  // const {
-  //   prevCase_study,
-  //   nextCase_study
-  // } = props.data.prismic;
-
   const {
     type,
-    uid
+    uid,
+    firstPublicationDate
   } = _meta;
 
   return (
-    <Layout type={type} uid={uid}>
-      {/* <PageHeaderCaseStudy
-        title={page_title} 
-        description={page_description} 
-      /> */}
-      {/* <CaseStudyInPageNav
-        navAccessibleName={accessible_name}
-        inPageNavItems={in_page_navigation}
-      /> */}
-      <SliceZone 
-        palette={null} 
-        body={body} 
-        pageType={type} 
-        uid={uid} 
+    <Layout palette={selectedPalette} type={type} uid={uid}>
+      <PageHeaderGeneral
+        title={article_title} 
+        description={article_feature_text} 
       />
-      {/* <CaseStudyPagination
-        prevCaseStudy={prevCase_study}
-        nextCaseStudy={nextCase_study}
-      /> */}
-      {/* <CallToAction 
+      <footer className="container">
+        <div className="news-article-pub-date">
+          <time dateTime={firstPublicationDate}>{moment.utc(firstPublicationDate).format('MMMM Do YYYY')}</time>
+        </div>
+      </footer>
+      <SliceZone 
+          palette={null} 
+          body={body} 
+          pageType={type} 
+          uid={uid} 
+      />
+      <CallToAction 
         callToAction={call_to_action}
-      /> */}
+      />
     </Layout>
   )
 
