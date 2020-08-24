@@ -7,14 +7,14 @@ import "./Header.scss"
 
 const Header = () => {
   return (
-    <header className="site-header apply-color-theme">
+    <header className="site-header apply-color-theme--font">
       <SkipLinks />
       <div className="container">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-3 col-6">
             <Branding />
           </div>
-          <div className="offset-md-6 col-md-3">
+          <div className="offset-md-6 col-md-3 col-6">
             <SiteNav />
           </div>
         </div>

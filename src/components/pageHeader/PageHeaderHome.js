@@ -9,9 +9,11 @@ const PageHeaderHome = ({ title, description }) => {
   return (
     <div className="page-header apply-color-theme">
       <div className="container">
-        <div className="col-md-11">
-          <div className="display-02">
-            <RichText render={title} />
+        <div className="row">
+          <div className="col-md-11">
+            <div className="display-02">
+              <RichText render={title} />
+            </div>
           </div>
           <div className="body-short-02 col-md-8">
             <RichText render={description} />
