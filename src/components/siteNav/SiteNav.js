@@ -66,7 +66,6 @@ const SiteNav = () => {
 
   const handleNavToggle = () => {
     setNavOpen(!navOpen)
-    console.log("handleNavToggle")
   }
 
   return (
