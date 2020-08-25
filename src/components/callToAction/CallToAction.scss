@@ -1,0 +1,60 @@
+@import "../../scss/mixins";
+
+.cta-link:hover {
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  text-decoration: none !important;
+}
+
+.cta-statement {
+  @include md-down {
+    margin-bottom: 4.8rem;
+  }
+}
+
+.cta-link:not(.inline) {
+  display: flex;
+  position: relative;
+  padding: 0;
+  height: 0;
+  border: solid 1px var(--font-color);
+  padding-bottom: 100%;
+  &__inner {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  @include md-only {
+    padding-bottom: 56.25%;
+  }
+  @include xs {
+    padding-bottom: 56.25%;
+    margin-bottom: 16px;
+  }
+}
+
+.cta-link-action-text {
+  font-size: 2.4rem;
+  padding: 16px;
+}
+.cta-link-sub-text {
+  margin-top: auto;
+  margin-bottom: 0;
+  justify-self: flex-end;
+  align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+  width: calc(100% - 32px);
+  @include xs {
+    bottom: 16px;
+  }
+}
+
+.cta-link.inline {
+  border: solid 1px var(--font-color);
+  padding: 8px 16px;
+  margin-top: 48px;
+  display: inline-block;
+}

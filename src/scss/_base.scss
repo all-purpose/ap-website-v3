@@ -43,6 +43,11 @@ a:hover:not(.nav-link) {
   // z-index: 10;
 }
 
+.page-sections > div:not(.quotation, .cta-section) {
+  position: relative;
+  z-index: 10;
+}
+
 @include md-down {
   .container {
     max-width: calc(100vw - 48px) !important;

@@ -1,0 +1,16 @@
+.pagination {
+  padding: 128px 0;
+}
+
+.pagination__all-projects {
+  position: relative;
+  margin-left: 24px;
+}
+
+.pagination__all-projects span {
+  font-size: 3.2rem;
+  position: absolute;
+  left: -20px;
+  top: -8px;
+  font-weight: 200;
+}
