@@ -1,26 +1,13 @@
+/* purgecss start ignore */
 @tailwind base;
 @tailwind components;
+/* purgecss end ignore */
 @tailwind utilities;
-
-body {
-  color: #161616;
-  background-color: #fff;
-}
 
 .skip-link {
   @apply sr-only;
 
   &:focus {
     @apply not-sr-only;
-  }
-}
-
-.multi-col-service-listing {
-  ul {
-    columns: 4 auto;
-    // column-gap: $col-gap;
-    li {
-      break-inside: avoid;
-    }
   }
 }

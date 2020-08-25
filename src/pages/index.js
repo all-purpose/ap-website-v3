@@ -112,7 +112,7 @@ const IndexPage = props => {
   } = _meta;
 
   return ( 
-    <Layout palette={selectedPalette} type={type} uid={uid}>
+    <Layout seoTitle={'Home'} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderHome
         title={home_page_title} 
         description={home_page_description} 
