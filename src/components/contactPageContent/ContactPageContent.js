@@ -24,7 +24,11 @@ const ContactPageContent = (props) => {
           {/* <a>Learn more -> </a> */}
         </div>
         <div className="col-md-6">
-          <form name="contact" method="POST" data-netlify="true">
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <div className="hidden">
+              <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+            </div>
             <label className="form-field-label">
               <span className="eyebrow">Name</span>
               <input
@@ -44,7 +48,10 @@ const ContactPageContent = (props) => {
             <label className="form-field-label">
               <span>
                 <span className="eyebrow">Message</span>
-                <textarea className="form-field apply-color-theme body-short-01"></textarea>
+                <textarea 
+                  className="form-field apply-color-theme body-short-01"
+                  name="message"
+                ></textarea>
               </span>
             </label>
             <input

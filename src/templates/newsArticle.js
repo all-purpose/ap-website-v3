@@ -19,6 +19,7 @@ export const query = graphql`
             }
             article_feature_text
             article_title
+            seo_title
             body {
               ... on PRISMIC_News_articleBodyFlexible_content_section {
                 type
@@ -71,18 +72,23 @@ const NewsArticle = (props) => {
     setSelectedPalette(`palette-${random}`)
   }, [])
 
+  
+
   const {
     _meta,
     article_title,
     article_feature_text,
+    seo_title,
     call_to_action,
     body,
   } = props.data.prismic.allNews_articles.edges[0].node
 
   const { type, uid, firstPublicationDate } = _meta
 
+  let seoTitle = seo_title ? seo_title : article_title;
+
   return (
-    <Layout palette={selectedPalette} type={type} uid={uid}>
+    <Layout seoTitle={`${seoTitle} | News`} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral
         title={article_title}
         description={article_feature_text}

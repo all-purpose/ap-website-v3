@@ -108,9 +108,9 @@ module.exports = {
             sortBy: 'meta_firstPublicationDate_DESC',
             component: require.resolve('./src/templates/newsArticle.js')
           }
-      ]
-      }
-    }
+        ]
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

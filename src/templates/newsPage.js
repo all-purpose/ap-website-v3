@@ -64,7 +64,7 @@ const NewsPage = (props) => {
   const { uid, type } = _meta
 
   return (
-    <Layout palette={selectedPalette} type={type} uid={uid}>
+    <Layout seoTitle={page_title[0].text} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections apply-color-theme">
         <div className="container pb-24">
