@@ -188,7 +188,7 @@ const CaseStudy = (props) => {
       textColor={text_color}
       highlightColor={highlight_color}
     >
-      <Layout type={type} uid={uid}>
+      <Layout seoTitle={`${project_name} | Case Study`} type={type} uid={uid}>
         <PageHeaderCaseStudy
           title={project_name}
           description={case_study_page_title}
