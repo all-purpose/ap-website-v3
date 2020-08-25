@@ -1,29 +1,28 @@
-import React from 'react';
-import moment from 'moment';
-import {Link} from 'gatsby';
-import {RichText} from 'prismic-reactjs';
+import React from "react"
+import moment from "moment"
+import { Link } from "gatsby"
+import { RichText } from "prismic-reactjs"
 
-const NewsArticleExcerpt = ({slug, pubDate, title, featText}) => {
-
+const NewsArticleExcerpt = ({ slug, pubDate, title, featText }) => {
   return (
-    <article className="news-article">
+    <article className="news-article mb-16">
       <Link to={`/news/${slug}`} className="news-article-link ">
         <footer>
-          <div className="news-article-pub-date">
-            <time dateTime={pubDate}>{moment.utc(pubDate).format('MMMM Do YYYY')}</time>
+          <div className="news-article-pub-date eyebrow">
+            <time dateTime={pubDate}>
+              {moment.utc(pubDate).format("MMMM Do YYYY")}
+            </time>
           </div>
         </footer>
-        <h2 className="news-article-title">
+        <h2 className="news-article-title heading-01 ">
           {RichText.asText(title)}
         </h2>
-        <div className="news-article-summary">
+        {/* <div className="news-article-summary">
           <RichText render={featText} />
-        </div>
+        </div> */}
       </Link>
     </article>
   )
-
 }
 
-
-export default NewsArticleExcerpt;
+export default NewsArticleExcerpt

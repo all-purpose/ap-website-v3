@@ -16,6 +16,7 @@ export const query = graphql`
             }
             page_description
             page_title
+            seo_title
           }
         }
       }
@@ -42,12 +43,15 @@ const ContactPage = (props) => {
     _meta,
     page_title,
     page_description,
+    seo_title,
   } = props.data.prismic.allContact_pages.edges[0].node
 
   const { uid, type } = _meta
 
+  let seoTitle = seo_title ? seo_title : page_title;
+
   return (
-    <Layout palette={selectedPalette} type={type} uid={uid}>
+    <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections apply-color-theme ">
         <div className="container pb-48">

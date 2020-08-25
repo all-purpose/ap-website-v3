@@ -26,7 +26,7 @@ const ContactPageContent = (props) => {
         <div className="col-md-6">
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="contact" />
-            <div class="hidden">
+            <div className="hidden">
               <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
             </div>
             <label className="form-field-label">

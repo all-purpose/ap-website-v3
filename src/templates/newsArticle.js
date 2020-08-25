@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import moment from 'moment';
-import {graphql} from 'gatsby';
-import Layout from '../components/layout/Layout';
-import PageHeaderGeneral from '../components/pageHeader/PageHeaderGeneral';
-import SliceZone from '../components/sliceZone/SliceZone';
-import CallToAction from '../components/callToAction/CallToAction';
+import React, { useState, useEffect } from "react"
+import moment from "moment"
+import { graphql } from "gatsby"
+import Layout from "../components/layout/Layout"
+import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
+import SliceZone from "../components/sliceZone/SliceZone"
+import CallToAction from "../components/callToAction/CallToAction"
 
 export const query = graphql`
-  query NewsArticleQuery(
-    $uid: String
-  ) {
+  query NewsArticleQuery($uid: String) {
     prismic {
       allNews_articles(uid: $uid) {
         edges {
@@ -21,6 +19,7 @@ export const query = graphql`
             }
             article_feature_text
             article_title
+            seo_title
             body {
               ... on PRISMIC_News_articleBodyFlexible_content_section {
                 type
@@ -48,7 +47,6 @@ export const query = graphql`
                       }
                     }
                   }
-                  
                 }
               }
             }
@@ -57,10 +55,9 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-const NewsArticle = props => {
-
+const NewsArticle = (props) => {
   const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
@@ -75,43 +72,39 @@ const NewsArticle = props => {
     setSelectedPalette(`palette-${random}`)
   }, [])
 
+  
+
   const {
     _meta,
     article_title,
     article_feature_text,
+    seo_title,
     call_to_action,
-    body
-  } = props.data.prismic.allNews_articles.edges[0].node;
+    body,
+  } = props.data.prismic.allNews_articles.edges[0].node
 
-  const {
-    type,
-    uid,
-    firstPublicationDate
-  } = _meta;
+  const { type, uid, firstPublicationDate } = _meta
+
+  let seoTitle = seo_title ? seo_title : article_title;
 
   return (
-    <Layout palette={selectedPalette} type={type} uid={uid}>
+    <Layout seoTitle={`${seoTitle} | News`} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral
-        title={article_title} 
-        description={article_feature_text} 
+        title={article_title}
+        description={article_feature_text}
+        headingClass="heading-02 mb-4"
       />
       <footer className="container">
         <div className="news-article-pub-date">
-          <time dateTime={firstPublicationDate}>{moment.utc(firstPublicationDate).format('MMMM Do YYYY')}</time>
+          <time dateTime={firstPublicationDate}>
+            {moment.utc(firstPublicationDate).format("MMMM Do YYYY")}
+          </time>
         </div>
       </footer>
-      <SliceZone 
-          palette={null} 
-          body={body} 
-          pageType={type} 
-          uid={uid} 
-      />
-      <CallToAction 
-        callToAction={call_to_action}
-      />
+      <SliceZone palette={null} body={body} pageType={type} uid={uid} />
+      <CallToAction callToAction={call_to_action} />
     </Layout>
   )
-
 }
 
-export default NewsArticle;
+export default NewsArticle
