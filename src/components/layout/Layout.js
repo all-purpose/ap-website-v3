@@ -1,5 +1,5 @@
 import React from "react"
-import SEO from '../seo/SEO';
+import SEO from '../seo/SEOModule';
 import Header from "../header/Header"
 import Footer from "../footer/Footer"
 import VisibleGrid from "../visibleGrid/VisibleGrid"
