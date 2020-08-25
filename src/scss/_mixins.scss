@@ -80,32 +80,32 @@ $xl-min: 1200px;
   }
 }
 
-body::before {
-  position: fixed;
-  content: "foo";
-  top: 8px;
-  left: 8px;
-  pointer-events: none;
-  background-color: rgba(255, 0, 255, 0.2);
-  border: solid 1px rba(255, 0, 255);
-  z-index: 1000000000000;
-  color: rgb(109, 21, 109);
-  padding: 10px;
+// body::before {
+//   position: fixed;
+//   content: "foo";
+//   top: 8px;
+//   left: 8px;
+//   pointer-events: none;
+//   background-color: rgba(255, 0, 255, 0.2);
+//   border: solid 1px rba(255, 0, 255);
+//   z-index: 1000000000000;
+//   color: rgb(109, 21, 109);
+//   padding: 10px;
 
-  @include xs {
-    content: "Extra small <576px";
-  }
+//   @include xs {
+//     content: "Extra small <576px";
+//   }
 
-  @include sm-only {
-    content: "Small ≥576px";
-  }
-  @include md-only {
-    content: "Medium ≥768px";
-  }
-  @include lg-only {
-    content: "Large ≥992px";
-  }
-  @include xl-only {
-    content: "Extra large ≥1200px";
-  }
-}
+//   @include sm-only {
+//     content: "Small ≥576px";
+//   }
+//   @include md-only {
+//     content: "Medium ≥768px";
+//   }
+//   @include lg-only {
+//     content: "Large ≥992px";
+//   }
+//   @include xl-only {
+//     content: "Extra large ≥1200px";
+//   }
+// }
