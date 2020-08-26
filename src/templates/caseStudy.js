@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Layout from "../components/layout/Layout"
 import PageHeaderCaseStudy from "../components/pageHeader/PageHeaderCaseStudy"
 import CaseStudyDetails from "../components/caseStudyPageContent/CaseStudyDetails"
-import CaseStudyInPageNav from "../components/caseStudyPageContent/CaseStudyInPageNav"
+// import CaseStudyInPageNav from "../components/caseStudyPageContent/CaseStudyInPageNav"
 import SliceZone from "../components/sliceZone/SliceZone"
 import CaseStudyPagination from "../components/caseStudyPageContent/CaseStudyPagination"
 import CallToAction from "../components/callToAction/CallToAction"
@@ -174,8 +174,8 @@ const CaseStudy = (props) => {
     highlight_color,
     body,
     call_to_action,
-    accessible_name,
-    in_page_navigation,
+    //    accessible_name,
+    //    in_page_navigation,
   } = props.data.prismic.allCase_studys.edges[0].node
 
   const { prevCase_study, nextCase_study } = props.data.prismic
