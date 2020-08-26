@@ -72,8 +72,6 @@ const NewsArticle = (props) => {
     setSelectedPalette(`palette-${random}`)
   }, [])
 
-  
-
   const {
     _meta,
     article_title,
@@ -85,23 +83,34 @@ const NewsArticle = (props) => {
 
   const { type, uid, firstPublicationDate } = _meta
 
-  let seoTitle = seo_title ? seo_title : article_title;
+  let seoTitle = seo_title ? seo_title : article_title
 
   return (
-    <Layout seoTitle={`${seoTitle} | News`} palette={selectedPalette} type={type} uid={uid}>
+    <Layout
+      seoTitle={`${seoTitle} | News`}
+      palette={selectedPalette}
+      type={type}
+      uid={uid}
+    >
       <PageHeaderGeneral
         title={article_title}
         description={article_feature_text}
         headingClass="heading-02 mb-4"
       />
-      <footer className="container">
-        <div className="news-article-pub-date">
-          <time dateTime={firstPublicationDate}>
-            {moment.utc(firstPublicationDate).format("MMMM Do YYYY")}
-          </time>
+      <article className="container">
+        <footer className="row">
+          <div className="news-article-pub-date">
+            <time dateTime={firstPublicationDate}>
+              {moment.utc(firstPublicationDate).format("MMMM Do YYYY")}
+            </time>
+          </div>
+        </footer>
+        <div className="row">
+          <div className="col-md-8 offset-md-3 body-long-02">
+            <SliceZone palette={null} body={body} pageType={type} uid={uid} />
+          </div>
         </div>
-      </footer>
-      <SliceZone palette={null} body={body} pageType={type} uid={uid} />
+      </article>
       <CallToAction callToAction={call_to_action} />
     </Layout>
   )

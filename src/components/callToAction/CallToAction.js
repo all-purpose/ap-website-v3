@@ -40,8 +40,8 @@ const CallToAction = ({ callToAction }) => {
 
       if (button_sub_text) {
         return (
-          <div className="col-12 col-sm-6 col-lg-3">
-            <Link to={`/${ctaBtnLinkTarget}`} key={i} className="cta-link ">
+          <div key={i} className="col-12 col-sm-6 col-lg-3">
+            <Link to={`/${ctaBtnLinkTarget}`} className="cta-link ">
               <h3 className="cta-link-action-text serif">{ctaBtnActionText}</h3>
               <div className="cta-link-sub-text ">
                 <RichText render={button_sub_text} />
@@ -51,9 +51,8 @@ const CallToAction = ({ callToAction }) => {
         )
       } else {
         return (
-          <div className="col-12">
+          <div key={i} className="col-12">
             <Link
-              key={i}
               className="cta-link inline"
               to={`/${ctaBtnLinkTarget}`}
             >
@@ -74,12 +73,15 @@ const CallToAction = ({ callToAction }) => {
       <div className="container">
         <div className="row">
           <div className="cta-statement display-01 col-md-12 col-lg-6 ">
-            <div className="col-md-6 col-lg-12">
-              <RichText render={call_to_action_statement} />
+            <div className="row">
+              <div className="col-md-6 col-lg-12">
+                <RichText render={call_to_action_statement} />
+              </div>
             </div>
           </div>
           {outputCallToActionButtons(call_to_action_buttons)}
         </div>
+        <hr className="theme-color" />
       </div>
     </div>
   )

@@ -48,13 +48,13 @@ const ContactPage = (props) => {
 
   const { uid, type } = _meta
 
-  let seoTitle = seo_title ? seo_title : page_title;
+  let seoTitle = seo_title ? seo_title : page_title
 
   return (
     <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections apply-color-theme ">
-        <div className="container pb-48">
+        <div className="container">
           <hr className="theme-color mb-48 mt-0" />
           <ContactPageContent />
           <hr className="theme-color mt-48 mb-0" />

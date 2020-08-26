@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { graphql } from 'gatsby';
-import Layout from "../components/layout/Layout";
-import PageHeaderHome from '../components/pageHeader/PageHeaderHome';
-import HomePageServices from '../components/homePageContent/HomePageServices';
-import HomePageProjects from '../components/homePageContent/HomePageProjects';
-import HomePageDesignGood from '../components/homePageContent/HomePageDesignGood';
-import CallToAction from '../components/callToAction/CallToAction';
-import '../scss/main.scss';
-import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import React, { useState, useEffect } from "react"
+import { graphql } from "gatsby"
+import Layout from "../components/layout/Layout"
+import PageHeaderHome from "../components/pageHeader/PageHeaderHome"
+import HomePageServices from "../components/homePageContent/HomePageServices"
+import HomePageProjects from "../components/homePageContent/HomePageProjects"
+import HomePageDesignGood from "../components/homePageContent/HomePageDesignGood"
+import CallToAction from "../components/callToAction/CallToAction"
+import "bootstrap/dist/css/bootstrap-grid.min.css"
+
+import "../scss/main.scss"
 
 export const query = graphql`
-  query HomeQuery { 
+  query HomeQuery {
     prismic {
       allHome_pages {
         edges {
@@ -61,7 +62,6 @@ export const query = graphql`
                       }
                     }
                   }
-                  
                 }
               }
             }
@@ -70,23 +70,22 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-const IndexPage = props => {
-
-  const [selectedPalette, setSelectedPalette] = useState(null);
+const IndexPage = (props) => {
+  const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min
   }
 
-  // Run theme selection once on mounting  
-  useEffect(() => {    
-    const random = getRandomInt(1, 11); 
-    setSelectedPalette(`palette-${random}`);
-  }, []);
+  // Run theme selection once on mounting
+  useEffect(() => {
+    const random = getRandomInt(1, 11)
+    setSelectedPalette(`palette-${random}`)
+  }, [])
 
   const {
     _meta,
@@ -103,28 +102,25 @@ const IndexPage = props => {
     home_design_good_section_title,
     home_design_good_description,
     home_design_good_logos,
-    call_to_action
-  } = props.data.prismic.allHome_pages.edges[0].node;
+    call_to_action,
+  } = props.data.prismic.allHome_pages.edges[0].node
 
-  const {
-    type,
-    uid
-  } = _meta;
+  const { type, uid } = _meta
 
-  return ( 
-    <Layout seoTitle={'Home'} palette={selectedPalette} type={type} uid={uid}>
+  return (
+    <Layout seoTitle={"Home"} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderHome
-        title={home_page_title} 
-        description={home_page_description} 
+        title={home_page_title}
+        description={home_page_description}
       />
       <div className="page-sections">
-        <HomePageServices 
+        <HomePageServices
           sectionTitle={home_services_section_title}
           brandTitle={home_services_brand_title}
           serviceCategoryListings={home_services_category_listing}
           servicesListing={home_services_listing}
         />
-        <HomePageProjects 
+        <HomePageProjects
           pageType={type}
           uid={uid}
           sectionTitle={home_projects_section_title}
@@ -132,18 +128,15 @@ const IndexPage = props => {
           projectsAccessibleName={home_projects_listing_accessible_name}
           projects={projects_listing}
         />
-        <HomePageDesignGood 
+        <HomePageDesignGood
           sectionTitle={home_design_good_section_title}
           description={home_design_good_description}
           logos={home_design_good_logos}
         />
-        <CallToAction
-          callToAction={call_to_action}
-        />
+        <CallToAction callToAction={call_to_action} />
       </div>
     </Layout>
-  );
-
+  )
 }
 
 export default IndexPage

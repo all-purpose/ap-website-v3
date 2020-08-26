@@ -1,3 +1,14 @@
-.case-study-excerpt-project a:hover {
+.case-study-excerpt-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-study-excerpt-link:hover {
   text-decoration: underline;
+}
+
+.case-study-excerpt-link:focus {
+  // outline-style: dotted !important;
+  // outline-width: 2px !important;
+  outline-color: black !important;
 }
