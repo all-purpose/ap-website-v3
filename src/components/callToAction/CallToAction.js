@@ -82,6 +82,7 @@ const CallToAction = ({ callToAction }) => {
           </div>
           {outputCallToActionButtons(call_to_action_buttons)}
         </div>
+        <hr className="theme-color" />
       </div>
     </div>
   )

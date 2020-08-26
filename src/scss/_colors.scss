@@ -70,8 +70,8 @@ $palettes: (
 
     *:focus {
       outline: none;
-      outline-style: dotted;
-      outline-width: 2px;
+      outline-style: dashed;
+      outline-width: 1px;
       outline-color: $fontcolor;
     }
 
