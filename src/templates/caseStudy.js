@@ -194,10 +194,11 @@ const CaseStudy = (props) => {
           description={case_study_page_title}
         />
         <CaseStudyDetails ourRole={our_role} inANutshell={in_a_nutshell} />
-        <CaseStudyInPageNav
+        {/* Hide for now until we figure out how we want to handle this */}
+        {/* <CaseStudyInPageNav
           navAccessibleName={accessible_name}
           inPageNavItems={in_page_navigation}
-        />
+        /> */}
         <SliceZone palette={null} body={body} pageType={type} uid={uid} />
         <CaseStudyPagination
           prevCaseStudy={prevCase_study}

@@ -1,9 +1,11 @@
 .case-study-section {
-  padding: 48px 0;
+  padding-top: 48px;
+  padding-bottom: 96px;
 }
 
 .quotation {
-  padding: 96px 0;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .image-group {
@@ -13,4 +15,8 @@
 .case-study-nav {
   display: none;
   // Hide for now until we decide exactly how this should work
+}
+
+.case_study .page-sections {
+  padding-bottom: 48px;
 }

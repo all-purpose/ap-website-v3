@@ -13,11 +13,15 @@ const CaseStudyExcerpt = ({
   const outputCaseStudyExcerptHeading = (pageType, uid, projectName) => {
     if (pageType === "page" && uid === "work") {
       return (
-        <h2 className="case-study-excerpt-project heading-01">{projectName}</h2>
+        <h2 className="case-study-excerpt-project heading-01 sans">
+          {projectName}
+        </h2>
       )
     } else {
       return (
-        <h3 className="case-study-excerpt-project heading-01">{projectName}</h3>
+        <h3 className="case-study-excerpt-project heading-01 sans">
+          {projectName}
+        </h3>
       )
     }
   }
@@ -34,7 +38,7 @@ const CaseStudyExcerpt = ({
           />
         </div>
         {outputCaseStudyExcerptHeading(pageType, uid, projectName)}
-        <div className="case-study-excerpt-roles body-01 ">{roles}</div>
+        <div className="case-study-excerpt-roles body-01 mt-2">{roles}</div>
       </Link>
     </div>
   )

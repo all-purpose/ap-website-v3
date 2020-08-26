@@ -14,7 +14,7 @@ const NewsArticleExcerpt = ({ slug, pubDate, title, featText }) => {
             </time>
           </div>
         </footer>
-        <h2 className="news-article-title heading-01 ">
+        <h2 className="news-article-title heading-01 sans ">
           {RichText.asText(title)}
         </h2>
         {/* <div className="news-article-summary">

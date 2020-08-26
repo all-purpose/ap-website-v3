@@ -33,7 +33,7 @@ const Quotation = ({
     containerCssClass,
     <div className="container">
       <div className="row">
-        <blockquote className="quote col-sm-6 offset-sm-4">
+        <blockquote className="quote col-sm-6 offset-sm-3">
           <div className="quote-text heading-01">
             <RichText render={quoteText} />
           </div>

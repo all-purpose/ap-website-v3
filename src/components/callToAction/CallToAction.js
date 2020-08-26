@@ -74,8 +74,10 @@ const CallToAction = ({ callToAction }) => {
       <div className="container">
         <div className="row">
           <div className="cta-statement display-01 col-md-12 col-lg-6 ">
-            <div className="col-md-6 col-lg-12">
-              <RichText render={call_to_action_statement} />
+            <div className="row">
+              <div className="col-md-6 col-lg-12">
+                <RichText render={call_to_action_statement} />
+              </div>
             </div>
           </div>
           {outputCallToActionButtons(call_to_action_buttons)}
