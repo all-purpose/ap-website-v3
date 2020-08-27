@@ -58,6 +58,9 @@ body {
   font-size: 6.4rem; // 64px
   line-height: 1.125; // 72px
   font-family: $serif;
+  @include md-down {
+    font-size: 5.6rem; //72px
+  }
 }
 
 .body-01 {

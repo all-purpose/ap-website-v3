@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="col-md-6">
             <FooterNav />
           </div>
-          <div className="col-md-6 body-01">
+          <div className="col-md-6 body-01 footer-land-acknowledgement">
             <LandAcknowledgement />
           </div>
         </div>

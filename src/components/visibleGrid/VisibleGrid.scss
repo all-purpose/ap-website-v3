@@ -17,6 +17,9 @@
   height: 100vw;
   width: 100vw;
   pointer-events: none;
+  @include xs {
+    display: none !important;
+  }
 }
 
 .grid .container,

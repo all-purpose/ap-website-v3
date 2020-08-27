@@ -1,6 +1,7 @@
 .nav-toggle {
   display: none;
   z-index: 10000;
+  color: var(--font-color);
   @include sm-down {
     display: block;
     margin-left: auto;
@@ -11,6 +12,7 @@
 }
 
 .nav {
+  transition: all, 0.5s;
   @include sm-down {
     position: fixed !important;
     top: 0;
@@ -20,9 +22,9 @@
     background-color: var(--font-color);
     display: flex;
     align-items: center;
-    justify-content: center;
     z-index: 1000;
     overflow: hidden;
+    padding: 32px;
   }
 }
 
@@ -34,7 +36,7 @@
   .nav-wrapper .nav-link {
     color: var(--bg-color) !important;
     font-family: $serif;
-    font-size: 9.6rem;
+    font-size: 7.2rem;
   }
 }
 
@@ -42,8 +44,42 @@
   @include sm-down {
     left: 0;
   }
+  li {
+    opacity: 0;
+    transition: all 0.3;
+    // @include opacity(1);
+    // @include transition(all, 0.3s);
+    animation: 500ms ease normal forwards fadein;
+    // animation-delay: 1000ms !important;
+    &:nth-child(1) {
+      animation-delay: 700ms !important;
+    }
+    &:nth-child(2) {
+      animation-delay: 800ms !important;
+    }
+    &:nth-child(3) {
+      animation-delay: 900ms !important;
+    }
+    &:nth-child(4) {
+      animation-delay: 1000ms !important;
+    }
+  }
+  .svg-logo {
+    fill: pink !important;
+    position: relative;
+    z-index: 10000;
+  }
 }
 
 .nav-wrapper.open .nav-toggle {
   color: var(--bg-color) !important;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
