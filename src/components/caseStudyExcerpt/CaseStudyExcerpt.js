@@ -27,7 +27,7 @@ const CaseStudyExcerpt = ({
   }
 
   return (
-    <div className="case-study-excerpt clear-grid">
+    <div className="case-study-excerpt clear-grid mb-16">
       <Link to={link} className="case-study-excerpt-link">
         <div className="case-study-excerpt-image">
           <img

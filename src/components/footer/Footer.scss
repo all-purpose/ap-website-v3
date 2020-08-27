@@ -1,4 +1,12 @@
+@import "../../scss/mixins.scss";
+
 .site-footer {
   padding-top: 32px;
   padding-bottom: 96px;
+}
+
+.footer-land-acknowledgement {
+  @include sm-down {
+    margin-top: 32px;
+  }
 }

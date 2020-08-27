@@ -27,10 +27,6 @@ const CustomStyleWrapper = styled.div`
   .svg-logo path {
     fill: ${(props) => props.textColor};
   }
-  .nutshell-desc,
-  .role-desc {
-    color: ${(props) => props.textColor};
-  }
 
   .pagination {
     background-color: ${(props) => props.textColor};

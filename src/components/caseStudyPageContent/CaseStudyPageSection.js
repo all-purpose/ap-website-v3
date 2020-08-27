@@ -32,7 +32,7 @@ const CaseStudySection = ({
     containerId,
     containerCssClass,
     <div className="row">
-      <div className="col-md-3 case-study-section-title heading-01">
+      <div className="col-md-3 case-study-section-title heading-01 mb-8">
         <RichText render={title} />
       </div>
       <div className="col-md-8 body-long-02">

@@ -11,7 +11,7 @@ const HomePageDesignGood = ({ sectionTitle, description, logos }) => {
       const { logo_image } = logo
 
       return (
-        <div className="col-sm-3 flex items-center" key={i}>
+        <div className="col-sm-3 flex items-center py-16" key={i}>
           <img className="mx-auto" src={logo_image.url} alt={logo_image.alt} />
         </div>
       )
