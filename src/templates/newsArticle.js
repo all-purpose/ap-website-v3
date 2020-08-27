@@ -97,16 +97,17 @@ const NewsArticle = (props) => {
         description={article_feature_text}
         headingClass="heading-02 mb-4"
       />
-      <article className="container">
-        <footer className="row">
-          <div className="news-article-pub-date">
-            <time dateTime={firstPublicationDate}>
-              {moment.utc(firstPublicationDate).format("MMMM Do YYYY")}
-            </time>
-          </div>
-        </footer>
+      <article className="container py-32">
         <div className="row">
-          <div className="col-md-8 offset-md-3 body-long-02">
+          <footer className="col-md-3">
+            <div className="news-article-pub-date eyebrow">
+              <time dateTime={firstPublicationDate}>
+                {moment.utc(firstPublicationDate).format("MMMM Do YYYY")}
+              </time>
+            </div>
+          </footer>
+
+          <div className="col-md-8 body-long-02">
             <SliceZone palette={null} body={body} pageType={type} uid={uid} />
           </div>
         </div>
