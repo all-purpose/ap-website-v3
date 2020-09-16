@@ -2,6 +2,11 @@
 //   @extend .row;
 // }
 
-.news_article .content-item p {
-  margin-bottom: 32px;
-}
+.news_article .content-item {
+  a {
+    text-decoration: underline;
+  }
+  p {
+    margin-bottom: 32px;
+  }
+} 

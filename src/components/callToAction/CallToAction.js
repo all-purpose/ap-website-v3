@@ -4,6 +4,12 @@ import { RichText } from "prismic-reactjs"
 import "./CallToAction.scss"
 
 const CallToAction = ({ callToAction }) => {
+
+  // If no Call to Action just return
+  if (!callToAction) {
+    return false;
+  }
+
   const {
     call_to_action_css_class,
     call_to_action_statement,
