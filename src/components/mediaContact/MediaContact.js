@@ -10,7 +10,7 @@ const MediaContact = ({ showMediaKit }) => {
       <a href="mailto:karli@switchboardpr.com">karli@switchboardpr.com</a><br />
       778-401-6040</p>
       {showMediaKit ? (
-        <p className="pt-12"><a href="https://drive.google.com/drive/u/1/folders/1K5jO9_g1h8QyvHaBOCG_jQMouyA0XMJS" target="_blank" rel="noopener noreferrer" className="pt-12">View our media kit</a>.</p>
+        <p className="pt-12"><a href="https://drive.google.com/drive/u/1/folders/1uoCzyowr8UCb159RrRLnbyz23JgpNumu" target="_blank" rel="noopener noreferrer" className="pt-12">View our media kit</a>.</p>
       ) : null}
     </React.Fragment>
   )

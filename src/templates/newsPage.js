@@ -72,7 +72,7 @@ const NewsPage = (props) => {
           <hr className="theme-color mb-48 mt-0" />
           <NewsArticlesExcerpts />
           <div className="pt-24">
-            <MediaContact />
+            <MediaContact showMediaKit />
           </div>
           <hr className="theme-color mt-48 mb-0" />
         </div>
