@@ -4,6 +4,7 @@ import Layout from "../components/layout/Layout"
 import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
 import CallToAction from "../components/callToAction/CallToAction"
 import NewsArticlesExcerpts from "../components/newsArticlesExcerpts/NewsArticlesExcerpts"
+import MediaContact from "../components/mediaContact/MediaContact"
 
 export const pageQuery = graphql`
   query NewsPageQuery {
@@ -70,6 +71,9 @@ const NewsPage = (props) => {
         <div className="container pb-24">
           <hr className="theme-color mb-48 mt-0" />
           <NewsArticlesExcerpts />
+          <div className="pt-24">
+            <MediaContact showMediaKit />
+          </div>
           <hr className="theme-color mt-48 mb-0" />
         </div>
       </div>
