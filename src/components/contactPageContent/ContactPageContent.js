@@ -1,4 +1,5 @@
 import React from "react"
+import MediaContact from "../mediaContact/MediaContact"
 
 const ContactPageContent = (props) => {
   return (
@@ -22,6 +23,9 @@ const ContactPageContent = (props) => {
             info@allpurpose.io
           </a>
           {/* <a>Learn more -> </a> */}
+          <div className="pt-12">
+            <MediaContact />
+          </div>
         </div>
         <div className="col-md-6">
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
