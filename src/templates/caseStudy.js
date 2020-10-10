@@ -32,6 +32,21 @@ const CustomStyleWrapper = styled.div`
     background-color: ${(props) => props.textColor};
     color: ${(props) => props.bgColor};
   }
+
+  .transcript-btn:hover, .transcript-btn:focus {
+    background-color: ${(props) => props.bgColor};
+  }
+
+  .transcript-btn[aria-expanded="true"] {
+    background-color: ${(props) => props.textColor};
+    color: ${(props) => props.bgColor};
+    svg {
+      fill: ${(props) => props.bgColor};
+    }
+  }
+  .transcript-content {
+    border-top-color: ${(props) => props.textColor};
+  }
 `
 
 export const query = graphql`
@@ -103,6 +118,8 @@ export const query = graphql`
                 type
                 primary {
                   video_embed_code
+                  video_transcript_btn_text
+                  video_transcript
                   section_css_class
                   section_id
                 }

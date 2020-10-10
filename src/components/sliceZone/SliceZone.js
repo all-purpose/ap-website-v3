@@ -54,12 +54,14 @@ const SliceZone = ({ body }) => {
           />
         )
       } else if (bodyContent.type === 'video_embed') {
-        return ( 
+        return (
           <VideoEmbed 
             key={i}
             containerId={bodyContent.primary.section_id}
             containerCssClass={bodyContent.primary.section_css_class}
             embedCode={bodyContent.primary.video_embed_code}
+            transcriptBtnText={bodyContent.primary.video_transcript_btn_text}
+            transcript={bodyContent.primary.video_transcript}
           />
         )
       } else {

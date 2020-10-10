@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {RichText} from 'prismic-reactjs';
+import './VideoEmbed.scss';
 
-const VideoEmbed = ({sectionId, sectionCssClass, embedCode}) => {
-
+const VideoEmbed = ({sectionId, sectionCssClass, embedCode, transcriptBtnText, transcript}) => {
 
   let embedCodeText = embedCode[0].text || '';
+
+  const [transcriptExpanded, setTranscriptExpanded] = useState(false);
 
   const outputVideoEmbed = (containerId, containerCssClass, children
     ) => {
@@ -32,13 +35,51 @@ const VideoEmbed = ({sectionId, sectionCssClass, embedCode}) => {
     return className
   }
 
+  const outputTranscript = (transcriptBtnText, transcript) => {
+
+    if (!transcript) {
+      return false;
+    }
+
+    let btnText = transcriptBtnText ? transcriptBtnText : 'Text transcript of video';
+
+    return (
+      <div className="transcript">
+        <div className="flex justify-end mt-4">
+          <button className="transcript-btn" aria-expanded={transcriptExpanded} type="button" onClick={handleChangeExpanded}>
+            <svg className="transcript-btn-indicator" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+              <rect className="vert" height="8" width="2" y="1" x="4" />
+              <rect height="2" width="8" y="4" x="1" />
+            </svg>
+            <span className="transcript-btn-text">
+              {btnText}
+            </span>
+          </button>
+        </div>
+        <div className="transcript-content body-long-02" aria-hidden={!transcriptExpanded}>
+          <RichText render={transcript} />
+        </div>
+      </div>
+
+    )
+
+  }
+
+  const handleChangeExpanded = () => {
+    if (transcriptExpanded) {
+      setTranscriptExpanded(false);
+    } else {
+      setTranscriptExpanded(true)
+    }
+  }
+
   return outputVideoEmbed(
     sectionId,
     sectionCssClass,
     <div className="container">
       <div className="embed" dangerouslySetInnerHTML={{__html: embedCodeText}}></div>
+      {outputTranscript(transcriptBtnText, transcript)}
     </div>
-    
   )
 
 }
