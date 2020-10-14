@@ -19,8 +19,8 @@ const ContactPageContent = (props) => {
             (Squamish) and səl̓ílwətaʔɬ (Tseil-Waututh) Nations.
           </p>
           <h3 className="eyebrow mt-16 block">Email</h3>
-          <a href="mailto:info@allpurpose.io" className="body-short-02 serif">
-            info@allpurpose.io
+          <a href="mailto:hello@allpurpose.io" className="body-short-02 serif">
+            hello@allpurpose.io
           </a>
           {/* <a>Learn more -> </a> */}
           <div className="pt-12">
