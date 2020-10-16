@@ -107,6 +107,12 @@ module.exports = {
             previewPath: '/news',
             sortBy: 'meta_firstPublicationDate_DESC',
             component: require.resolve('./src/templates/newsArticle.js')
+          },
+          {
+            type: 'Careers',
+            match: '/careers',
+            previewPath: '/',
+            component: require.resolve('./src/templates/careersPage.js')
           }
         ]
       },
