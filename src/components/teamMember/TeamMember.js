@@ -3,10 +3,13 @@ import { RichText } from "prismic-reactjs"
 import 'lazysizes';
 
 const TeamMember = ({ photo, name, specialties }) => {
-  let mobileUrl = '';
+
+  console.log(photo);
+
+  let mobileSrc = '';
 
   try {
-    mobileUrl = photo.Mobile.url
+    mobileSrc = photo.Mobile.url
   } catch (err) {
     console.error(err);
   }
@@ -14,7 +17,15 @@ const TeamMember = ({ photo, name, specialties }) => {
   return (
     <div className="team-member">
       <div className="team-member-photo">
-        <img className="lazyload" data-lowsrc={mobileUrl} data-src={photo.url} alt={photo.alt} data-sizes="auto" />
+      <picture>
+        <source media="(max-width: 576px)" srcSet={mobileSrc} />
+        <img src={photo.url} alt={photo.alt} />
+      </picture>
+        {/* <img  
+          srcSet={`${photo.url} 576w`} 
+          src={mobileSrc} 
+          alt={photo.alt} 
+        /> */}
       </div>
       <h2 className="team-member-name body-short-02 serif mt-4">{name}</h2>
       <div className="team-member-specialties body-01">
