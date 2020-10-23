@@ -1,0 +1,36 @@
+@import "../../scss/mixins";
+
+.transcript-btn {
+  padding: 1rem;
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+    line-height: 1.4;
+    position: relative;
+    top: -0.125rem;
+  }
+  &[aria-expanded="true"] {
+    svg .vert {
+      display: none;
+    }
+  }
+  
+}
+
+.transcript-content {
+  padding: 3rem;
+  background-color: #eee;
+  border-top: 0.4rem solid #eee;
+  max-height: 40rem;
+  overflow: auto;
+  p {
+    margin-bottom: 3.2rem;
+  }
+  &[aria-hidden="true"] {
+    display: none;
+  }
+}
+
