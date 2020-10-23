@@ -37,7 +37,7 @@ const VideoEmbed = ({sectionId, sectionCssClass, embedCode, transcriptBtnText, t
 
   const outputTranscript = (transcriptBtnText, transcript) => {
 
-    if (!transcript) {
+    if (!transcript[0].text) {
       return false;
     }
 
