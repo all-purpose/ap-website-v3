@@ -1,0 +1,24 @@
+@import "../../scss/mixins";
+
+.cta-card {
+  border: solid 1px black;
+  //   padding: 16px;
+  padding-bottom: 100%;
+  display: flex;
+  position: relative;
+  height: 0;
+
+  &__title {
+    padding: 16px;
+  }
+
+  &__subtitle {
+    padding: 16px;
+    bottom: 0;
+    position: absolute;
+  }
+
+  &__arrow {
+    padding: 16px;
+  }
+}
