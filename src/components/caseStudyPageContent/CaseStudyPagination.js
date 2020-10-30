@@ -15,7 +15,7 @@ const CaseStudyPagination = ({ prevCaseStudy, nextCaseStudy }) => {
         {/* Temporarily here while we only have 2 projects */}
         <span className="pagination-link-label">Next project -&gt;</span>
         <Link to={`/case-study/${prevCaseStudy._meta.uid}`}>
-          <h4 className="heading-02">{prevCaseStudy.project_name}</h4>
+          <span className="pagination-link-name heading-02">{prevCaseStudy.project_name}</span>
         </Link>
       </div>
     )
@@ -30,7 +30,7 @@ const CaseStudyPagination = ({ prevCaseStudy, nextCaseStudy }) => {
       <div className="pagination-link next">
         <span className="pagination-link-label">Next project -&gt;</span>
         <Link to={`/case-study/${nextCaseStudy._meta.uid}`}>
-          <h4 className="heading-02">{nextCaseStudy.project_name}</h4>
+          <span className="pagination-link-name heading-02">{nextCaseStudy.project_name}</span>
         </Link>
       </div>
     )
