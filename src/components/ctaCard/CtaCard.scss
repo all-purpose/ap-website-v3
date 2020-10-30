@@ -10,6 +10,7 @@
 
   &__title {
     padding: 16px;
+    width: 75%;
   }
 
   &__subtitle {
@@ -20,5 +21,8 @@
 
   &__arrow {
     padding: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }

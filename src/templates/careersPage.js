@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout/Layout"
 import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
+import "../components/list/List.scss"
+import "../components/photoScrollCarousel/PhotoScrollCarousel.scss"
 
 import CtaCard from "../components/ctaCard/CtaCard"
 
@@ -19,16 +21,19 @@ export const query = graphql`
               uid
             }
             mission_statement
-            culture_photo
-            culture_photo1
-            culture_photo2
-            culture_photo3
             mission_header
             job_listings {
               job_listing {
                 ... on PRISMIC_Job_listing {
                   job_title
                   location
+                  external_url {
+                    ... on PRISMIC__ExternalLink {
+                      target
+                      _linkType
+                      url
+                    }
+                  }
                 }
               }
             }
@@ -46,6 +51,11 @@ export const query = graphql`
                   wfh_photo
                 }
               }
+            }
+            remote_header
+            remote_statement
+            culture_photos {
+              photo
             }
           }
         }
@@ -76,11 +86,14 @@ const CareersPage = (props) => {
     page_description,
     mission_header,
     mission_statement,
-    culture_photo,
-    culture_photo1,
-    culture_photo2,
-    culture_photo3,
+    culture_photos,
+
     job_listings,
+    diversity_header,
+    diversity_statement,
+    remote_header,
+    remote_statement,
+    team_photos,
 
     // seo_title,
   } = props.data.prismic.allCareerss.edges[0].node
@@ -91,12 +104,13 @@ const CareersPage = (props) => {
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
       return (
-        <div className="col-sm-6 col-md-6 col-lg-3">
+        <div className="col-sm-6 col-md-6 col-lg-3 mt-8 lg:mt-0">
           <div>
             <CtaCard
               title={job_listings[index].job_listing.job_title[0].text}
               subtitle={job_listings[index].job_listing.location[0].text}
-              containerClasses={`test`}
+              cssClass={``}
+              href={job_listings[index].job_listing.external_url.url}
             />
           </div>
         </div>
@@ -105,9 +119,19 @@ const CareersPage = (props) => {
   }
   const outputBenefits = (props) => {
     return props.map((item, index) => {
-      return <li>{item.benefit[0].text}</li>
+      return <li className="list__item">{item.benefit[0].text}</li>
     })
-    // debugger
+  }
+
+  const outputWFHPhotos = (props) => {
+    return props.map((member, index) => {
+      return (
+        <img
+          className="photo-scroll-carousel__img"
+          src={member.team_member.wfh_photo.url}
+        />
+      )
+    })
   }
 
   // let seoTitle = seo_title ? seo_title : page_title
@@ -117,8 +141,7 @@ const CareersPage = (props) => {
       {/* <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}> */}
       <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections  ">
-        <div className="container mt-48">
-          {/* <hr className="theme-color mb-48 mt-0" /> */}
+        <div className="container pt-48 pb-24">
           <div className="row">
             <div className="col-md-3">
               <h2 className="">{mission_header[0].text}</h2>
@@ -126,10 +149,7 @@ const CareersPage = (props) => {
             <div className="col-md-9 ">
               <p className="heading-01">{mission_statement[0].text}</p>
 
-              {/* <Link to="#open-positions" scroll={true}>
-                <p className="mt-20 mb-48">Browse open positions ↓</p>
-              </Link> */}
-              <div className="mt-20 mb-48">
+              <div className="mt-20">
                 <AnchorLink
                   to="/careers/#open-positions"
                   title="Browse open positions ↓"
@@ -137,34 +157,48 @@ const CareersPage = (props) => {
                   stripHash
                 />
               </div>
-
-              {/* <Link to="#open-positions" scroll={true}>
-                <p className="mt-20 mb-48">Browse open positions ↓</p>
-              </Link> */}
             </div>
           </div>
         </div>
-        <div className="container">
+        <div className="container py-24">
           <div className="row">
-            <div className="col-md-6 offset-md-3">
-              <img alt={culture_photo1.alt} src={culture_photo1.url} />
-            </div>
-            <div className="col-md-3">
-              <img alt={culture_photo2.alt} src={culture_photo2.url} />
+            <div className="col-sm-6 col-md-3">
               <img
-                alt={culture_photo.alt}
-                className="mt-4"
-                src={culture_photo.url}
+                alt={culture_photos[0].photo.alt}
+                src={culture_photos[0].photo.url}
               />
+            </div>
+            <div className="col-sm-6 col-md-6">
               <img
-                className="mt-4"
-                alt={culture_photo3.alt}
-                src={culture_photo3.url}
+                alt={culture_photos[1].photo.alt}
+                src={culture_photos[1].photo.url}
+              />
+            </div>
+            <div className="col-sm-6 col-md-3">
+              <img
+                alt={culture_photos[2].photo.alt}
+                className=""
+                src={culture_photos[2].photo.url}
+              />
+            </div>
+            <div className="hidden md:block col-sm-6 col-md-3 offset-md-3">
+              <img
+                className="md:mt-8"
+                alt={culture_photos[3].photo.alt}
+                src={culture_photos[3].photo.url}
+              />
+            </div>
+            <div className="col-sm-6 col-md-3">
+              <img
+                className="md:mt-8"
+                alt={culture_photos[4].photo.alt}
+                src={culture_photos[4].photo.url}
               />
             </div>
           </div>
         </div>
         <div className="container py-24">
+          <hr className="theme-color mb-48 mt-0" />
           <div className="row" id="open-positions">
             <div className="col-sm-12 col-md-12 col-lg-3">
               <h2 className="heading-01">Open Positions</h2>
@@ -173,12 +207,13 @@ const CareersPage = (props) => {
           </div>
         </div>
         <div className="container py-24">
+          <hr className="theme-color mb-48 mt-0" />
           <div className="row">
             <div className="col-md-3">
               <h2 className="heading-01">Benefits & Perks</h2>
             </div>
             <div className="col-md-7">
-              <ul>
+              <ul className="list">
                 {outputBenefits(
                   props.data.prismic.allCareerss.edges[0].node.benefits
                 )}
@@ -193,14 +228,28 @@ const CareersPage = (props) => {
             </div>
           </div>
         </div>
-        <div className="container py-24">
+        <div className="py-24 apply-color-theme">
           <div className="row">
-            <div className="offset-md-3 col-md-6">
-              {/* <h2>{props.data.prismic.allCareerss.edges[0].node.fineprint}</h2> */}
+            <div className="offset-sm-2 offset-md-2 offset-lg-4 col-sm-8 col-md-8 col-lg-5 col-xl-4">
+              <h2 className="heading-01 pb-10">{diversity_header[0].text}</h2>
 
-              {/* {props.data.prismic.allCareerss.edges[0].node.fineprint} */}
+              <p>{diversity_statement[0].text}</p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* <div className="container py-24">
+        <div className="photo-scroll-carousel">
+          {outputWFHPhotos(team_photos)}
+        </div>
+      </div> */}
+      <div className="container py-24">
+        <div className="row items-center">
+          <div className="col-md-6">
+            <h2 className="heading-01">{remote_header[0].text}</h2>
+          </div>
+          <div className="col-md-6">{remote_statement[0].text}</div>
         </div>
       </div>
     </Layout>
