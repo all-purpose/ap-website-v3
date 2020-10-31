@@ -10,8 +10,13 @@ const CaseStudyExcerpt = ({
   projectName,
   roles,
 }) => {
+
+  if (process.env.NODE_ENV === 'development' && !image.alt) {
+    console.warn('No alt text for image: %s. Is this intentional?', image.url);
+  }
+
   const outputCaseStudyExcerptHeading = (pageType, uid, projectName) => {
-    if (pageType === "page" && uid === "work") {
+    if (pageType === "work_page" && uid === "work") {
       return (
         <h2 className="case-study-excerpt-project heading-01 sans">
           {projectName}
@@ -29,14 +34,16 @@ const CaseStudyExcerpt = ({
   return (
     <div className="case-study-excerpt clear-grid mb-16">
       <Link to={link} className="case-study-excerpt-link">
+        {image.url &&
         <div className="case-study-excerpt-image">
           <img
             className="w-full mb-4"
             loading="lazy"
             src={image.url}
-            alt={image.alt}
+            alt={image.alt || ''}
           />
         </div>
+        }
         {outputCaseStudyExcerptHeading(pageType, uid, projectName)}
         <div className="case-study-excerpt-roles body-01 mt-2">{roles}</div>
       </Link>
