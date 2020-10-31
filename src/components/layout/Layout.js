@@ -24,9 +24,7 @@ const Layout = ({ seoTitle, palette, type, uid, children }) => {
         {children}
       </main>
       <Footer />
-      {process.env.NODE_ENV === 'development' && 
       <VisibleGrid />
-      }
     </div>
   )
 }
