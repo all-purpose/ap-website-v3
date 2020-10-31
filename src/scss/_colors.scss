@@ -83,8 +83,9 @@ $palettes: (
       color: $fontcolor;
     }
 
-    .nav-link {
+    .nav-link, .skip-link {
       color: $fontcolor;
+      background-color: $bgcolor;
     }
 
     a.apply-color-theme:hover {

@@ -6,24 +6,24 @@ const ContactPageContent = (props) => {
     <div className="contact-content clear-grid">
       <div className="row">
         <div className="col-md-6">
+          <h2 className="eyebrow">The Office</h2>
           <address className="mb-8">
-            <h3 className="eyebrow">The Office</h3>
-            <h2 className="body-short-02 serif">
+            <div className="body-short-02 serif">
               402 West Pender Street
               <br />
               Vancouver, BC
-            </h2>
+            </div>
           </address>
           <p className="body-01">
             Unceded territories of the xʷməθkʷəy̓əm (Musqueam), Skwxwú7mesh
             (Squamish) and səl̓ílwətaʔɬ (Tseil-Waututh) Nations.
           </p>
-          <h3 className="eyebrow mt-16 block">Email</h3>
-          <a href="mailto:hello@allpurpose.io" className="body-short-02 serif">
+          <h2 className="eyebrow mt-16 block">Email</h2>
+          <a href="mailto:hello@allpurpose.io" className="body-short-02 serif underline">
             hello@allpurpose.io
           </a>
-          {/* <a>Learn more -> </a> */}
           <div className="pt-12">
+            <h2 className="eyebrow mt-16 block">Media Contact</h2>
             <MediaContact />
           </div>
         </div>

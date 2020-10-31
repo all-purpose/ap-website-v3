@@ -46,11 +46,23 @@ const FlexibleContentItem = ({ field }) => {
   }
 
   const outputItemContent = (type, itemContent) => {
-    
+
     if (type === 'image') {
       const image = itemContent[0];
+
+      if (!image.url) {
+        return false;
+      }
+
+      if (process.env.NODE_ENV === 'development' && !image.alt) {
+        console.warn('No alt text for image: %s. Is this intentional?', image.url);
+      }
+
       return (
-        <img src={image.url} alt={image.alt} />
+        <img 
+          src={image.url} 
+          alt={image.alt || ''} 
+        />
       );
     } else {
       return (

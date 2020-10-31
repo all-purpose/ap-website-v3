@@ -8,11 +8,24 @@ const HomePageDesignGood = ({ sectionTitle, description, logos }) => {
     }
 
     return logos.map((logo, i) => {
-      const { logo_image } = logo
+
+      const { logo_image } = logo;
+
+      if (!logo_image.url) {
+        return false;
+      }
+      
+      if (process.env.NODE_ENV === 'development' && !logo_image.alt) {
+        console.warn('No alt text for image: %s. Is this intentional?', logo_image.url);
+      }
 
       return (
         <div className="col-sm-3 flex items-center py-16" key={i}>
-          <img className="mx-auto" src={logo_image.url} alt={logo_image.alt} />
+          <img 
+            className="mx-auto" 
+            src={logo_image.url} 
+            alt={logo_image.alt || ''} 
+          />
         </div>
       )
     })
