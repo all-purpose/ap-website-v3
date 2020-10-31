@@ -3,6 +3,19 @@ import ImageGroupItem from '../imageGroupItem/ImageGroupItem';
 
 const ImageGroup = ({containerCssClass, containerId, fields}) => {
 
+  const outputImageGroup = (containerId, children) => {
+    if (containerId) {
+      return (
+        <div id={containerId} className={addCSSClasses(containerCssClass)}>{children}</div>
+      )
+    } else {
+      return (
+        <div className={addCSSClasses(containerCssClass)}>{children}</div>
+      )
+    }
+
+  }
+
   const addCSSClasses = (containerCssClass) => {
     let className = 'image-group container';
 
@@ -26,13 +39,10 @@ const ImageGroup = ({containerCssClass, containerId, fields}) => {
 
   }
 
-  return (
-    <div id={containerId ? containerId : ''} className={addCSSClasses(containerCssClass)}>
-      <div className="row">
-        {outputImageGroupItems(fields)}
-      </div>
+  return outputImageGroup(containerId, 
+    <div className="row">
+      {outputImageGroupItems(fields)}
     </div>
-
   );
 
 }
