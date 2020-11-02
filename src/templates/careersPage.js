@@ -103,7 +103,7 @@ const CareersPage = (props) => {
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
       return (
-        <div className="col-sm-6 col-md-4 col-lg-3 mt-8 lg:mt-0">
+        <div key={index} className="col-sm-6 col-md-4 col-lg-3 mt-8 lg:mt-0">
           <div>
             <CtaCard
               title={job_listings[index].job_listing.job_title[0].text}
@@ -118,7 +118,11 @@ const CareersPage = (props) => {
   }
   const outputBenefits = (props) => {
     return props.map((item, index) => {
-      return <li className="list__item">{item.benefit[0].text}</li>
+      return (
+        <li key={index} className="list__item">
+          {item.benefit[0].text}
+        </li>
+      )
     })
   }
 
