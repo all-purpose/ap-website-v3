@@ -17,6 +17,7 @@
     padding: 16px;
     bottom: 0;
     position: absolute;
+    font-size: 1.5rem;
   }
 
   &__arrow {
@@ -24,5 +25,8 @@
     position: absolute;
     right: 0;
     top: 0;
+    svg {
+      width: 2.5rem;
+    }
   }
 }

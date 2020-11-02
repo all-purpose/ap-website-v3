@@ -4,7 +4,6 @@ import Layout from "../components/layout/Layout"
 import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 import "../components/list/List.scss"
-import "../components/photoScrollCarousel/PhotoScrollCarousel.scss"
 
 import CtaCard from "../components/ctaCard/CtaCard"
 
@@ -57,6 +56,7 @@ export const query = graphql`
             culture_photos {
               photo
             }
+            seo_title
           }
         }
       }
@@ -66,6 +66,7 @@ export const query = graphql`
 
 const CareersPage = (props) => {
   console.log(props)
+
   const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
@@ -87,24 +88,22 @@ const CareersPage = (props) => {
     mission_header,
     mission_statement,
     culture_photos,
-
     job_listings,
     diversity_header,
     diversity_statement,
     remote_header,
     remote_statement,
     team_photos,
-
-    // seo_title,
+    seo_title,
   } = props.data.prismic.allCareerss.edges[0].node
-  // debugger
 
   const { uid, type } = _meta
+  // debugger
 
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
       return (
-        <div className="col-sm-6 col-md-6 col-lg-3 mt-8 lg:mt-0">
+        <div className="col-sm-6 col-md-4 col-lg-3 mt-8 lg:mt-0">
           <div>
             <CtaCard
               title={job_listings[index].job_listing.job_title[0].text}
@@ -123,22 +122,15 @@ const CareersPage = (props) => {
     })
   }
 
-  const outputWFHPhotos = (props) => {
-    return props.map((member, index) => {
-      return (
-        <img
-          className="photo-scroll-carousel__img"
-          src={member.team_member.wfh_photo.url}
-        />
-      )
-    })
-  }
-
-  // let seoTitle = seo_title ? seo_title : page_title
+  let seoTitle = seo_title ? seo_title : page_title
 
   return (
-    <Layout palette={selectedPalette} type={type} uid={uid}>
-      {/* <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}> */}
+    <Layout
+      seoTitle={seoTitle[0].text}
+      palette={selectedPalette}
+      type={type}
+      uid={uid}
+    >
       <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections  ">
         <div className="container pt-48 pb-24">
@@ -170,14 +162,15 @@ const CareersPage = (props) => {
             </div>
             <div className="col-sm-6 col-md-6">
               <img
+                className="mt-8 sm:mt-0"
                 alt={culture_photos[1].photo.alt}
                 src={culture_photos[1].photo.url}
               />
             </div>
-            <div className="col-sm-6 col-md-3">
+            <div className="col-sm-6 col-md-3 flex items-end">
               <img
                 alt={culture_photos[2].photo.alt}
-                className=""
+                className="mt-8 md:mt-8"
                 src={culture_photos[2].photo.url}
               />
             </div>
@@ -190,7 +183,7 @@ const CareersPage = (props) => {
             </div>
             <div className="col-sm-6 col-md-3">
               <img
-                className="md:mt-8"
+                className="mt-8 md:mt-8"
                 alt={culture_photos[4].photo.alt}
                 src={culture_photos[4].photo.url}
               />
@@ -219,7 +212,7 @@ const CareersPage = (props) => {
                 )}
               </ul>
 
-              <p class="py-24">
+              <p className="py-24">
                 {
                   props.data.prismic.allCareerss.edges[0].node.fineprint[0]
                     .item[0].text
@@ -239,12 +232,7 @@ const CareersPage = (props) => {
         </div>
       </div>
 
-      {/* <div className="container py-24">
-        <div className="photo-scroll-carousel">
-          {outputWFHPhotos(team_photos)}
-        </div>
-      </div> */}
-      <div className="container py-24">
+      <div className="container py-48">
         <div className="row items-center">
           <div className="col-md-6">
             <h2 className="heading-01">{remote_header[0].text}</h2>
