@@ -98,7 +98,7 @@ const CareersPage = (props) => {
   } = props.data.prismic.allCareerss.edges[0].node
 
   const { uid, type } = _meta
-  // debugger
+
 
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
@@ -126,11 +126,12 @@ const CareersPage = (props) => {
     })
   }
 
-  let seoTitle = seo_title ? seo_title : page_title
+  let seoTitle = seo_title ? seo_title : page_title[0].text
+
 
   return (
     <Layout
-      seoTitle={seoTitle[0].text}
+      seoTitle={seoTitle  }
       palette={selectedPalette}
       type={type}
       uid={uid}
@@ -226,12 +227,17 @@ const CareersPage = (props) => {
           </div>
         </div>
         <div className="py-24 apply-color-theme">
+          <div className="container">
           <div className="row">
-            <div className="offset-sm-2 offset-md-2 offset-lg-4 col-sm-8 col-md-8 col-lg-5 col-xl-4">
+           
+
+            <div className="offset-sm-2 offset-md-2 offset-lg-3 col-sm-8 col-md-8 col-lg-6 col-xl-6 offset-xl-3">
               <h2 className="heading-01 pb-10">{diversity_header[0].text}</h2>
 
               <p>{diversity_statement[0].text}</p>
             </div>
+            </div>
+            
           </div>
         </div>
       </div>

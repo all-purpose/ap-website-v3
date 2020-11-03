@@ -4,8 +4,7 @@ import { RichText } from "prismic-reactjs"
 import "./CtaCard.scss"
 
 const CtaCard = (props) => {
-  //   debugger
-  // If no Call to Action just return
+  
 
   const { title, subtitle, href } = props
 
@@ -19,13 +18,12 @@ const CtaCard = (props) => {
   //   }
 
   return (
-    <div className={``}>
+    <div>
       <a className="cta-card" href={href}>
         <h3 className="cta-card__title">{title}</h3>
         <div className="cta-card__arrow">
           <svg
             version="1.1"
-            id="icon"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             x="0px"
@@ -36,7 +34,6 @@ const CtaCard = (props) => {
             style={{ enableBackground: "new 0 0 32 32" }}
           >
             <rect
-              id="_Transparent_Rectangle_"
               className="st0"
               width="32"
               height="32"
