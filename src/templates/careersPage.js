@@ -102,7 +102,7 @@ const CareersPage = (props) => {
 
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
-      // debugger
+  
       return (
         job.job_listing ? (
         <div key={index} className={`${index >= 3 ? 'lg:mt-16' : ''} ${index!=0 && index % 3 == 0 ? 'offset-lg-3' : ''} col-sm-6 col-md-4 col-lg-3 mt-8 `}>
