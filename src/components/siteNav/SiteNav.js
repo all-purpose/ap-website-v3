@@ -37,6 +37,13 @@ const navigationQuery = graphql`
                     uid
                   }
                 }
+                ... on PRISMIC_Careers {
+                  prismic_page_title
+                  seo_title
+                  _meta {
+                    uid
+                  }
+                }
               }
             }
           }
@@ -57,7 +64,7 @@ const SiteNav = () => {
           <li key={link.page_link._meta.uid}>
             <Link to={`/${link.page_link._meta.uid}`} className="nav-link ">
               {link.nav_link_label}
-            </Link>
+            </Link> 
           </li>
         )
       }
