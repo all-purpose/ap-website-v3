@@ -102,17 +102,19 @@ const CareersPage = (props) => {
 
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
+      // debugger
       return (
-        job.job_listing ? (<div key={index} className="col-sm-6 col-md-4 col-lg-3 mt-8 lg:mt-0">
-        <div>
-          <CtaCard
-            title={job.job_listing.job_title[0].text}
-            subtitle={job.job_listing.location[0].text}
-            cssClass={``}
-            href={job.job_listing.external_url.url}
-          />
-        </div>
-      </div>) : ''
+        job.job_listing ? (
+        <div key={index} className={`${index >= 3 ? 'lg:mt-16' : ''} ${index!=0 && index % 3 == 0 ? 'offset-lg-3' : ''} col-sm-6 col-md-4 col-lg-3 mt-8 `}>
+          <div>
+            <CtaCard
+              title={job.job_listing.job_title[0].text}
+              subtitle={job.job_listing.location[0].text}
+              cssClass=''
+              href={job.job_listing.external_url.url}
+            />
+          </div>
+        </div>) : ''
         
       )
     })
