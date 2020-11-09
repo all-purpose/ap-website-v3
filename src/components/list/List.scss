@@ -1,0 +1,11 @@
+.list {
+  .list__item:before {
+    content: "\2013";
+    position: relative;
+    margin-right: 10px;
+  }
+
+  .list__item + .list__item {
+    margin-top: 10px;
+  }
+}
