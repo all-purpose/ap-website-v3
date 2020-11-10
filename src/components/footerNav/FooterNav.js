@@ -35,6 +35,11 @@ const navigationQuery = graphql`
                     uid
                   }
                 }
+                ... on PRISMIC_Careers {
+                  _meta {
+                    uid
+                  }
+                }
               }
             }
             footer_navigation_accessible_name
