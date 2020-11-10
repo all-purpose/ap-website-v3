@@ -38,8 +38,6 @@ const navigationQuery = graphql`
                   }
                 }
                 ... on PRISMIC_Careers {
-                  prismic_page_title
-                  seo_title
                   _meta {
                     uid
                   }
