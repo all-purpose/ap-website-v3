@@ -129,7 +129,7 @@ const CareersPage = (props) => {
           </div>
         )
         // if there are more than 1 job listings
-      } else if (job !== null && job.job_listing && job_listings.length > 1) {
+      } else if (job.job_listing && job_listings.length > 1) {
         return (
           <div
             key={index}
@@ -148,6 +148,7 @@ const CareersPage = (props) => {
           </div>
         )
       }
+      return null
     })
   }
   const outputBenefits = (props) => {
