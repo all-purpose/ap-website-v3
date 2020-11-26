@@ -93,30 +93,61 @@ const CareersPage = (props) => {
     diversity_statement,
     remote_header,
     remote_statement,
-    team_photos,
     seo_title,
   } = props.data.prismic.allCareerss.edges[0].node
 
   const { uid, type } = _meta
 
+  const generalApps = job_listings.find(
+    (job) => job.job_listing.job_title[0].text === "General Applications"
+  )
 
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
-  
-      return (
-        job.job_listing ? (
-        <div key={index} className={`${index >= 3 ? 'lg:mt-16' : ''} ${index!=0 && index % 3 == 0 ? 'offset-lg-3' : ''} col-sm-6 col-md-4 col-lg-3 mt-8 `}>
-          <div>
-            <CtaCard
-              title={job.job_listing.job_title[0].text}
-              subtitle={job.job_listing.location[0].text}
-              cssClass=''
-              href={job.job_listing.external_url.url}
-            />
+      // if there's only 1 job listing and it's the General Application posting, or if there's no job listings
+      if (
+        (job_listings.length === 1 &&
+          job.job_listing.job_title[0].text === "General Applications") ||
+        job_listings.length === 0
+      ) {
+        return (
+          <div
+            key={index}
+            className={`col-sm-6 col-md-6 col-lg-6 mt-4 lg:mt-0`}
+          >
+            <p>
+              We don’t currently have any open positions but we’re always
+              looking for great folks!{" "}
+              <a
+                className="underline"
+                href={generalApps.job_listing.external_url.url}
+              >
+                Send us your details
+              </a>
+              , and let’s talk.
+            </p>
           </div>
-        </div>) : ''
-        
-      )
+        )
+        // if there are more than 1 job listings
+      } else if (job !== null && job.job_listing && job_listings.length > 1) {
+        return (
+          <div
+            key={index}
+            className={`${index >= 3 ? "lg:mt-16" : ""} ${
+              index !== 0 && index % 3 === 0 ? "offset-lg-3" : ""
+            } col-sm-6 col-md-4 col-lg-3 mt-8 `}
+          >
+            <div>
+              <CtaCard
+                title={job.job_listing.job_title[0].text}
+                subtitle={job.job_listing.location[0].text}
+                cssClass=""
+                href={job.job_listing.external_url.url}
+              />
+            </div>
+          </div>
+        )
+      }
     })
   }
   const outputBenefits = (props) => {
@@ -131,14 +162,8 @@ const CareersPage = (props) => {
 
   let seoTitle = seo_title ? seo_title : page_title[0].text
 
-
   return (
-    <Layout
-      seoTitle={seoTitle  }
-      palette={selectedPalette}
-      type={type}
-      uid={uid}
-    >
+    <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral title={page_title} description={page_description} />
       <div className="page-sections  ">
         <div className="container pt-48 pb-24">
@@ -201,19 +226,40 @@ const CareersPage = (props) => {
         <div className="container py-24">
           <hr className="theme-color mb-48 mt-0" />
           <div className="row" id="open-positions">
-            <div className="col-sm-12 col-md-12 col-lg-3">
+            <div
+              className={`col-sm-12 ${
+                job_listings.length > 1 ? "col-md-12" : "col-md-6"
+              } col-lg-3`}
+            >
               <h2 className="heading-01">Open Positions</h2>
             </div>
-            {outputJobListings(props)}
+            {outputJobListings()}
+            <div className="col-lg-6 offset-lg-3 ">
+              {job_listings.length > 1 ? (
+                <p className="mt-12">
+                  Don’t see anything that fits your expertise? Feel free to
+                  apply to the{" "}
+                  <a
+                    className=""
+                    href={generalApps.job_listing.external_url.url}
+                  >
+                    General Applications{" "}
+                  </a>
+                  opening and we will keep you in mind for future opportunities!
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
         <div className="container py-24">
           <hr className="theme-color mb-48 mt-0" />
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-6 col-lg-3">
               <h2 className="heading-01">Benefits & Perks</h2>
             </div>
-            <div className="col-md-7">
+            <div className="col-md-6">
               <ul className="list">
                 {outputBenefits(
                   props.data.prismic.allCareerss.edges[0].node.benefits
@@ -231,16 +277,13 @@ const CareersPage = (props) => {
         </div>
         <div className="py-24 apply-color-theme">
           <div className="container">
-          <div className="row">
-           
+            <div className="row">
+              <div className="offset-sm-2 offset-md-2 offset-lg-3 col-sm-8 col-md-8 col-lg-6 col-xl-6 offset-xl-3">
+                <h2 className="heading-01 pb-10">{diversity_header[0].text}</h2>
 
-            <div className="offset-sm-2 offset-md-2 offset-lg-3 col-sm-8 col-md-8 col-lg-6 col-xl-6 offset-xl-3">
-              <h2 className="heading-01 pb-10">{diversity_header[0].text}</h2>
-
-              <p>{diversity_statement[0].text}</p>
+                <p>{diversity_statement[0].text}</p>
+              </div>
             </div>
-            </div>
-            
           </div>
         </div>
       </div>
