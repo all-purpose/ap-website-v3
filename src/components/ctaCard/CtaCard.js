@@ -1,11 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
-import { RichText } from "prismic-reactjs"
 import "./CtaCard.scss"
 
 const CtaCard = (props) => {
-  
-
   const { title, subtitle, href } = props
 
   //   const addCTACSSClasses = (cssClass) => {
