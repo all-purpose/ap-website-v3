@@ -65,7 +65,7 @@ export const query = graphql`
 `
 
 const CareersPage = (props) => {
-  console.log(props)
+  // console.log(props)
 
   const [selectedPalette, setSelectedPalette] = useState(null)
 
@@ -104,7 +104,7 @@ const CareersPage = (props) => {
 
   const outputJobListings = (props) => {
     return job_listings.map((job, index) => {
-      // if there's only 1 job listing and it's the General Application posting, or if there's no job listings
+      // if there's only 1 job listing and it's the General Application posting, or if there's no job listings, show a message about not having any open positions. This is to prevent a situation when one CtaCard shows up, looks weird when there's only one stand alone CtaCard.
       if (
         (job_listings.length === 1 &&
           job.job_listing.job_title[0].text === "General Applications") ||
@@ -128,7 +128,7 @@ const CareersPage = (props) => {
             </p>
           </div>
         )
-        // if there are more than 1 job listings
+        // if there are more than 1 job listings, let's show the CTACards
       } else if (job.job_listing && job_listings.length > 1) {
         return (
           <div
@@ -235,9 +235,12 @@ const CareersPage = (props) => {
               <h2 className="heading-01">Open Positions</h2>
             </div>
             {outputJobListings()}
+            {/* Only show this message when there's more than 1 job listing, in theory 'General Applications' will always be a job listing that we have */}
             <div className="col-lg-6 offset-lg-3 ">
-              {job_listings.length > 1 ? (
-                <p className="mt-12">
+              {job_listings.length > 1 &&
+              job_listings[0].job_listing.job_title[0].text ===
+                "General Applications" ? (
+                <p className="mt-16">
                   Don’t see anything that fits your expertise? Feel free to
                   apply to the{" "}
                   <a
