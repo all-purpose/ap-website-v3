@@ -257,7 +257,7 @@ const CareersPage = (props) => {
           <hr className="theme-color mb-48 mt-0" />
           <div className="row">
             <div className="col-md-6 col-lg-3">
-              <h2 className="heading-01 sm:pb-10">Benefits & Perks</h2>
+              <h2 className="heading-01 sm:pb-0 pb-10">Benefits & Perks</h2>
             </div>
             <div className="col-md-6">
               <ul className="list">
@@ -279,7 +279,9 @@ const CareersPage = (props) => {
           <div className="container">
             <div className="row">
               <div className="offset-sm-2 offset-md-2 offset-lg-3 col-sm-8 col-md-8 col-lg-6 col-xl-6 offset-xl-3">
-                <h2 className="heading-01 pb-10">{diversity_header[0].text}</h2>
+                <h2 className="heading-01 pb-10 md:pb-0">
+                  {diversity_header[0].text}
+                </h2>
 
                 <p>{diversity_statement[0].text}</p>
               </div>
@@ -293,7 +295,7 @@ const CareersPage = (props) => {
           <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 ">
             <div className="center">
               <img
-                className="mb-48 mx-auto"
+                className="mb-16 md:mb-48 mx-auto"
                 alt={
                   props.data.prismic.allCareerss.edges[0].node.remote_team.alt
                 }
@@ -306,7 +308,9 @@ const CareersPage = (props) => {
         </div>
         <div className="row items-center">
           <div className="col-md-6">
-            <h2 className="heading-01 sm:pb-10">{remote_header[0].text}</h2>
+            <h2 className="heading-01 pb-10 md:pb-0">
+              {remote_header[0].text}
+            </h2>
           </div>
           <div className="col-md-6">{remote_statement[0].text}</div>
         </div>
