@@ -44,18 +44,13 @@ export const query = graphql`
             benefits {
               benefit
             }
-            team_photos {
-              team_member {
-                ... on PRISMIC_Team_member {
-                  wfh_photo
-                }
-              }
-            }
+
             remote_header
             remote_statement
             culture_photos {
               photo
             }
+            remote_team
             seo_title
           }
         }
@@ -66,6 +61,7 @@ export const query = graphql`
 
 const CareersPage = (props) => {
   // console.log(props)
+  // debugger
 
   const [selectedPalette, setSelectedPalette] = useState(null)
 
@@ -261,7 +257,7 @@ const CareersPage = (props) => {
           <hr className="theme-color mb-48 mt-0" />
           <div className="row">
             <div className="col-md-6 col-lg-3">
-              <h2 className="heading-01">Benefits & Perks</h2>
+              <h2 className="heading-01 sm:pb-10">Benefits & Perks</h2>
             </div>
             <div className="col-md-6">
               <ul className="list">
@@ -293,9 +289,24 @@ const CareersPage = (props) => {
       </div>
 
       <div className="container py-48">
+        <div className="row">
+          <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 ">
+            <div className="center">
+              <img
+                className="mb-48 mx-auto"
+                alt={
+                  props.data.prismic.allCareerss.edges[0].node.remote_team.alt
+                }
+                src={
+                  props.data.prismic.allCareerss.edges[0].node.remote_team.url
+                }
+              />
+            </div>
+          </div>
+        </div>
         <div className="row items-center">
           <div className="col-md-6">
-            <h2 className="heading-01">{remote_header[0].text}</h2>
+            <h2 className="heading-01 sm:pb-10">{remote_header[0].text}</h2>
           </div>
           <div className="col-md-6">{remote_statement[0].text}</div>
         </div>
