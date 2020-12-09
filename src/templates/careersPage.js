@@ -44,13 +44,6 @@ export const query = graphql`
             benefits {
               benefit
             }
-            team_photos {
-              team_member {
-                ... on PRISMIC_Team_member {
-                  wfh_photo
-                }
-              }
-            }
             remote_header
             remote_statement
             culture_photos {
