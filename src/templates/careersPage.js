@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/Layout"
 import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
@@ -51,6 +51,12 @@ export const query = graphql`
               photo
             }
             remote_team
+            remote_team_vid {
+              ... on PRISMIC__FileLink {
+                _linkType
+                url
+              }
+            }
             seo_title
           }
         }
@@ -61,7 +67,6 @@ export const query = graphql`
 
 const CareersPage = (props) => {
   // console.log(props)
-  // debugger
 
   const [selectedPalette, setSelectedPalette] = useState(null)
 
@@ -93,6 +98,11 @@ const CareersPage = (props) => {
   } = props.data.prismic.allCareerss.edges[0].node
 
   const { uid, type } = _meta
+
+  const videoRef = useRef()
+  const setPlayBack = () => {
+    videoRef.current.playbackRate = 1.6
+  }
 
   const generalApps = job_listings.find(
     (job) => job.job_listing.job_title[0].text === "General Applications"
@@ -294,15 +304,25 @@ const CareersPage = (props) => {
         <div className="row">
           <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 ">
             <div className="center">
-              <img
-                className="mb-16 md:mb-48 mx-auto"
-                alt={
-                  props.data.prismic.allCareerss.edges[0].node.remote_team.alt
-                }
-                src={
-                  props.data.prismic.allCareerss.edges[0].node.remote_team.url
-                }
-              />
+              <video
+                className="img-variant mb-16 md:mb-48 mx-auto"
+                autoPlay
+                loop
+                muted
+                playsinline
+                id="remote-team-vid"
+                ref={videoRef}
+                onCanPlay={() => setPlayBack()}
+                title="Clip of the All Purpose team waving"
+              >
+                <source
+                  src={
+                    props.data.prismic.allCareerss.edges[0].node.remote_team_vid
+                      .url
+                  }
+                  type="video/mp4"
+                />
+              </video>
             </div>
           </div>
         </div>
