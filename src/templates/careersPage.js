@@ -50,7 +50,6 @@ export const query = graphql`
             culture_photos {
               photo
             }
-            remote_team
             remote_team_vid {
               ... on PRISMIC__FileLink {
                 _linkType
