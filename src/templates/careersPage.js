@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout/Layout"
 import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
@@ -49,6 +49,12 @@ export const query = graphql`
             culture_photos {
               photo
             }
+            remote_team_vid {
+              ... on PRISMIC__FileLink {
+                _linkType
+                url
+              }
+            }
             seo_title
           }
         }
@@ -90,6 +96,11 @@ const CareersPage = (props) => {
   } = props.data.prismic.allCareerss.edges[0].node
 
   const { uid, type } = _meta
+
+  const videoRef = useRef()
+  const setPlayBack = () => {
+    videoRef.current.playbackRate = 1.6
+  }
 
   const generalApps = job_listings.find(
     (job) => job.job_listing.job_title[0].text === "General Applications"
@@ -254,7 +265,7 @@ const CareersPage = (props) => {
           <hr className="theme-color mb-48 mt-0" />
           <div className="row">
             <div className="col-md-6 col-lg-3">
-              <h2 className="heading-01">Benefits & Perks</h2>
+              <h2 className="heading-01 sm:pb-0 pb-10">Benefits & Perks</h2>
             </div>
             <div className="col-md-6">
               <ul className="list">
@@ -276,7 +287,9 @@ const CareersPage = (props) => {
           <div className="container">
             <div className="row">
               <div className="offset-sm-2 offset-md-2 offset-lg-3 col-sm-8 col-md-8 col-lg-6 col-xl-6 offset-xl-3">
-                <h2 className="heading-01 pb-10">{diversity_header[0].text}</h2>
+                <h2 className="heading-01 pb-10 md:pb-0">
+                  {diversity_header[0].text}
+                </h2>
 
                 <p>{diversity_statement[0].text}</p>
               </div>
@@ -286,9 +299,36 @@ const CareersPage = (props) => {
       </div>
 
       <div className="container py-48">
+        <div className="row">
+          <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 ">
+            <div className="center">
+              <video
+                className="img-variant mb-16 md:mb-48 mx-auto"
+                autoPlay
+                loop
+                muted
+                playsinline
+                id="remote-team-vid"
+                ref={videoRef}
+                onCanPlay={() => setPlayBack()}
+                title="Clip of the All Purpose team waving"
+              >
+                <source
+                  src={
+                    props.data.prismic.allCareerss.edges[0].node.remote_team_vid
+                      .url
+                  }
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+        </div>
         <div className="row items-center">
           <div className="col-md-6">
-            <h2 className="heading-01">{remote_header[0].text}</h2>
+            <h2 className="heading-01 pb-10 md:pb-0">
+              {remote_header[0].text}
+            </h2>
           </div>
           <div className="col-md-6">{remote_statement[0].text}</div>
         </div>
