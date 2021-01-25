@@ -88,58 +88,6 @@ module.exports = {
           team_page: require('./custom_types/team_page.json'),
           work_page: require('./custom_types/work_page.json'),
         }
-        // pages: [
-        //   {
-        //     type: "Page", // need capitalize
-        //     match: "/:uid",
-        //     previewPath: "/",
-        //     component: require.resolve("./src/templates/page.js"),
-        //   },
-        //   {
-        //     type: "Team Page",
-        //     match: "/team",
-        //     previewPath: "/",
-        //     component: require.resolve("./src/templates/teamPage.js"),
-        //   },
-        //   {
-        //     type: "Work Page",
-        //     match: "/work",
-        //     previewPath: "/",
-        //     component: require.resolve("./src/templates/workPage.js"),
-        //   },
-        //   {
-        //     type: "News Page",
-        //     match: "/news",
-        //     previewPath: "/",
-        //     component: require.resolve("./src/templates/newsPage.js"),
-        //   },
-        //   {
-        //     type: "Contact Page",
-        //     match: "/contact",
-        //     previewPath: "/",
-        //     component: require.resolve("./src/templates/contactPage.js"),
-        //   },
-        //   {
-        //     type: "Case Study",
-        //     match: "/case-study/:uid",
-        //     previewPath: "/case-study",
-        //     sortBy: "order_ASC",
-        //     component: require.resolve("./src/templates/caseStudy.js"),
-        //   },
-        //   {
-        //     type: "News Article",
-        //     match: "/news/:uid",
-        //     previewPath: "/news",
-        //     sortBy: "meta_firstPublicationDate_DESC",
-        //     component: require.resolve("./src/templates/newsArticle.js"),
-        //   },
-        //   {
-        //     type: "Careers",
-        //     match: "/careers",
-        //     previewPath: "/",
-        //     component: require.resolve("./src/templates/careersPage.js"),
-        //   },
-        //],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
