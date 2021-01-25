@@ -3,7 +3,7 @@ import moment from "moment"
 import { Link } from "gatsby"
 import { RichText } from "prismic-reactjs"
 
-const NewsArticleExcerpt = ({ slug, pubDate, title, featText }) => {
+const NewsArticleExcerpt = ({ slug, pubDate, title }) => {
   return (
     <article className="news-article mb-16">
       <Link to={`/news/${slug}`} className="news-article-link ">
@@ -17,9 +17,6 @@ const NewsArticleExcerpt = ({ slug, pubDate, title, featText }) => {
         <h2 className="news-article-title heading-01 sans ">
           {RichText.asText(title)}
         </h2>
-        {/* <div className="news-article-summary">
-          <RichText render={featText} />
-        </div> */}
       </Link>
     </article>
   )

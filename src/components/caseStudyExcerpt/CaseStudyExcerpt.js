@@ -4,7 +4,7 @@ import "./CaseStudyExcerpt.scss"
 
 const CaseStudyExcerpt = ({
   pageType,
-  uid,
+  pageUid,
   link,
   image,
   projectName,
@@ -15,8 +15,8 @@ const CaseStudyExcerpt = ({
     console.warn('No alt text for image: %s. Is this intentional?', image.url);
   }
 
-  const outputCaseStudyExcerptHeading = (pageType, uid, projectName) => {
-    if (pageType === "work_page" && uid === "work") {
+  const outputCaseStudyExcerptHeading = (pageType, pageUid, projectName) => {
+    if (pageType === "work_page" && pageUid === "work") {
       return (
         <h2 className="case-study-excerpt-project heading-01 sans">
           {projectName}
@@ -44,7 +44,7 @@ const CaseStudyExcerpt = ({
           />
         </div>
         }
-        {outputCaseStudyExcerptHeading(pageType, uid, projectName)}
+        {outputCaseStudyExcerptHeading(pageType, pageUid, projectName)}
         <div className="case-study-excerpt-roles body-01 mt-2">{roles}</div>
       </Link>
     </div>

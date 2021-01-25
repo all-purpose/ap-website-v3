@@ -4,7 +4,7 @@ import CaseStudyExcerpts from "../caseStudyExcerpts/CaseStudyExcerpts"
 
 const HomePageProjects = ({
   pageType,
-  uid,
+  pageUid,
   sectionTitle,
   brandTitle,
   projectsAccessibleName,
@@ -24,7 +24,7 @@ const HomePageProjects = ({
       </div>
       <CaseStudyExcerpts
         pageType={pageType}
-        uid={uid}
+        pageUid={pageUid}
         accessibleName={projectsAccessibleName}
         fields={projects}
       />

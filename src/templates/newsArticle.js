@@ -8,25 +8,26 @@ import CallToAction from "../components/callToAction/CallToAction"
 
 export const query = graphql`
   query NewsArticleQuery($uid: String) {
-    prismic {
-      allNews_articles(uid: $uid) {
-        edges {
-          node {
-            _meta {
-              type
-              uid
-              firstPublicationDate
+    allPrismicNewsArticle(filter: {uid: {eq: $uid}}) {
+      edges {
+        node {
+          data {
+            article_feature_text {
+              raw
             }
-            article_feature_text
-            article_title
+            article_title {
+              raw
+            }
             seo_title
             body {
-              ... on PRISMIC_News_articleBodyFlexible_content_section {
-                type
-                fields {
-                  item_content
-                  item_css_class
+              ... on PrismicNewsArticleBodyFlexibleContentSection {
+                slice_type
+                items {
+                  item_content {
+                    raw
+                  }
                   item_id
+                  item_css_class
                 }
                 primary {
                   container_css_class
@@ -35,22 +36,34 @@ export const query = graphql`
               }
             }
             call_to_action {
-              ... on PRISMIC_Call_to_action {
-                call_to_action_statement
-                call_to_action_buttons {
-                  button_action_text
-                  button_sub_text
-                  button_link_target {
-                    ... on PRISMIC_Contact_page {
-                      _meta {
-                        uid
+              document {
+                ... on PrismicCallToAction {
+                  data {
+                    call_to_action_css_class
+                    call_to_action_buttons {
+                      button_action_text
+                      button_sub_text {
+                        raw
                       }
+                      button_link_target {
+                        document {
+                          ... on PrismicContactPage {
+                            uid
+                          }
+                        }
+                      }
+                    }
+                    call_to_action_statement {
+                      raw
                     }
                   }
                 }
               }
             }
           }
+          first_publication_date
+          uid
+          type
         }
       }
     }
@@ -72,16 +85,19 @@ const NewsArticle = (props) => {
     setSelectedPalette(`palette-${random}`)
   }, [])
 
+  const node = props.data.allPrismicNewsArticle.edges[0].node
+
+  console.log(node)
+
   const {
-    _meta,
     article_title,
     article_feature_text,
     seo_title,
     call_to_action,
     body,
-  } = props.data.prismic.allNews_articles.edges[0].node
+  } = node.data
 
-  const { type, uid, firstPublicationDate } = _meta
+  const { type, uid, first_publication_date } = node
 
   let seoTitle = seo_title ? seo_title : article_title
 
@@ -93,16 +109,16 @@ const NewsArticle = (props) => {
       uid={uid}
     >
       <PageHeaderGeneral
-        title={article_title}
-        description={article_feature_text}
+        title={article_title.raw}
+        description={article_feature_text.raw}
         headingClass="heading-02 mb-4"
       />
       <article className="container py-32">
         <div className="row">
           <footer className="col-md-3">
             <div className="news-article-pub-date eyebrow">
-              <time dateTime={firstPublicationDate}>
-                {moment.utc(firstPublicationDate).format("MMMM Do YYYY")}
+              <time dateTime={first_publication_date}>
+                {moment.utc(first_publication_date).format("MMMM Do YYYY")}
               </time>
             </div>
           </footer>

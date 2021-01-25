@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "All Purpose",
   "dependencies": {
-    "@prismicio/gatsby-source-prismic-graphql": "^3.6.10",
     "bootstrap": "^4.5.0",
     "gatsby": "^2.20.20",
     "gatsby-cli": "^2.12.107",
@@ -20,6 +19,7 @@
     "gatsby-plugin-sharp": "^2.5.3",
     "gatsby-plugin-sitemap": "^2.3.1",
     "gatsby-source-filesystem": "^2.2.2",
+    "gatsby-source-prismic": "^3.3.2",
     "gatsby-transformer-remark": "^2.8.8",
     "gatsby-transformer-sharp": "^2.4.3",
     "moment": "^2.27.0",
@@ -37,7 +37,6 @@
     "prettier": "^2.0.5"
   },
   "resolutions": {
-    "@prismicio/gatsby-source-prismic-graphql/**/dot-prop": "^5.1.1",
     "gatsby/**/dot-prop": "^5.1.1"
   },
   "keywords": [

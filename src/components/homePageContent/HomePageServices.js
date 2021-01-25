@@ -17,9 +17,9 @@ const HomePageServices = ({
       return (
         <div key={i} className="col-12 col-lg-3">
           <div className="sr-only">
-            <RichText render={service_category_title} />
+            <RichText render={service_category_title.raw} />
           </div>
-          <RichText render={services_listing} />
+          <RichText render={services_listing.raw} />
         </div>
       )
     })

@@ -4,11 +4,11 @@ import {RichText} from 'prismic-reactjs'
 
 const landAcknowledgementQuery = graphql`
   {
-    prismic {
-      allFooters {
-        edges {
-          node {
-            land_acknowledgment_statement
+    allPrismicFooter {
+      nodes {
+        data {
+          land_acknowledgment_statement {
+            raw
           }
         }
       }
@@ -22,7 +22,7 @@ const LandAcknowledgement = () => {
     <StaticQuery
       query={`${landAcknowledgementQuery}`}
       render={(data) => {
-        const statement = data.prismic.allFooters.edges[0].node.land_acknowledgment_statement;
+        const statement = data.allPrismicFooter.nodes[0].data.land_acknowledgment_statement.raw;
         if (!statement) {
           return false;
         }

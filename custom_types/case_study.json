@@ -1,0 +1,386 @@
+{
+    "Main" : {
+      "project_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Project Name",
+          "placeholder" : "Enter the name of the case study project"
+        }
+      },
+      "order" : {
+        "type" : "Number",
+        "config" : {
+          "label" : "Order",
+          "placeholder" : "Enter an integer gte 1"
+        }
+      },
+      "case_study_page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2, strong, em, embed",
+          "label" : "Case Study Page Title",
+          "placeholder" : "Enter a title...",
+          "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+        }
+      },
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Slug",
+          "placeholder" : "Enter a URL-friendly slug (e.g. kumho-swift)"
+        }
+      },
+      "our_role" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, strong, em, hyperlink, embed, list-item, o-list-item",
+          "allowTargetBlank" : true,
+          "label" : "Our Role",
+          "placeholder" : "Add a description of the role played in project",
+          "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+        }
+      },
+      "in_a_nutshell" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, strong, em",
+          "label" : "In a Nutshell",
+          "placeholder" : "Add a short description for the project",
+          "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+        }
+      },
+      "text_color" : {
+        "type" : "Color",
+        "config" : {
+          "label" : "Text color"
+        }
+      },
+      "highlight_color" : {
+        "type" : "Color",
+        "config" : {
+          "label" : "Highlight Color"
+        }
+      },
+      "background_header_color" : {
+        "type" : "Color",
+        "config" : {
+          "label" : "Background Header Color"
+        }
+      },
+      "case_study_excerpt_image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ ],
+          "label" : "Case Study Excerpt Image"
+        }
+      },
+      "case_study_excerpt_roles" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Case Study Excerpt Roles",
+          "placeholder" : "Add roles for project (e.g. Web development, Branding..)"
+        }
+      },
+      "choose_roles" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "role" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "service" ],
+                "label" : "Role",
+                "placeholder" : "Choose a role"
+              }
+            }
+          },
+          "label" : "Choose one or more roles for the project"
+        }
+      }
+    },
+    "Content" : {
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : {
+            "case_study_main" : [ ],
+            "block_quote" : [ ],
+            "video_embed" : [ ]
+          },
+          "choices" : {
+            "case_study_main" : {
+              "type" : "Slice",
+              "fieldset" : "Case Study Main",
+              "description" : "Main section on case study page",
+              "icon" : "view_week",
+              "display" : "list",
+              "non-repeat" : {
+                "section_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section ID",
+                    "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                  }
+                },
+                "section_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section CSS Class",
+                    "placeholder" : "Add one or more class names (space separated)"
+                  }
+                },
+                "section_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "single" : "heading2, heading3, heading4, heading5, heading6",
+                    "label" : "Section Title",
+                    "placeholder" : "Enter a case study section title",
+                    "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                  }
+                },
+                "section_content" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, preformatted, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+                    "allowTargetBlank" : true,
+                    "label" : "Section Content",
+                    "placeholder" : "Enter the case study section content...",
+                    "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                  }
+                }
+              },
+              "repeat" : { }
+            },
+            "flexible_content_section" : {
+              "type" : "Slice",
+              "fieldset" : "Flexible Content Section",
+              "description" : "Grid-based section with variable content options",
+              "icon" : "web",
+              "display" : "list",
+              "non-repeat" : {
+                "container_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Container ID",
+                    "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                  }
+                },
+                "container_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Container CSS Class",
+                    "placeholder" : "Add one or more class names (space separated)"
+                  }
+                }
+              },
+              "repeat" : {
+                "item_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Item ID",
+                    "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                  }
+                },
+                "item_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Item CSS Class",
+                    "placeholder" : "Add one or more class names (space separated)"
+                  }
+                },
+                "item_content" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                    "allowTargetBlank" : true,
+                    "label" : "Item Content",
+                    "placeholder" : "Enter content here...",
+                    "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                  }
+                }
+              }
+            },
+            "image_group" : {
+              "type" : "Slice",
+              "fieldset" : "Image Group",
+              "description" : "One or more images in grid row (desktop screen)",
+              "icon" : "photo_library",
+              "display" : "list",
+              "non-repeat" : {
+                "section_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section ID",
+                    "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                  }
+                },
+                "section_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section CSS Class",
+                    "placeholder" : "Add one or more class names (space separated)"
+                  }
+                }
+              },
+              "repeat" : {
+                "image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : { },
+                    "thumbnails" : [ ],
+                    "label" : "Image"
+                  }
+                },
+                "image_caption" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, strong, em, hyperlink, embed",
+                    "allowTargetBlank" : true,
+                    "label" : "Image Caption",
+                    "placeholder" : "Enter an image caption (optional)",
+                    "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                  }
+                }
+              }
+            },
+            "block_quote" : {
+              "type" : "Slice",
+              "fieldset" : "Block Quote",
+              "description" : "Styled quote",
+              "icon" : "format_quote",
+              "display" : "list",
+              "non-repeat" : {
+                "section_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section ID",
+                    "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                  }
+                },
+                "section_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section CSS Class",
+                    "placeholder" : "Add one or more class names (space separated)"
+                  }
+                },
+                "quote_text" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, strong, em, hyperlink, embed, list-item, o-list-item",
+                    "allowTargetBlank" : true,
+                    "label" : "Quote Text",
+                    "placeholder" : "Enter the text for the quote",
+                    "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                  }
+                },
+                "quote_author_citation" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, hyperlink, embed",
+                    "allowTargetBlank" : true,
+                    "label" : "Quote Author/Citation",
+                    "placeholder" : "Add the author of the quote or citation",
+                    "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                  }
+                }
+              },
+              "repeat" : { }
+            },
+            "video_embed" : {
+              "type" : "Slice",
+              "fieldset" : "Video Embed",
+              "description" : "Video embed code",
+              "icon" : "video_call",
+              "display" : "list",
+              "non-repeat" : {
+                "section_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section ID",
+                    "placeholder" : "Add a URL friendly section ID (e.g. about-us)"
+                  }
+                },
+                "section_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Section CSS Class",
+                    "placeholder" : "Enter one or more CSS classes"
+                  }
+                },
+                "video_embed_code" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "preformatted",
+                    "label" : "Video Embed code",
+                    "placeholder" : "Paste in HTML"
+                  }
+                },
+                "video_transcript_btn_text" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Video Transcript Btn Text",
+                    "placeholder" : "Enter text for transcript toggle button"
+                  }
+                },
+                "video_transcript" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, strong, em",
+                    "label" : "Video Transcript",
+                    "placeholder" : "Enter the text transcript of the video (recommended)"
+                  }
+                }
+              },
+              "repeat" : { }
+            }
+          }
+        }
+      }
+    },
+    "CTA" : {
+      "call_to_action" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "call_to_action" ],
+          "label" : "Call to Action",
+          "placeholder" : "Choose a call to action to display on case study page"
+        }
+      }
+    },
+    "In Page Navigation" : {
+      "accessible_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Accessible Name",
+          "placeholder" : "Enter an accessible name for the in page navigation"
+        }
+      },
+      "in_page_navigation" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "navigation_label" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Navigation Label",
+                "placeholder" : "Enter a navigation label"
+              }
+            },
+            "navigation_section_id" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Navigation Section ID",
+                "placeholder" : "Enter the section id (e.g. consultation)"
+              }
+            }
+          },
+          "label" : "in_page_navigation"
+        }
+      }
+    }
+  }

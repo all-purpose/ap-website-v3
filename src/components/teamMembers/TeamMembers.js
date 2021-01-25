@@ -12,7 +12,7 @@ const TeamMembers = ({ accessibleName, fields }) => {
 
   const outputTeamMembers = (fields) => {
     return fields.map((field, index) => {
-      const { name, photo, specialties_list } = field.team_member
+      const { name, photo, specialties_list } = field.team_member.document.data
 
       return (
         <li key={index} className="col-6 col-md-3 mb-16">

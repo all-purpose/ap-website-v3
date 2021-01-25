@@ -1,0 +1,48 @@
+{
+    "Main" : {
+      "name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Name",
+          "placeholder" : "Enter the team member's name"
+        }
+      },
+      "photo" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ {
+            "name" : "Mobile",
+            "width" : 250,
+            "height" : 312
+          } ],
+          "label" : "Photo"
+        }
+      },
+      "specialties_list" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph",
+          "label" : "Specialties List",
+          "placeholder" : "Enter the team members specialties"
+        }
+      },
+      "specialties" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "specialty" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "service" ],
+                "label" : "Specialty",
+                "placeholder" : "Choose a specialty"
+              }
+            }
+          },
+          "label" : "Choose one or more specialties"
+        }
+      }
+    }
+  }

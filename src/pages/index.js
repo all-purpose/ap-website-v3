@@ -12,53 +12,89 @@ import "../scss/main.scss"
 
 export const query = graphql`
   query HomeQuery {
-    prismic {
-      allHome_pages {
-        edges {
-          node {
-            _meta {
-              uid
-              type
+    allPrismicHomePage {
+      edges {
+        node {
+          type
+          data {
+            home_page_title {
+              raw
             }
-            home_page_title
-            home_page_description
-            home_services_brand_title
-            home_services_section_title
+            home_page_description {
+              raw
+            }
+            home_services_brand_title {
+              raw
+            }
+            home_services_section_title {
+              raw
+            }
             home_services_category_listing {
-              service_category_title
-              services_listing
+              service_category_title {
+                raw
+              }
+              services_listing {
+                raw
+              }
             }
-            home_services_listing
-            home_design_good_section_title
-            home_design_good_description
+            home_services_listing {
+              raw
+            }
+            home_design_good_section_title {
+              raw
+            }
+            home_design_good_description {
+              raw
+            }
             home_design_good_logos {
-              logo_image
+              logo_image {
+                url
+                alt
+              }
             }
-            home_projects_brand_title
+            home_projects_brand_title {
+              raw
+            }
             home_projects_listing_accessible_name
-            home_projects_section_title
+            home_projects_section_title {
+              raw
+            }
             projects_listing {
               case_study {
-                ... on PRISMIC_Case_study {
-                  _meta {
+                document {
+                  ... on PrismicCaseStudy {
+                    data {
+                      project_name
+                      case_study_excerpt_image {
+                        alt
+                        url
+                      }
+                      case_study_excerpt_roles
+                    }
                     uid
                   }
-                  project_name
-                  case_study_excerpt_image
-                  case_study_excerpt_roles
                 }
               }
             }
             call_to_action {
-              ... on PRISMIC_Call_to_action {
-                call_to_action_statement
-                call_to_action_buttons {
-                  button_action_text
-                  button_sub_text
-                  button_link_target {
-                    ... on PRISMIC_Contact_page {
-                      _meta {
-                        uid
+              document {
+                ... on PrismicCallToAction {
+                  id
+                  data {
+                    call_to_action_statement {
+                      raw
+                    }
+                    call_to_action_buttons {
+                      button_action_text
+                      button_sub_text {
+                        raw
+                      }
+                      button_link_target {
+                        document {
+                          ... on PrismicContactPage {
+                            uid
+                          }
+                        }
                       }
                     }
                   }
@@ -70,9 +106,11 @@ export const query = graphql`
       }
     }
   }
+
 `
 
 const IndexPage = (props) => {
+  console.log(props);
   const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
@@ -87,8 +125,9 @@ const IndexPage = (props) => {
     setSelectedPalette(`palette-${random}`)
   }, [])
 
+  const node = props.data.allPrismicHomePage.edges[0].node;
+
   const {
-    _meta,
     home_page_title,
     home_page_description,
     home_services_section_title,
@@ -103,34 +142,34 @@ const IndexPage = (props) => {
     home_design_good_description,
     home_design_good_logos,
     call_to_action,
-  } = props.data.prismic.allHome_pages.edges[0].node
+  } = node.data
 
-  const { type, uid } = _meta
+  const type = node.type
 
   return (
-    <Layout seoTitle={"Home"} palette={selectedPalette} type={type} uid={uid}>
+    <Layout seoTitle={"Home"} palette={selectedPalette} type={type}>
       <PageHeaderHome
-        title={home_page_title}
-        description={home_page_description}
+        title={home_page_title.raw}
+        description={home_page_description.raw}
       />
       <div className="page-sections">
         <HomePageServices
-          sectionTitle={home_services_section_title}
-          brandTitle={home_services_brand_title}
+          sectionTitle={home_services_section_title.raw}
+          brandTitle={home_services_brand_title.raw}
           serviceCategoryListings={home_services_category_listing}
           servicesListing={home_services_listing}
         />
         <HomePageProjects
           pageType={type}
-          uid={uid}
-          sectionTitle={home_projects_section_title}
-          brandTitle={home_projects_brand_title}
+          pageUid={'home'}
+          sectionTitle={home_projects_section_title.raw}
+          brandTitle={home_projects_brand_title.raw}
           projectsAccessibleName={home_projects_listing_accessible_name}
           projects={projects_listing}
         />
         <HomePageDesignGood
-          sectionTitle={home_design_good_section_title}
-          description={home_design_good_description}
+          sectionTitle={home_design_good_section_title.raw}
+          description={home_design_good_description.raw}
           logos={home_design_good_logos}
         />
         <CallToAction callToAction={call_to_action} />

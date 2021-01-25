@@ -4,41 +4,28 @@ import "./SiteNav.scss"
 
 const navigationQuery = graphql`
   {
-    prismic {
-      allNavigations {
-        edges {
-          node {
+    allPrismicNavigation {
+      edges {
+        node {
+          data {
             navigation_accessible_name
             navigation_links {
               nav_link_label
               page_link {
-                ... on PRISMIC_Contact_page {
-                  _meta {
+                document {
+                  ... on PrismicContactPage {
                     uid
                   }
-                }
-                ... on PRISMIC_Page {
-                  _meta {
+                  ... on PrismicNewsPage {
                     uid
                   }
-                }
-                ... on PRISMIC_Team_page {
-                  _meta {
+                  ... on PrismicTeamPage {
                     uid
                   }
-                }
-                ... on PRISMIC_Work_page {
-                  _meta {
+                  ... on PrismicWorkPage {
                     uid
                   }
-                }
-                ... on PRISMIC_News_page {
-                  _meta {
-                    uid
-                  }
-                }
-                ... on PRISMIC_Careers {
-                  _meta {
+                  ... on PrismicCareers {
                     uid
                   }
                 }
@@ -56,11 +43,11 @@ const SiteNav = () => {
   const [navOpen, setNavOpen] = useState(false)
 
   const outputNavLinks = (data) => {
-    return data.prismic.allNavigations.edges[0].node.navigation_links.map(
+    return data.allPrismicNavigation.edges[0].node.data.navigation_links.map(
       (link) => {
         return (
-          <li key={link.page_link._meta.uid}>
-            <Link to={`/${link.page_link._meta.uid}`} className="nav-link ">
+          <li key={link.page_link.document.uid}>
+            <Link to={`/${link.page_link.document.uid}`} className="nav-link ">
               {link.nav_link_label}
             </Link> 
           </li>
@@ -85,7 +72,7 @@ const SiteNav = () => {
             <nav
               className={`nav   ${navOpen ? "open" : "closed"}`}
               aria-label={
-                data.prismic.allNavigations.edges[0].node
+                data.allPrismicNavigation.edges[0].node.data
                   .navigation_accessible_name
               }
             >

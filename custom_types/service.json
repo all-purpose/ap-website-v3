@@ -1,0 +1,11 @@
+{
+    "Main" : {
+      "service_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Service Name",
+          "placeholder" : "Enter the service name"
+        }
+      }
+    }
+  }
