@@ -44,7 +44,6 @@ export const query = graphql`
             benefits {
               benefit
             }
-
             remote_header
             remote_statement
             culture_photos {
