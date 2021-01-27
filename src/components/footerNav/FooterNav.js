@@ -6,6 +6,7 @@ const navigationQuery = graphql`
     allPrismicFooter {
       nodes {
         data {
+          footer_navigation_accessible_name
           footer_nav {
             navigation_label
             navigation_link {

@@ -23,7 +23,6 @@ const newsArticlesQuery = graphql`
 const NewsArticlesExcerpts = () => {
 
   const outputNewsArticlesExcerpts = (data) => {
-    console.log(data)
     return data.allPrismicNewsArticle.edges.map(
       (article, i) => {
         const articleNode = article.node

@@ -13,7 +13,7 @@ const ImageGroupItem = ({image, caption}) => {
 
   const outputImageGroupItemContainer = (image, caption) => {
 
-    if (caption) {
+    if (caption.raw.length > 0) {
       return (
         <figure className="image-group-item col-sm">
           <div className="image-group-item-image">
@@ -23,7 +23,7 @@ const ImageGroupItem = ({image, caption}) => {
             />
           </div>
           <figcaption className="image-group-item-caption">
-            {RichText.asText(caption)}
+            {RichText.asText(caption.raw)}
           </figcaption>
         </figure>
       );

@@ -87,8 +87,6 @@ const NewsArticle = (props) => {
 
   const node = props.data.allPrismicNewsArticle.edges[0].node
 
-  console.log(node)
-
   const {
     article_title,
     article_feature_text,

@@ -128,8 +128,6 @@ const CareersPage = (props) => {
     videoRef.current.playbackRate = 1.6
   }
 
-  console.log(node);
-
   const generalApps = job_listings.find(
     (job) => job.job_listing.document.data.job_title.raw[0].text === "General Applications"
   )
@@ -334,7 +332,7 @@ const CareersPage = (props) => {
                 autoPlay
                 loop
                 muted
-                playsinline
+                playsInline
                 id="remote-team-vid"
                 ref={videoRef}
                 onCanPlay={() => setPlayBack()}

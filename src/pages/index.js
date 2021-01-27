@@ -110,7 +110,6 @@ export const query = graphql`
 `
 
 const IndexPage = (props) => {
-  console.log(props);
   const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
