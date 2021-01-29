@@ -5,6 +5,9 @@ require("dotenv").config({
 const linkResolver = require('./src/utils/linkResolver')
 
 module.exports = {
+  flags: {
+    DEV_SSR: false
+  },
   siteMetadata: {
     siteUrl: `http://allpurpose.io`,
     title: `All Purpose`,
@@ -19,12 +22,6 @@ module.exports = {
       resolve: "gatsby-plugin-anchor-links",
       options: {
         offset: -100,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-140430866-1`,
       },
     },
     {
