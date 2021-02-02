@@ -15,20 +15,18 @@ const FlexibleContentItem = ({ field }) => {
     itemId
   } = item;
 
-  const itemType = itemContent[0].type;
-
-  const outputItemContainer = (itemType, itemId, itemCssClass) => {
+  const outputItemContainer = (itemId, itemCssClass, itemContent) => {
     
     if (itemId) {
       return (
         <div id={itemId} className={addItemCSSClasses(itemCssClass)}>
-          {outputItemContent(itemType, itemContent)}
+          {outputItemContent(itemContent)}
         </div>
       );
     } else {
       return (
         <div className={addItemCSSClasses(itemCssClass)}>
-          {outputItemContent(itemType, itemContent)}
+          {outputItemContent(itemContent)}
         </div>
       );
     }
@@ -45,10 +43,10 @@ const FlexibleContentItem = ({ field }) => {
     return className;
   }
 
-  const outputItemContent = (type, itemContent) => {
+  const outputItemContent = (itemContent) => {
 
-    if (type === 'image') {
-      const image = itemContent[0];
+    if (itemContent.raw[0].type === 'image') {
+      const image = itemContent.raw[0];
 
       if (!image.url) {
         return false;
@@ -66,14 +64,14 @@ const FlexibleContentItem = ({ field }) => {
       );
     } else {
       return (
-        <RichText render={itemContent} />
+        <RichText render={itemContent.raw} />
       );
     }
   }
 
   return (
     <>
-      {outputItemContainer(itemType, itemId, itemCssClass, itemContent)}
+      {outputItemContainer(itemId, itemCssClass, itemContent)}
     </>
   );
 

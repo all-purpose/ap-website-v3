@@ -1,0 +1,112 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Article Slug",
+          "placeholder" : "Enter a URL friendly page slug (e.g. top-news-article)"
+        }
+      },
+      "seo_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "SEO title",
+          "placeholder" : "Enter appropriately sized title for document (SEO) title"
+        }
+      },
+      "article_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Article Title",
+          "placeholder" : "Enter the title of the article"
+        }
+      },
+      "article_feature_text" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, strong, em",
+          "label" : "Article Feature text",
+          "placeholder" : "Enter a short paragraph or two describing article"
+        }
+      },
+      "article_feature_image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ ],
+          "label" : "Article feature image"
+        }
+      }
+    },
+    "Content" : {
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : { },
+          "choices" : {
+            "flexible_content_section" : {
+              "type" : "Slice",
+              "fieldset" : "Flexible Content Section",
+              "description" : "Grid-based section with variable content options",
+              "icon" : "web",
+              "display" : "list",
+              "non-repeat" : {
+                "container_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Container ID",
+                    "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                  }
+                },
+                "container_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Container CSS Class",
+                    "placeholder" : "Add one or more class names (space separated)"
+                  }
+                }
+              },
+              "repeat" : {
+                "item_id" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Item ID",
+                    "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                  }
+                },
+                "item_css_class" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Item CSS Class",
+                    "placeholder" : "Add one or more class names (space separated)"
+                  }
+                },
+                "item_content" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                    "allowTargetBlank" : true,
+                    "label" : "Item Content",
+                    "placeholder" : "Enter content here..."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "CTA" : {
+      "call_to_action" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "call_to_action" ],
+          "label" : "Call to Action",
+          "placeholder" : "Choose a call to action to display on news article page"
+        }
+      }
+    }
+  }

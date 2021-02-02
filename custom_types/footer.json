@@ -1,0 +1,44 @@
+{
+    "Main" : {
+      "footer_navigation_accessible_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Footer Navigation Accessible Name",
+          "placeholder" : "Enter an accessible name"
+        }
+      },
+      "footer_nav" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "navigation_label" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Navigation Label",
+                "placeholder" : "Enter a navigation label"
+              }
+            },
+            "navigation_link" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "home_page", "page", "team_page", "work_page", "contact_page", "news_page", "careers" ],
+                "label" : "Navigation Link",
+                "placeholder" : "Choose a navigation link target"
+              }
+            }
+          },
+          "label" : "Footer Nav"
+        }
+      },
+      "land_acknowledgment_statement" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, strong, em, hyperlink",
+          "allowTargetBlank" : true,
+          "label" : "Land Acknowledgment Statement",
+          "placeholder" : "Enter text"
+        }
+      }
+    }
+  }

@@ -14,7 +14,7 @@ const CallToAction = ({ callToAction }) => {
     call_to_action_css_class,
     call_to_action_statement,
     call_to_action_buttons,
-  } = callToAction
+  } = callToAction.document.data
 
   const addCTACSSClasses = (cssClass) => {
     let className = "cta"
@@ -38,19 +38,19 @@ const CallToAction = ({ callToAction }) => {
       const ctaBtnActionText = button_action_text ? button_action_text : ""
 
       try {
-        ctaBtnLinkTarget = button_link_target._meta.uid
+        ctaBtnLinkTarget = button_link_target.document.uid
       } catch (err) {
         console.error(err)
         return false
       }
 
-      if (button_sub_text) {
+      if (button_sub_text.raw.length > 0) {
         return (
           <div key={i} className="col-12 col-sm-6 col-lg-3">
             <Link to={`/${ctaBtnLinkTarget}`} className="cta-link ">
               <h3 className="cta-link-action-text serif">{ctaBtnActionText}</h3>
               <div className="cta-link-sub-text ">
-                <RichText render={button_sub_text} />
+                <RichText render={button_sub_text.raw} />
               </div>
             </Link>
           </div>
@@ -81,7 +81,7 @@ const CallToAction = ({ callToAction }) => {
           <div className="cta-statement display-01 col-md-12 col-lg-6 ">
             <div className="row">
               <div className="col-md-6 col-lg-12">
-                <RichText render={call_to_action_statement} />
+                <RichText render={call_to_action_statement.raw} />
               </div>
             </div>
           </div>

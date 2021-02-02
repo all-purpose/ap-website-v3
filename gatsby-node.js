@@ -5,11 +5,62 @@
  */
 
 // You can delete this file if you're not using it
-var fs = require("fs")
-var dir = "./.cache/caches/@prismicio/gatsby-source-prismic-graphql"
- 
-exports.onPreBootstrap = () => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true })
-  }
+const path = require('path')
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  const caseStudyPages = await graphql(`
+    {  
+      allPrismicCaseStudy {
+        edges {
+          node {
+            uid
+            url
+          }
+          next {
+            url
+            data {
+              project_name
+            }
+          }
+          previous {
+            url
+            data {
+              project_name
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  caseStudyPages.data.allPrismicCaseStudy.edges.forEach(
+  (edge) => {
+    createPage({
+      path: edge.node.url,
+      component: path.resolve(__dirname, 'src/templates/caseStudy.js'),
+      context: { ...edge.node, next: edge.next, previous: edge.previous }
+    })
+  })
+
+  const newsArticlePages = await graphql(`
+    {  
+      allPrismicNewsArticle {
+        nodes {
+          uid
+        }
+      }
+    }
+  `)
+
+  newsArticlePages.data.allPrismicNewsArticle.nodes.forEach(
+    (article) => {
+      createPage({
+        path: `/news/${article.uid}`,
+        component: path.resolve(__dirname, 'src/templates/newsArticle.js'),
+        context: { ...article }
+      })
+    })
+
 }

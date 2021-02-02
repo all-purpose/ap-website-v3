@@ -1,0 +1,48 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Page Slug",
+          "placeholder" : "Enter a URL friendly page slug"
+        }
+      },
+      "prismic_page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Prismic Page Title",
+          "placeholder" : "Enter title for page (used for Prismic Docs listing)"
+        }
+      }
+    },
+    "Page Header" : {
+      "page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Page Title",
+          "placeholder" : "Enter a page title"
+        }
+      },
+      "page_description" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading2, strong, em",
+          "label" : "Page Description",
+          "placeholder" : "Enter a page description (or subtitle)"
+        }
+      }
+    },
+    "CTA" : {
+      "call_to_action" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "call_to_action" ],
+          "label" : "Call to Action",
+          "placeholder" : "Choose a call to action to display on page"
+        }
+      }
+    }
+  }

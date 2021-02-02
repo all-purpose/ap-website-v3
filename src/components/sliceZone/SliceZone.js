@@ -14,26 +14,26 @@ const SliceZone = ({ body }) => {
   return (
     <div className="page-sections">{body.map((bodyContent, i) => {
 
-      if (bodyContent.type === 'flexible_content_section') {
+      if (bodyContent.slice_type === 'flexible_content_section') {
         
         return ( 
           <FlexibleContentSection
             key={i}
             containerId={bodyContent.primary.container_id}
             containerCssClass={bodyContent.primary.container_css_class}
-            fields={bodyContent.fields}
+            fields={bodyContent.items}
           />
         );
-      } else if (bodyContent.type === 'image_group') {
+      } else if (bodyContent.slice_type === 'image_group') {
         return ( 
           <ImageGroup 
             key={i}
             containerId={bodyContent.primary.section_id}
-            fields={bodyContent.fields}
+            fields={bodyContent.items}
             containerCssClass={bodyContent.primary.section_css_class}
           />
         )
-      } else if (bodyContent.type === 'case_study_main') {
+      } else if (bodyContent.slice_type === 'case_study_main') {
         return ( 
           <CaseStudyPageSection 
             key={i}
@@ -43,7 +43,7 @@ const SliceZone = ({ body }) => {
             content={bodyContent.primary.section_content}
           />
         )
-      } else if (bodyContent.type === 'block_quote') {
+      } else if (bodyContent.slice_type === 'block_quote') {
         return ( 
           <Quotation 
             key={i}
@@ -53,7 +53,7 @@ const SliceZone = ({ body }) => {
             quoteText={bodyContent.primary.quote_text}
           />
         )
-      } else if (bodyContent.type === 'video_embed') {
+      } else if (bodyContent.slice_type === 'video_embed') {
         return (
           <VideoEmbed 
             key={i}

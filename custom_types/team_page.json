@@ -1,0 +1,74 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Page Slug",
+          "placeholder" : "Enter a URL friendly slug (e.g. our-team)"
+        }
+      },
+      "prismic_page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Prismic Page Title",
+          "placeholder" : "Enter title for page (used for Prismic Docs listing)"
+        }
+      }
+    },
+    "Page Header" : {
+      "page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Page Title",
+          "placeholder" : "Enter a page title"
+        }
+      },
+      "page_description" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading2, strong, em",
+          "label" : "Page Description",
+          "placeholder" : "Enter a page description (or subtitle)"
+        }
+      }
+    },
+    "Team Profiles" : {
+      "accessible_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Accessible Name",
+          "placeholder" : "Enter an accessible name for the team profiles listing"
+        }
+      },
+      "team_profiles" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "team_member" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "team_member" ],
+                "label" : "Team Member",
+                "placeholder" : "Select a team member"
+              }
+            }
+          },
+          "label" : "Team Profiles"
+        }
+      }
+    },
+    "CTA" : {
+      "call_to_action" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "call_to_action" ],
+          "label" : "Call to Action",
+          "placeholder" : "Choose a call to action"
+        }
+      }
+    }
+  }
