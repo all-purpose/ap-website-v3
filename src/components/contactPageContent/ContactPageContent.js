@@ -9,9 +9,11 @@ const ContactPageContent = (props) => {
           <h2 className="eyebrow">The Office</h2>
           <address className="mb-8">
             <div className="body-short-02 serif">
-              402 West Pender Street
+              Suite 100, 402 West Pender Street
               <br />
               Vancouver, BC
+              <br />
+              V6B 1T6
             </div>
           </address>
           <p className="body-01">

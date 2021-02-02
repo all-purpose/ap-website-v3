@@ -33,10 +33,10 @@ const CaseStudySection = ({
     containerCssClass,
     <div className="row">
       <div className="col-md-3 case-study-section-title heading-01 mb-8">
-        <RichText render={title} />
+        <RichText render={title.raw} />
       </div>
       <div className="col-md-8 body-long-02">
-        <RichText render={content} />
+        <RichText render={content.raw} />
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import React from 'react';
 import CaseStudyExcerpt from '../caseStudyExcerpt/CaseStudyExcerpt';
 
-const CaseStudyExcerpts = ({pageType, uid, accessibleName, fields}) => {
+const CaseStudyExcerpts = ({pageType, pageUid, accessibleName, fields}) => {
 
   const excerptListProps = {
     className: "case-study-excerpts row"
@@ -15,11 +15,12 @@ const CaseStudyExcerpts = ({pageType, uid, accessibleName, fields}) => {
     return fields.map((field, index) => {
 
       const {
-        _meta,
         case_study_excerpt_image,
         case_study_excerpt_roles,
         project_name
-      } = field.case_study;
+      } = field.case_study.document.data;
+
+      const uid = field.case_study.document.uid;
 
       return (
         <li 
@@ -27,8 +28,8 @@ const CaseStudyExcerpts = ({pageType, uid, accessibleName, fields}) => {
           className="col-sm-6">
           <CaseStudyExcerpt
             pageType={pageType}
-            uid={uid}
-            link={`/case-study/${_meta.uid}`}
+            pageUid={pageUid}
+            link={`/case-study/${uid}`}
             image={case_study_excerpt_image}
             projectName={project_name}
             roles={case_study_excerpt_roles}

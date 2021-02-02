@@ -1,0 +1,27 @@
+{
+    "Main" : {
+      "job_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Job Title",
+          "placeholder" : "Enter the job title"
+        }
+      },
+      "location" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "paragraph",
+          "label" : "Location",
+          "placeholder" : "Enter the location of the job role"
+        }
+      },
+      "external_url" : {
+        "type" : "Link",
+        "config" : {
+          "allowTargetBlank" : true,
+          "label" : "external_url"
+        }
+      }
+    }
+  }

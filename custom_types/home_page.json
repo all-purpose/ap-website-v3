@@ -1,0 +1,176 @@
+{
+    "Main" : {
+      "prismic_page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Prismic Page Title",
+          "placeholder" : "Enter title for page (used for Prismic Docs listing)"
+        }
+      }
+    },
+    "Page Header" : {
+      "home_page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Home Page Title",
+          "placeholder" : "Enter a title"
+        }
+      },
+      "home_page_description" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, strong, em",
+          "label" : "Home Page Description",
+          "placeholder" : "Enter a page description (or subtitle)"
+        }
+      }
+    },
+    "Services" : {
+      "home_services_section_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Services Section Title",
+          "placeholder" : "Enter a section title"
+        }
+      },
+      "home_services_brand_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading3",
+          "label" : "Services Brand Title",
+          "placeholder" : "Enter a brand title"
+        }
+      },
+      "home_services_listing" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "list-item",
+          "label" : "Services Listing",
+          "placeholder" : "Enter a list of the services"
+        }
+      },
+      "home_services_category_listing" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "service_category_title" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "heading3",
+                "label" : "Service Category Title",
+                "placeholder" : "Enter a service category title"
+              }
+            },
+            "services_listing" : {
+              "type" : "StructuredText",
+              "config" : {
+                "multi" : "list-item",
+                "label" : "Services Listing",
+                "placeholder" : "Enter a list of services in the category"
+              }
+            }
+          },
+          "label" : "Services Category Listing"
+        }
+      }
+    },
+    "Projects" : {
+      "home_projects_section_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Projects Section Title",
+          "placeholder" : "Enter a section title"
+        }
+      },
+      "home_projects_brand_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading3",
+          "label" : "Projects Brand Title",
+          "placeholder" : "Enter a brand title"
+        }
+      },
+      "home_projects_listing_accessible_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Projects Listing Accessible Name",
+          "placeholder" : "Enter an accessible name for projects listing"
+        }
+      },
+      "projects_listing" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "case_study" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "case_study" ],
+                "label" : "Select a case study",
+                "placeholder" : "Select one or more case studies"
+              }
+            }
+          },
+          "label" : "Projects Listing"
+        }
+      }
+    },
+    "Design Good" : {
+      "home_design_good_section_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading2",
+          "label" : "Design For Good Section Title",
+          "placeholder" : "Enter a section title"
+        }
+      },
+      "home_design_good_description" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, strong, em, hyperlink, list-item, o-list-item",
+          "allowTargetBlank" : true,
+          "label" : "Design For Good Description",
+          "placeholder" : "Enter a description"
+        }
+      },
+      "home_design_good_logos" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "logo_image" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Logo Image"
+              }
+            },
+            "logo_link" : {
+              "type" : "Link",
+              "config" : {
+                "allowTargetBlank" : true,
+                "label" : "Logo Link",
+                "placeholder" : "Enter a logo link"
+              }
+            }
+          },
+          "label" : "Design For Good Logos"
+        }
+      }
+    },
+    "CTA" : {
+      "call_to_action" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "call_to_action" ],
+          "label" : "Call To Action",
+          "placeholder" : "Choose a CTA for page"
+        }
+      }
+    }
+  }

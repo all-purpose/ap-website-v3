@@ -1,59 +1,82 @@
 import React, { useState, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout/Layout"
-import PageHeaderGeneral from "../components/pageHeader/PageHeaderGeneral"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
-import "../components/list/List.scss"
+import Layout from "../../components/layout/Layout"
+import PageHeaderGeneral from "../../components/pageHeader/PageHeaderGeneral"
+import "../../components/list/List.scss"
 
-import CtaCard from "../components/ctaCard/CtaCard"
+import CtaCard from "../../components/ctaCard/CtaCard"
 
 export const query = graphql`
   query CareersPageQuery {
-    prismic {
-      allCareerss {
-        edges {
-          node {
-            page_description
-            page_title
-            _meta {
-              type
-              uid
+    allPrismicCareers {
+      edges {
+        node {
+          type
+          uid
+          data {
+            page_description {
+              raw
             }
-            mission_statement
-            mission_header
+            page_title {
+              raw
+            }
+            mission_header {
+              raw
+            }
+            mission_statement {
+              raw
+            }
             job_listings {
               job_listing {
-                ... on PRISMIC_Job_listing {
-                  job_title
-                  location
-                  external_url {
-                    ... on PRISMIC__ExternalLink {
-                      target
-                      _linkType
-                      url
+                document {
+                  ... on PrismicJobListing {
+                    id
+                    data {
+                      job_title {
+                        raw
+                      }
+                      location {
+                        raw
+                      }
+                      external_url {
+                        url
+                      }
                     }
                   }
                 }
               }
             }
-            diversity_statement
+            diversity_header {
+              raw
+            }
+            diversity_statement {
+              raw
+            }
             fineprint {
-              item
+              item {
+                raw
+              }
             }
-            diversity_header
             benefits {
-              benefit
+              benefit {
+                raw
+              }
             }
-            remote_header
-            remote_statement
             culture_photos {
-              photo
-            }
-            remote_team_vid {
-              ... on PRISMIC__FileLink {
-                _linkType
+              photo {
+                alt
                 url
               }
+            }
+            remote_header {
+                raw
+            }
+            remote_statement {
+                raw
+            }
+            remote_team_vid {
+              url
             }
             seo_title
           }
@@ -64,7 +87,6 @@ export const query = graphql`
 `
 
 const CareersPage = (props) => {
-  // console.log(props)
 
   const [selectedPalette, setSelectedPalette] = useState(null)
 
@@ -80,8 +102,11 @@ const CareersPage = (props) => {
     setSelectedPalette(`palette-${random}`)
   }, [])
 
+  const node = props.data.allPrismicCareers.edges[0].node
+
+  const { uid, type } = node
+
   const {
-    _meta,
     page_title,
     page_description,
     mission_header,
@@ -93,9 +118,10 @@ const CareersPage = (props) => {
     remote_header,
     remote_statement,
     seo_title,
-  } = props.data.prismic.allCareerss.edges[0].node
-
-  const { uid, type } = _meta
+    fineprint,
+    remote_team_vid,
+    benefits
+  } = node.data
 
   const videoRef = useRef()
   const setPlayBack = () => {
@@ -103,7 +129,7 @@ const CareersPage = (props) => {
   }
 
   const generalApps = job_listings.find(
-    (job) => job.job_listing.job_title[0].text === "General Applications"
+    (job) => job.job_listing.document.data.job_title.raw[0].text === "General Applications"
   )
 
   const outputJobListings = (props) => {
@@ -111,7 +137,7 @@ const CareersPage = (props) => {
       // if there's only 1 job listing and it's the General Application posting, or if there's no job listings, show a message about not having any open positions. This is to prevent a situation when one CtaCard shows up, looks weird when there's only one stand alone CtaCard.
       if (
         (job_listings.length === 1 &&
-          job.job_listing.job_title[0].text === "General Applications") ||
+            job.job_listing.document.data.job_title.raw[0].text === "General Applications") ||
         job_listings.length === 0
       ) {
         return (
@@ -124,7 +150,7 @@ const CareersPage = (props) => {
               looking for great folks!{" "}
               <a
                 className="underline"
-                href={generalApps.job_listing.external_url.url}
+                href={generalApps.job_listing.document.data.external_url.url}
               >
                 Send us your details
               </a>
@@ -143,10 +169,10 @@ const CareersPage = (props) => {
           >
             <div>
               <CtaCard
-                title={job.job_listing.job_title[0].text}
-                subtitle={job.job_listing.location[0].text}
+                title={job.job_listing.document.data.job_title.raw[0].text}
+                subtitle={job.job_listing.document.data.location.raw[0].text}
                 cssClass=""
-                href={job.job_listing.external_url.url}
+                href={job.job_listing.document.data.external_url.url}
               />
             </div>
           </div>
@@ -159,25 +185,25 @@ const CareersPage = (props) => {
     return props.map((item, index) => {
       return (
         <li key={index} className="list__item">
-          {item.benefit[0].text}
+          {item.benefit.raw[0].text}
         </li>
       )
     })
   }
 
-  let seoTitle = seo_title ? seo_title : page_title[0].text
+  let seoTitle = seo_title ? seo_title : page_title.raw[0].text
 
   return (
     <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral title={page_title} description={page_description} />
+      <PageHeaderGeneral title={page_title.raw} description={page_description.raw} />
       <div className="page-sections  ">
         <div className="container pt-48 pb-24">
           <div className="row">
             <div className="col-md-3">
-              <h2 className="">{mission_header[0].text}</h2>
+              <h2 className="">{mission_header.raw[0].text}</h2>
             </div>
             <div className="col-md-9 ">
-              <p className="heading-01">{mission_statement[0].text}</p>
+              <p className="heading-01">{mission_statement.raw[0].text}</p>
 
               <div className="mt-20">
                 <AnchorLink
@@ -270,14 +296,13 @@ const CareersPage = (props) => {
             <div className="col-md-6">
               <ul className="list">
                 {outputBenefits(
-                  props.data.prismic.allCareerss.edges[0].node.benefits
+                  benefits
                 )}
               </ul>
 
               <p className="py-24">
                 {
-                  props.data.prismic.allCareerss.edges[0].node.fineprint[0]
-                    .item[0].text
+                  fineprint[0].item.raw[0].text
                 }
               </p>
             </div>
@@ -288,10 +313,10 @@ const CareersPage = (props) => {
             <div className="row">
               <div className="offset-sm-2 offset-md-2 offset-lg-3 col-sm-8 col-md-8 col-lg-6 col-xl-6 offset-xl-3">
                 <h2 className="heading-01 pb-10 md:pb-0">
-                  {diversity_header[0].text}
+                  {diversity_header.raw[0].text}
                 </h2>
 
-                <p>{diversity_statement[0].text}</p>
+                <p>{diversity_statement.raw[0].text}</p>
               </div>
             </div>
           </div>
@@ -307,7 +332,7 @@ const CareersPage = (props) => {
                 autoPlay
                 loop
                 muted
-                playsinline
+                playsInline
                 id="remote-team-vid"
                 ref={videoRef}
                 onCanPlay={() => setPlayBack()}
@@ -315,8 +340,7 @@ const CareersPage = (props) => {
               >
                 <source
                   src={
-                    props.data.prismic.allCareerss.edges[0].node.remote_team_vid
-                      .url
+                    remote_team_vid.url
                   }
                   type="video/mp4"
                 />
@@ -327,10 +351,10 @@ const CareersPage = (props) => {
         <div className="row items-center">
           <div className="col-md-6">
             <h2 className="heading-01 pb-10 md:pb-0">
-              {remote_header[0].text}
+              {remote_header.raw[0].text}
             </h2>
           </div>
-          <div className="col-md-6">{remote_statement[0].text}</div>
+          <div className="col-md-6">{remote_statement.raw[0].text}</div>
         </div>
       </div>
     </Layout>

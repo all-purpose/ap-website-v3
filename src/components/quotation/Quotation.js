@@ -35,10 +35,10 @@ const Quotation = ({
       <div className="row">
         <blockquote className="quote col-sm-6 offset-sm-3">
           <div className="quote-text heading-01">
-            <RichText render={quoteText} />
+            <RichText render={quoteText.raw} />
           </div>
           <footer className="quote-author body-01 mt-4">
-            <RichText render={quoteAuthorCitation} />
+            <RichText render={quoteAuthorCitation.raw} />
           </footer>
         </blockquote>
       </div>
