@@ -21,7 +21,7 @@ const TeamMember = ({ photo, name, specialties }) => {
       </div>
       <h2 className="team-member-name body-short-02 serif mt-4">{name}</h2>
       <div className="team-member-specialties body-01">
-        <RichText render={specialties} />
+        <RichText render={specialties.raw} />
       </div>
     </div>
   )

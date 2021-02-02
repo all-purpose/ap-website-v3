@@ -1,0 +1,171 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Page Slug",
+          "placeholder" : "Enter URL friendly slug (e.g. careers)"
+        }
+      },
+      "prismic_page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Prismic Page Title",
+          "placeholder" : "Enter title for page (used for Prismic Docs listing)"
+        }
+      },
+      "seo_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "SEO Title",
+          "placeholder" : "Enter appropriately sized title for document (SEO) title"
+        }
+      }
+    },
+    "Page Header" : {
+      "page_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Page Title",
+          "placeholder" : "Enter a page title"
+        }
+      },
+      "page_description" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "paragraph, heading2, strong, em",
+          "label" : "Page Description",
+          "placeholder" : "Enter a page description (or subtitle)"
+        }
+      }
+    },
+    "Mission" : {
+      "mission_header" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Mission Header",
+          "placeholder" : "Enter the heading"
+        }
+      },
+      "mission_statement" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph",
+          "label" : "Mission Statement",
+          "placeholder" : "Enter the mission statement"
+        }
+      }
+    },
+    "Culture Photos" : {
+      "culture_photos" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "photo" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "photo"
+              }
+            }
+          },
+          "label" : "Culture Photos"
+        }
+      }
+    },
+    "Open Positions" : {
+      "job_listings" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "job_listing" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "job_listing" ],
+                "label" : "Job Listing",
+                "placeholder" : "Choose a Job Listing"
+              }
+            }
+          },
+          "label" : "Job Listings"
+        }
+      }
+    },
+    "Benefits" : {
+      "benefits" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "benefit" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "paragraph",
+                "label" : "benefit"
+              }
+            }
+          },
+          "label" : "Benefits"
+        }
+      },
+      "fineprint" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "item" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "paragraph",
+                "label" : "item"
+              }
+            }
+          },
+          "label" : "fineprint"
+        }
+      }
+    },
+    "Diversity" : {
+      "diversity_header" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Diversity Header"
+        }
+      },
+      "diversity_statement" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph",
+          "label" : "Diversity statement"
+        }
+      }
+    },
+    "Team photos" : { },
+    "Remote-friendly" : {
+      "remote_header" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "remote_header"
+        }
+      },
+      "remote_statement" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph",
+          "label" : "remote_statement"
+        }
+      },
+      "remote_team_vid" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "media",
+          "label" : "remote_team_vid"
+        }
+      }
+    }
+  }

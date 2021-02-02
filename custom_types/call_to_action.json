@@ -1,0 +1,51 @@
+{
+    "Main" : {
+        "call_to_action_css_class" : {
+        "type" : "Text",
+        "config" : {
+            "label" : "Call to Action CSS Class",
+            "placeholder" : "Enter one or more CSS class names"
+        }
+        },
+        "call_to_action_statement" : {
+        "type" : "StructuredText",
+        "config" : {
+            "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+            "label" : "Call to Action Statement",
+            "placeholder" : "Enter a statement (i.e. title)"
+        }
+        },
+        "call_to_action_buttons" : {
+        "type" : "Group",
+        "config" : {
+            "fields" : {
+            "button_action_text" : {
+                "type" : "Text",
+                "config" : {
+                "label" : "Button Action Text",
+                "placeholder" : "Enter the action text for button (e.g. Hire Us)"
+                }
+            },
+            "button_sub_text" : {
+                "type" : "StructuredText",
+                "config" : {
+                "multi" : "paragraph, strong, em",
+                "label" : "Button sub text",
+                "placeholder" : "Enter sub text for the button (e.g. description)"
+                }
+            },
+            "button_link_target" : {
+                "type" : "Link",
+                "config" : {
+                "select" : "document",
+                "customtypes" : [ "contact_page" ],
+                "label" : "Button Link Target",
+                "placeholder" : "Choose a page the button will go to"
+                }
+            }
+            },
+            "label" : "Call to Action Buttons"
+        }
+        }
+    }
+}

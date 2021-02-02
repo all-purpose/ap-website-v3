@@ -4,7 +4,3 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 import "./src/scss/tw.scss"
-// const { registerLinkResolver } = require('gatsby-source-prismic-graphql')
-// const { linkResolver } = require('./src/utils/linkResolver')
-
-// registerLinkResolver(linkResolver)

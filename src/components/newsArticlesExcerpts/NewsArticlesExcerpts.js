@@ -4,17 +4,16 @@ import NewsArticleExcerpt from '../newsArticleExcerpt/NewsArticleExcerpt';
 
 const newsArticlesQuery = graphql`
 {
-  prismic {
-    allNews_articles(sortBy: meta_firstPublicationDate_DESC) {
-      edges {
-        node {
-          _meta {
-            uid
-            firstPublicationDate
+  allPrismicNewsArticle(sort: {fields: first_publication_date, order: DESC}) {
+    edges {
+      node {
+        data {
+          article_title {
+            raw
           }
-          article_feature_text
-          article_title
         }
+        first_publication_date
+        uid
       }
     }
   }
@@ -24,26 +23,22 @@ const newsArticlesQuery = graphql`
 const NewsArticlesExcerpts = () => {
 
   const outputNewsArticlesExcerpts = (data) => {
-    return data.prismic.allNews_articles.edges.map(
+    return data.allPrismicNewsArticle.edges.map(
       (article, i) => {
-        const {
-          _meta,
-          article_title,
-          article_feature_text
-        } = article.node;
+        const articleNode = article.node
 
+        const { uid, first_publication_date } = articleNode
+        
         const {
-          uid,
-          firstPublicationDate
-        } = _meta;
+          article_title,
+        } = articleNode.data
 
         return (
           <li key={i}>
             <NewsArticleExcerpt
               slug={uid}
-              pubDate={firstPublicationDate}
-              title={article_title}
-              featText={article_feature_text}
+              pubDate={first_publication_date}
+              title={article_title.raw}
             />
           </li>
         )

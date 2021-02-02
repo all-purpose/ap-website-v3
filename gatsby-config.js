@@ -2,7 +2,12 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const linkResolver = require('./src/utils/linkResolver')
+
 module.exports = {
+  flags: {
+    DEV_SSR: false
+  },
   siteMetadata: {
     siteUrl: `http://allpurpose.io`,
     title: `All Purpose`,
@@ -17,12 +22,6 @@ module.exports = {
       resolve: "gatsby-plugin-anchor-links",
       options: {
         offset: -100,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-140430866-1`,
       },
     },
     {
@@ -65,62 +64,27 @@ module.exports = {
       },
     },
     {
-      resolve: "@prismicio/gatsby-source-prismic-graphql",
+      resolve: "gatsby-source-prismic",
       options: {
         repositoryName: process.env.PRISMIC_REPOSITORY_NAME,
         accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        pages: [
-          {
-            type: "Page", // need capitalize
-            match: "/:uid",
-            previewPath: "/",
-            component: require.resolve("./src/templates/page.js"),
-          },
-          {
-            type: "Team Page",
-            match: "/team",
-            previewPath: "/",
-            component: require.resolve("./src/templates/teamPage.js"),
-          },
-          {
-            type: "Work Page",
-            match: "/work",
-            previewPath: "/",
-            component: require.resolve("./src/templates/workPage.js"),
-          },
-          {
-            type: "News Page",
-            match: "/news",
-            previewPath: "/",
-            component: require.resolve("./src/templates/newsPage.js"),
-          },
-          {
-            type: "Contact Page",
-            match: "/contact",
-            previewPath: "/",
-            component: require.resolve("./src/templates/contactPage.js"),
-          },
-          {
-            type: "Case Study",
-            match: "/case-study/:uid",
-            previewPath: "/case-study",
-            sortBy: "order_ASC",
-            component: require.resolve("./src/templates/caseStudy.js"),
-          },
-          {
-            type: "News Article",
-            match: "/news/:uid",
-            previewPath: "/news",
-            sortBy: "meta_firstPublicationDate_DESC",
-            component: require.resolve("./src/templates/newsArticle.js"),
-          },
-          {
-            type: "Careers",
-            match: "/careers",
-            previewPath: "/",
-            component: require.resolve("./src/templates/careersPage.js"),
-          },
-        ],
+        linkResolver: () => (doc) => linkResolver(doc),
+        schemas: {
+          call_to_action: require('./custom_types/call_to_action.json'),
+          careers: require('./custom_types/careers.json'),
+          case_study: require('./custom_types/case_study.json'),
+          contact_page: require('./custom_types/contact_page.json'),
+          footer: require('./custom_types/footer.json'),
+          home_page: require('./custom_types/home_page.json'),
+          job_listing: require('./custom_types/job_listing.json'),
+          navigation: require('./custom_types/navigation.json'),
+          news_article: require('./custom_types/news_article.json'),
+          news_page: require('./custom_types/news_page.json'),
+          service: require('./custom_types/service.json'),
+          team_member: require('./custom_types/team_member.json'),
+          team_page: require('./custom_types/team_page.json'),
+          work_page: require('./custom_types/work_page.json'),
+        }
       },
     },
     {
