@@ -6,7 +6,7 @@ Assuming at least NodeJS 12.x.
 
 1. Clone the repo to local folder
 
-2. Yarn (v1 aka classic Yarn is currently used for project) is used to manage the project dependencies. If you don’t have Yarn installed, run:
+2. [Yarn (v1)](https://classic.yarnpkg.com/en/) is used to manage the project dependencies. If you don’t have Yarn installed, run:
 
 ```
 npm install yarn -g
@@ -20,11 +20,11 @@ npm install yarn -g
 
 ## 🏗 Development
 
-### Build and Server
+### Build and server
 
 1. Run `gatsby develop`
 
-2. After building, a hot reload server is started automatically. Browse to `http://localhost:8000` to show the development site. Each subsequent save in the code editor will re-load the dev site.
+2. After building, a hot reload server is started automatically. Browse to `http://localhost:8000` to view the development site. Each subsequent save in the code editor will re-load the dev site.
 
 ### GraphQL editor
 
@@ -40,7 +40,7 @@ Run `gatsby clean && gatsby develop` to clear the cache (deletes the `.cache` fo
 
 **Note:** You will only need to run `gatsby clean` when new data has come in.
 
-## 🚀 Local Production Build
+## 🚀 Running a local production build
 
 It’s useful to build an optimized production version of the site locally to ensure the site builds and works as expected before deploying it live.
 
@@ -48,7 +48,7 @@ It’s useful to build an optimized production version of the site locally to en
 
 2. Open a browser and go to `http://localhost:9000` to view the production-optimized version of the site.
 
-## Gatsby Files
+## Gatsby-specific files
 
 (From Gatsby starter README)
 
@@ -60,7 +60,7 @@ It’s useful to build an optimized production version of the site locally to en
 
 **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
 
-## 📚 Resources:
+## 📚 Resources
 
 * [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/)
 * [Gatsby Docs](https://www.gatsbyjs.org/docs/)
