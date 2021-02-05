@@ -1,16 +1,16 @@
 # AP Website
 
-## Install locally
+## 💻 Install locally 
 
-Assuming NodeJS > 12
+Assuming at least NodeJS 12.x.
 
-1. Install Yarn (v1 aka classic Yarn is currently used for project)
+1. Clone the repo to local folder
+
+2. Yarn (v1 aka classic Yarn is currently used for project) is used to manage the project dependencies. If you don’t have Yarn installed, run:
 
 ```
 npm install yarn -g
 ```
-
-2. Clone the repo to local folder
 
 3. Run `yarn install` to install the project dependencies
 
@@ -18,7 +18,7 @@ npm install yarn -g
 
 4. Create `.env.development` and `.env.production` files in the root of the project. These will hold the environment variables for the Prismic CMS integration. Contact a AP Website team member to get the content of these files.
 
-## Development
+## 🏗 Development
 
 ### Build and Server
 
@@ -40,7 +40,7 @@ Run `gatsby clean && gatsby develop` to clear the cache (deletes the `.cache` fo
 
 **Note:** You will only need to run `gatsby clean` when new data has come in.
 
-## Local Production Build
+## 🚀 Local Production Build
 
 It’s useful to build an optimized production version of the site locally to ensure the site builds and works as expected before deploying it live.
 
@@ -60,7 +60,7 @@ It’s useful to build an optimized production version of the site locally to en
 
 **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
 
-## Resources:
+## 📚 Resources:
 
 * [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/)
 * [Gatsby Docs](https://www.gatsbyjs.org/docs/)
