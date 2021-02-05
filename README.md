@@ -1,99 +1,68 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# AP Website
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+## 💻 Install locally 
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Assuming at least NodeJS 12.x.
 
-## 🚀 Quick start
+1. Clone the repo to local folder
 
-1.  **Create a Gatsby site.**
+2. [Yarn (v1)](https://classic.yarnpkg.com/en/) is used to manage the project dependencies. If you don’t have Yarn installed, run:
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+```
+npm install yarn -g
+```
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+3. Run `yarn install` to install the project dependencies
 
-1.  **Start developing.**
+**Note:** Gatsby CLI is needed to run the Gatsby development/build commands. It’s included in the `package.json` file.
 
-    Navigate into your new site’s directory and start it up.
+4. Create `.env.development` and `.env.production` files in the root of the project. These will hold the environment variables for the Prismic CMS integration. Contact a AP Website team member to get the content of these files.
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+## 🏗 Development
 
-1.  **Open the source code and start editing!**
+### Build and server
 
-    Your site is now running at `http://localhost:8000`!
+1. Run `gatsby develop`
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+2. After building, a hot reload server is started automatically. Browse to `http://localhost:8000` to view the development site. Each subsequent save in the code editor will re-load the dev site.
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+### GraphQL editor
 
-## 🧐 What's inside?
+Running the development build will also start the visual GraphiQL tool which you can use to build GraphQL queries and then copy and paste into the code.
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+In a browser go to `http://localhost:8000/___graphql` to open the GraphiQL editor. 
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+### Caching and Prismic CMS data
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+If you made changes in Prismic you will likely need to clear the cache in Gatsby so that the new data is pulled in.
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+Run `gatsby clean && gatsby develop` to clear the cache (deletes the `.cache` folder) and restart the dev build/server.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+**Note:** You will only need to run `gatsby clean` when new data has come in.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+## 🚀 Running a local production build
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+It’s useful to build an optimized production version of the site locally to ensure the site builds and works as expected before deploying it live.
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+1. Run `gatsby build && gatsby serve` to build an optimized production version locally. The `gatsby serve` command will start a local server. 
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+2. Open a browser and go to `http://localhost:9000` to view the production-optimized version of the site.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+## Gatsby-specific files
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+(From Gatsby starter README)
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+**`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+**`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+**`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
 
-## 🎓 Learning Gatsby
+**`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+## 📚 Resources
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+* [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/)
+* [Gatsby Docs](https://www.gatsbyjs.org/docs/)
+* [How to use GraphiQL](https://www.gatsbyjs.com/docs/how-to/querying-data/running-queries-with-graphiql/#how-to-use-graphiql)
+* [Troubleshooting Common Errors (in Local Environments)](https://www.gatsbyjs.com/docs/how-to/local-development/troubleshooting-common-errors/)
