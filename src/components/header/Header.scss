@@ -9,9 +9,13 @@
   z-index: 1000;
 }
 
+.logo {
+  display: inline-block;
+  transform: translateY(-8px);
+}
+
 .svg-logo {
   width: 160px;
-  transform: translateY(-8px);
   margin-left: 16px;
   @include sm-down {
     margin-left: 0;
@@ -23,11 +27,6 @@
   z-index: 10;
 }
 
-.nav-link {
-  // transition: border, 0.3s;
-}
-
 .nav-link:hover {
-  // text-decoration: underline;
   border-bottom: solid 1px;
 }

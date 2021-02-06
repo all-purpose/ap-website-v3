@@ -5,7 +5,7 @@ import {Link} from 'gatsby';
 const Branding = props => {
 
   return (
-    <Link rel="home" to={'/'}>
+    <Link rel="home" className="logo" to={'/'}>
       <Logo />
     </Link>
   )

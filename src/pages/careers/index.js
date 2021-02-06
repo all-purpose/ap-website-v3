@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 import Layout from "../../components/layout/Layout"
 import PageHeaderGeneral from "../../components/pageHeader/PageHeaderGeneral"
+import BackgroundVideo from "../../components/bgVideo/BackgroundVideo"
 import "../../components/list/List.scss"
 
 import CtaCard from "../../components/ctaCard/CtaCard"
@@ -123,9 +124,12 @@ const CareersPage = (props) => {
     benefits
   } = node.data
 
-  const videoRef = useRef()
-  const setPlayBack = () => {
-    videoRef.current.playbackRate = 1.6
+  let videoUrl = '';
+
+  try {
+    videoUrl = remote_team_vid.url;
+  } catch (err) {
+    console.error(err);
   }
 
   const generalApps = job_listings.find(
@@ -324,30 +328,18 @@ const CareersPage = (props) => {
       </div>
 
       <div className="container py-48">
+        {videoUrl && (
         <div className="row">
-          <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 ">
-            <div className="center">
-              <video
-                className="img-variant mb-16 md:mb-48 mx-auto"
-                autoPlay
-                loop
-                muted
-                playsInline
-                id="remote-team-vid"
-                ref={videoRef}
-                onCanPlay={() => setPlayBack()}
-                title="Clip of the All Purpose team waving"
-              >
-                <source
-                  src={
-                    remote_team_vid.url
-                  }
-                  type="video/mp4"
-                />
-              </video>
-            </div>
+          <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 mb-16 md:mb-48 mx-auto">
+            <BackgroundVideo 
+              id={'remote-team-vid'} 
+              type={'video/mp4'} 
+              url={videoUrl} 
+              title={`Clip of the All Purpose team waving`} 
+              playbackRate={1.2} />
           </div>
         </div>
+        )}
         <div className="row items-center">
           <div className="col-md-6">
             <h2 className="heading-01 pb-10 md:pb-0">
