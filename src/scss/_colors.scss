@@ -61,26 +61,34 @@ $palettes: (
       --bg-color: #{$bgcolor};
       --font-color: #{$fontcolor};
     }
+
+    *:focus {
+      outline-style: dashed;
+      outline-width: 2px;
+      outline-offset: 2px;
+      outline-color: #151515; // default focus color (white bg)
+    }
+
     .apply-color-theme,
     .form-field {
       background-color: $bgcolor;
       color: $fontcolor;
       border-color: $fontcolor;
-    }
-
-    *:focus {
-      outline: none;
-      outline-style: dashed;
-      outline-width: 1px;
-      outline-color: $fontcolor;
+      *:focus {
+        outline-color: $fontcolor;
+      }
     }
 
     .apply-color-theme--inverse {
       background-color: $fontcolor;
       color: $bgcolor;
     }
+
     .apply-color-theme--font {
       color: $fontcolor;
+      *:focus {
+        outline-color: $fontcolor;
+      }
     }
 
     .nav-link, .skip-link {
@@ -94,18 +102,14 @@ $palettes: (
       text-decoration: none;
     }
 
-    .form-field:focus {
-      outline-color: $fontcolor;
-    }
     .border-solid {
       border-color: $fontcolor;
     }
+
     hr.theme-color {
       border-top: solid 1px $fontcolor;
     }
-    // a:hover {
-    //   color: $fontcolor;
-    // }
+
     .svg-logo {
       path {
         fill: $fontcolor;
@@ -113,158 +117,3 @@ $palettes: (
     }
   }
 }
-
-// This could probably be a map function to avoid being so repetitive
-// .palette-1 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $yellow;
-//     color: $evergreen;
-//     border-color: $evergreen;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $evergreen;
-//     }
-//   }
-// }
-// .palette-2 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme,
-//   .form-field {
-//     background-color: $orange;
-//     color: $eggplant;
-//     border-color: $eggplant;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $eggplant;
-//     }
-//   }
-// }
-// .palette-3 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $bone;
-//     color: $fire-coral;
-//     border-color: $fire-coral;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $fire-coral;
-//     }
-//   }
-// }
-// .palette-4 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $dusty-rose;
-//     color: $navy;
-//     border-color: $navy;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $navy;
-//     }
-//   }
-// }
-// .palette-5 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $fire-coral;
-//     color: $bone;
-//     border-color: $bone;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $bone;
-//     }
-//   }
-// }
-// .palette-6 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $ultraviolet;
-//     color: $bone;
-//     border-color: $bone;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $bone;
-//     }
-//   }
-// }
-// .palette-7 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $navy;
-//     color: $dusty-rose;
-//     border-color: $dusty-rose;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $dusty-rose;
-//     }
-//   }
-// }
-// .palette-8 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $sage;
-//     color: $navy;
-//     border-color: $navy;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $navy;
-//     }
-//   }
-// }
-// .palette-9 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $evergreen;
-//     color: $sage;
-//     border-color: $sage;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $sage;
-//     }
-//   }
-// }
-// .palette-10 {
-//   .page-header,
-//   footer,
-//   .apply-color-theme {
-//     background-color: $eggplant;
-//     color: $yellow;
-//     border-color: $yellow;
-//   }
-//   a:hover {
-//     color: $eggplant;
-//   }
-//   .svg-logo {
-//     path {
-//       fill: $yellow;
-//     }
-//   }
-// }
-
-// Utility classes - if you nest these in the above declarations you can generate utility classes for each color palette
-
-// .bg-random {
-//   background-color: $background-color;
-// }
-// .color-random {
-//   color: $text-color;
-// }

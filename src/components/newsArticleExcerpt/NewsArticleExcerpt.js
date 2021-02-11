@@ -6,7 +6,7 @@ import { RichText } from "prismic-reactjs"
 const NewsArticleExcerpt = ({ slug, pubDate, title }) => {
   return (
     <article className="news-article mb-16">
-      <Link to={`/news/${slug}`} className="news-article-link ">
+      <Link to={`/news/${slug}`} className="news-article-link block">
         <footer>
           <div className="news-article-pub-date eyebrow">
             <time dateTime={pubDate}>
