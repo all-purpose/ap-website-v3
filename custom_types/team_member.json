@@ -27,22 +27,6 @@
         "placeholder" : "Enter the team members specialties"
       }
     },
-    "specialties_selection" : {
-      "type" : "Group",
-      "config" : {
-        "fields" : {
-          "choose_specialty" : {
-            "type" : "Link",
-            "config" : {
-              "select" : "document",
-              "customtypes" : [ "specialty" ],
-              "label" : "Choose Specialty"
-            }
-          }
-        },
-        "label" : "Specialties Selection"
-      }
-    },
     "specialties" : {
       "type" : "Group",
       "config" : {
