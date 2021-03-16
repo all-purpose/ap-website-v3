@@ -6,20 +6,16 @@ const TeamMembers = ({ accessibleName, fields }) => {
     className: "team-member row",
   }
 
-  if (accessibleName) {
-    teamListProps["aria-label"] = accessibleName
-  }
-
   const outputTeamMembers = (fields) => {
     return fields.map((field, index) => {
-      const { name, photo, specialties_list } = field.team_member.document.data
+      const { name, photo, specialties } = field.team_member.document.data
 
       return (
         <li key={index} className="col-6 col-md-3 mb-16">
           <TeamMember
             name={name}
             photo={photo}
-            specialties={specialties_list}
+            specialties={specialties}
           />
         </li>
       )
@@ -28,6 +24,9 @@ const TeamMembers = ({ accessibleName, fields }) => {
 
   return (
     <div className="container py-24">
+      {accessibleName && (
+        <h2 className="sr-only">{accessibleName}</h2>
+      )}
       <ul {...teamListProps}>{outputTeamMembers(fields)}</ul>
     </div>
   )
