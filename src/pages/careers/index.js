@@ -71,10 +71,10 @@ export const query = graphql`
               }
             }
             remote_header {
-                raw
+              raw
             }
             remote_statement {
-                raw
+              raw
             }
             remote_team_vid {
               url
@@ -87,8 +87,9 @@ export const query = graphql`
   }
 `
 
-const CareersPage = (props) => {
+// NOTE: the logic for this page assumes that "General Applications" is an open position in Prismic and that it is the first open position in the list.
 
+const CareersPage = (props) => {
   const [selectedPalette, setSelectedPalette] = useState(null)
 
   function getRandomInt(min, max) {
@@ -121,19 +122,21 @@ const CareersPage = (props) => {
     seo_title,
     fineprint,
     remote_team_vid,
-    benefits
+    benefits,
   } = node.data
 
-  let videoUrl = '';
+  let videoUrl = ""
 
   try {
-    videoUrl = remote_team_vid.url;
+    videoUrl = remote_team_vid.url
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
 
   const generalApps = job_listings.find(
-    (job) => job.job_listing.document.data.job_title.raw[0].text === "General Applications"
+    (job) =>
+      job.job_listing.document.data.job_title.raw[0].text ===
+      "General Applications"
   )
 
   const outputJobListings = (props) => {
@@ -141,7 +144,8 @@ const CareersPage = (props) => {
       // if there's only 1 job listing and it's the General Application posting, or if there's no job listings, show a message about not having any open positions. This is to prevent a situation when one CtaCard shows up, looks weird when there's only one stand alone CtaCard.
       if (
         (job_listings.length === 1 &&
-            job.job_listing.document.data.job_title.raw[0].text === "General Applications") ||
+          job.job_listing.document.data.job_title.raw[0].text ===
+            "General Applications") ||
         job_listings.length === 0
       ) {
         return (
@@ -199,7 +203,10 @@ const CareersPage = (props) => {
 
   return (
     <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral title={page_title.raw} description={page_description.raw} />
+      <PageHeaderGeneral
+        title={page_title.raw}
+        description={page_description.raw}
+      />
       <div className="page-sections  ">
         <div className="container pt-48 pb-24">
           <div className="row">
@@ -272,14 +279,16 @@ const CareersPage = (props) => {
             {/* Only show this message when there's more than 1 job listing, in theory 'General Applications' will always be a job listing that we have */}
             <div className="col-lg-6 offset-lg-3 ">
               {job_listings.length > 1 &&
-              job_listings[0].job_listing.job_title[0].text ===
-                "General Applications" ? (
+              job_listings[0].job_listing.document.data.job_title.raw[0]
+                .text === "General Applications" ? (
                 <p className="mt-16">
                   Don’t see anything that fits your expertise? Feel free to
                   apply to the{" "}
                   <a
                     className=""
-                    href={generalApps.job_listing.external_url.url}
+                    href={
+                      generalApps.job_listing.document.data.external_url.url
+                    }
                   >
                     General Applications{" "}
                   </a>
@@ -298,17 +307,9 @@ const CareersPage = (props) => {
               <h2 className="heading-01 sm:pb-0 pb-10">Benefits & Perks</h2>
             </div>
             <div className="col-md-6">
-              <ul className="list">
-                {outputBenefits(
-                  benefits
-                )}
-              </ul>
+              <ul className="list">{outputBenefits(benefits)}</ul>
 
-              <p className="py-24">
-                {
-                  fineprint[0].item.raw[0].text
-                }
-              </p>
+              <p className="py-24">{fineprint[0].item.raw[0].text}</p>
             </div>
           </div>
         </div>
@@ -329,16 +330,17 @@ const CareersPage = (props) => {
 
       <div className="container py-48">
         {videoUrl && (
-        <div className="row">
-          <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 mb-16 md:mb-48 mx-auto">
-            <BackgroundVideo 
-              id={'remote-team-vid'} 
-              type={'video/mp4'} 
-              url={videoUrl} 
-              title={`Clip of the All Purpose team waving`} 
-              playbackRate={1.2} />
+          <div className="row">
+            <div className="offset-sm-1 offset-md-1 offset-lg-1 col-sm-10 col-md-10 col-lg-10 mb-16 md:mb-48 mx-auto">
+              <BackgroundVideo
+                id={"remote-team-vid"}
+                type={"video/mp4"}
+                url={videoUrl}
+                title={`Clip of the All Purpose team waving`}
+                playbackRate={1.2}
+              />
+            </div>
           </div>
-        </div>
         )}
         <div className="row items-center">
           <div className="col-md-6">
