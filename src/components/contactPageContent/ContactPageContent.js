@@ -30,6 +30,7 @@ const ContactPageContent = (props) => {
           </div>
         </div>
         <div className="col-md-6">
+          <h2 className="sr-only">Send us a message</h2>
           <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="contact" />
             <div className="hidden">

@@ -7,8 +7,8 @@ const CaseStudyExcerpts = ({pageType, pageUid, accessibleName, fields}) => {
     className: "case-study-excerpts row"
   };
 
-  if (accessibleName) {
-    excerptListProps['aria-label'] = accessibleName;
+  if (pageType === "home_page" && pageUid === "home" && accessibleName) {
+    excerptListProps['aria-label'] = accessibleName
   }
 
   const outputCaseStudyExcerpts = fields => {
@@ -41,9 +41,14 @@ const CaseStudyExcerpts = ({pageType, pageUid, accessibleName, fields}) => {
   }
   
   return (
-    <ul {...excerptListProps}>
-      {outputCaseStudyExcerpts(fields)}
-    </ul>
+    <>
+      {pageType === "work_page" && pageUid === "work" && accessibleName && (
+        <h2 className="sr-only">{accessibleName}</h2>
+      )}
+      <ul {...excerptListProps}>
+        {outputCaseStudyExcerpts(fields)}
+      </ul>
+    </>
   );
 
 }

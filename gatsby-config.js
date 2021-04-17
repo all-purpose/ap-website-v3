@@ -40,15 +40,7 @@ module.exports = {
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        postCssPlugins: [
-          require("tailwindcss"),
-          require("./tailwind.config.js"), // Optional: Load custom Tailwind CSS configuration
-        ],
-      },
-    },
+    `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -81,6 +73,7 @@ module.exports = {
           news_article: require('./custom_types/news_article.json'),
           news_page: require('./custom_types/news_page.json'),
           service: require('./custom_types/service.json'),
+          specialty: require('./custom_types/specialty.json'),
           team_member: require('./custom_types/team_member.json'),
           team_page: require('./custom_types/team_page.json'),
           work_page: require('./custom_types/work_page.json'),

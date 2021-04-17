@@ -1,0 +1,10 @@
+{
+  "Main" : {
+    "specialty_name" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Specialty Name"
+      }
+    }
+  }
+}

@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from 'gatsby';
 
 const SkipLinks = () => {
 
   return (
     <div className="skip-links">
-      <a className="skip-link" href="#content">Skip to main content</a>
+      <Link className="skip-link" to={'#content'}>Skip to main content</Link>
     </div>
   );
 

@@ -2,6 +2,7 @@ module.exports = {
   purge: [
     './src/**/*.js'
   ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
     screens: {
@@ -18,6 +19,8 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
     },
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [],
 }

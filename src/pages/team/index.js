@@ -27,12 +27,20 @@ export const query = graphql`
                     id
                     data {
                       name
-                      specialties_list {
-                        raw
-                      }
                       photo {
                         alt
                         url
+                      }
+                      specialties {
+                        specialty {
+                          document {
+                            ... on PrismicSpecialty {
+                              data {
+                                specialty_name
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }

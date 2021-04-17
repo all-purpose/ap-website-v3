@@ -3,8 +3,6 @@ import { Link } from "gatsby"
 import "./CaseStudyExcerpt.scss"
 
 const CaseStudyExcerpt = ({
-  pageType,
-  pageUid,
   link,
   image,
   projectName,
@@ -15,20 +13,12 @@ const CaseStudyExcerpt = ({
     console.warn('No alt text for image: %s. Is this intentional?', image.url);
   }
 
-  const outputCaseStudyExcerptHeading = (pageType, pageUid, projectName) => {
-    if (pageType === "work_page" && pageUid === "work") {
-      return (
-        <h2 className="case-study-excerpt-project heading-01 sans">
-          {projectName}
-        </h2>
-      )
-    } else {
-      return (
-        <h3 className="case-study-excerpt-project heading-01 sans">
-          {projectName}
-        </h3>
-      )
-    }
+  const outputCaseStudyExcerptHeading = (projectName) => {
+    return (
+      <h3 className="case-study-excerpt-project heading-01 sans">
+        {projectName}
+      </h3>
+    )
   }
 
   return (
@@ -44,7 +34,7 @@ const CaseStudyExcerpt = ({
           />
         </div>
         }
-        {outputCaseStudyExcerptHeading(pageType, pageUid, projectName)}
+        {outputCaseStudyExcerptHeading(projectName)}
         <div className="case-study-excerpt-roles body-01 mt-2">{roles}</div>
       </Link>
     </div>
