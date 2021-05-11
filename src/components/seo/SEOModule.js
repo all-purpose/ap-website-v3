@@ -1,7 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 
-function SEO({ title, description = '', lang = 
+function Seo({ title, description = '', lang = 
   'en', meta = [] }) {
 
   return (
@@ -53,4 +53,4 @@ function SEO({ title, description = '', lang =
   )
 }
 
-export default SEO;
+export default Seo;
