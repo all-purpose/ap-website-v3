@@ -76,7 +76,6 @@ const BackgroundVideo = props => {
           ref={videoRef}
           onCanPlay={() => setPlayBack()}
           title={title}
-          aria-label={title}
       >
         <source
           src={url}
