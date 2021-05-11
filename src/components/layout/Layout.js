@@ -1,5 +1,5 @@
 import React from "react"
-import SEO from '../seo/SEOModule';
+import Seo from '../seo/SEOModule';
 import Header from "../header/Header"
 import Footer from "../footer/Footer"
 import VisibleGrid from "../visibleGrid/VisibleGrid"
@@ -18,7 +18,7 @@ const Layout = ({ seoTitle, palette, type, uid, children }) => {
 
   return (
     <div className={`site ${palette ? palette : ""}`}>
-      <SEO title={seoTitle} />
+      <Seo title={seoTitle} />
       <Header />
       <main id="content" className={addContentClasses(type, uid)}>
         {children}
