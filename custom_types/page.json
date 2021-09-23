@@ -1,0 +1,142 @@
+{
+  "Main" : {
+    "page_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1,strong,em,embed",
+        "label" : "Page Title",
+        "placeholder" : "Enter a page title...",
+        "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+      }
+    },
+    "page_description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph,heading2,strong,em,embed",
+        "label" : "Page Description",
+        "placeholder" : "Enter a page description (or subtitle)",
+        "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+      }
+    },
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "Page Slug",
+        "placeholder" : "Enter a URL-friendly page slug (e.g. about-us)"
+      }
+    },
+    "hero_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Hero Image"
+      }
+    }
+  },
+  "Content" : {
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "team_member_profiles" : [ ]
+        },
+        "choices" : {
+          "flexible_content_section" : {
+            "type" : "Slice",
+            "fieldset" : "Flexible Content Section",
+            "description" : "Grid-based section with variable content options",
+            "icon" : "web",
+            "display" : "list",
+            "non-repeat" : {
+              "container_id" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Container ID",
+                  "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                }
+              },
+              "container_css_class" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Container CSS Class",
+                  "placeholder" : "Add one or more class names (space separated)"
+                }
+              }
+            },
+            "repeat" : {
+              "item_id" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Item ID",
+                  "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                }
+              },
+              "item_css_class" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Item CSS Class",
+                  "placeholder" : "Add one or more class names (space separated)"
+                }
+              },
+              "item_content" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,o-list-item",
+                  "allowTargetBlank" : true,
+                  "label" : "Item Content",
+                  "placeholder" : "Enter content here...",
+                  "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                }
+              }
+            }
+          },
+          "image_group" : {
+            "type" : "Slice",
+            "fieldset" : "Image Group",
+            "description" : "One or more images in grid row (desktop screen)",
+            "icon" : "photo_library",
+            "display" : "list",
+            "non-repeat" : {
+              "section_id" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Section ID",
+                  "placeholder" : "Enter a URL friendly ID (e.g. the-challenge)"
+                }
+              },
+              "section_css_class" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Section CSS Class",
+                  "placeholder" : "Add one or more class names (space separated)"
+                }
+              }
+            },
+            "repeat" : {
+              "image" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Image"
+                }
+              },
+              "image_caption" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph,strong,em,hyperlink,embed",
+                  "allowTargetBlank" : true,
+                  "label" : "Image Caption",
+                  "placeholder" : "Enter an image caption (optional)",
+                  "labels" : [ "display-01", "display-02", "heading-01", "heading-02", "body-01", "body-short-02", "body-long-02", "eyebrow" ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

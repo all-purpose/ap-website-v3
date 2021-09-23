@@ -37,6 +37,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   caseStudyPages.data.allPrismicCaseStudy.edges.forEach(
   (edge) => {
+    console.log(edge.node)
     createPage({
       path: edge.node.url,
       component: path.resolve(__dirname, 'src/templates/caseStudy.js'),
