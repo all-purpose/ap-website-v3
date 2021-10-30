@@ -14,7 +14,7 @@ const CaseStudyPagination = ({ prevCaseStudy, nextCaseStudy }) => {
         {/* <span className="pagination-link-label"> {`<-`} Previous project</span> */}
         {/* Temporarily here while we only have 2 projects */}
         <span className="pagination-link-label">Next project -&gt;</span>
-        <Link to={prevCaseStudy.url}>
+        <Link to={`/case-study/${prevCaseStudy.uid}`}>
           <span className="pagination-link-name heading-02">{prevCaseStudy.data.project_name}</span>
         </Link>
       </div>
@@ -29,7 +29,7 @@ const CaseStudyPagination = ({ prevCaseStudy, nextCaseStudy }) => {
     return (
       <div className="pagination-link next">
         <span className="pagination-link-label">Next project -&gt;</span>
-        <Link to={nextCaseStudy.url}>
+        <Link to={`/case-study/${nextCaseStudy.uid}`}>
           <span className="pagination-link-name heading-02">{nextCaseStudy.data.project_name}</span>
         </Link>
       </div>

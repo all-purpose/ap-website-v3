@@ -16,16 +16,15 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             uid
-            url
           }
           next {
-            url
+            uid
             data {
               project_name
             }
           }
           previous {
-            url
+            uid
             data {
               project_name
             }
@@ -37,9 +36,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   caseStudyPages.data.allPrismicCaseStudy.edges.forEach(
   (edge) => {
-    console.log(edge.node)
     createPage({
-      path: edge.node.url,
+      path: `/case-study/${edge.node.uid}`,
       component: path.resolve(__dirname, 'src/templates/caseStudy.js'),
       context: { ...edge.node, next: edge.next, previous: edge.previous }
     })

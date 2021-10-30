@@ -64,7 +64,6 @@ export const query = graphql`
     ) {
       edges {
         node {
-          url
           uid
           type
           id
@@ -84,7 +83,7 @@ export const query = graphql`
             project_name
             text_color
             body {
-              ... on PrismicCaseStudyBodyCaseStudyMain {
+              ... on PrismicCaseStudyDataBodyCaseStudyMain {
                 slice_type
                 primary {
                   section_content {
@@ -97,7 +96,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicCaseStudyBodyFlexibleContentSection {
+              ... on PrismicCaseStudyDataBodyFlexibleContentSection {
                 slice_type
                 items {
                   item_css_class
@@ -111,7 +110,7 @@ export const query = graphql`
                   container_id
                 }
               }
-              ... on PrismicCaseStudyBodyBlockQuote {
+              ... on PrismicCaseStudyDataBodyBlockQuote {
                 slice_type
                 primary {
                   section_id
@@ -124,7 +123,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicCaseStudyBodyImageGroup {
+              ... on PrismicCaseStudyDataBodyImageGroup {
                 primary {
                   section_css_class
                   section_id
@@ -140,7 +139,7 @@ export const query = graphql`
                   }
                 }
               }
-              ... on PrismicCaseStudyBodyVideoEmbed {
+              ... on PrismicCaseStudyDataBodyVideoEmbed {
                 slice_type
                 primary {
                   section_css_class

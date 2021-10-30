@@ -20,7 +20,7 @@ export const query = graphql`
             }
             seo_title
             body {
-              ... on PrismicNewsArticleBodyFlexibleContentSection {
+              ... on PrismicNewsArticleDataBodyFlexibleContentSection {
                 slice_type
                 items {
                   item_content {
