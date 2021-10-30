@@ -71,14 +71,14 @@ export const query = graphql`
           data {
             background_header_color
             case_study_page_title {
-              raw
+              richText
             }
             highlight_color
             in_a_nutshell {
-              raw
+              richText
             }
             our_role {
-              raw
+              richText
             }
             project_name
             text_color
@@ -87,12 +87,12 @@ export const query = graphql`
                 slice_type
                 primary {
                   section_content {
-                    raw
+                    richText
                   }
                   section_css_class
                   section_id
                   section_title {
-                    raw
+                    richText
                   }
                 }
               }
@@ -102,7 +102,7 @@ export const query = graphql`
                   item_css_class
                   item_id
                   item_content {
-                    raw
+                    richText
                   }
                 }
                 primary {
@@ -116,10 +116,10 @@ export const query = graphql`
                   section_id
                   section_css_class
                   quote_text {
-                    raw
+                    richText
                   }
                   quote_author_citation {
-                    raw
+                    richText
                   }
                 }
               }
@@ -135,7 +135,7 @@ export const query = graphql`
                     url
                   }
                   image_caption {
-                    raw
+                    richText
                   }
                 }
               }
@@ -145,10 +145,10 @@ export const query = graphql`
                   section_css_class
                   section_id
                   video_embed_code {
-                    raw
+                    richText
                   }
                   video_transcript {
-                    raw
+                    richText
                   }
                   video_transcript_btn_text
                 }
@@ -160,12 +160,12 @@ export const query = graphql`
                   id
                   data {
                     call_to_action_statement {
-                      raw
+                      richText
                     }
                     call_to_action_buttons {
                       button_action_text
                       button_sub_text {
-                        raw
+                        richText
                       }
                       button_link_target {
                         document {
@@ -222,9 +222,9 @@ const CaseStudy = (props) => {
       <Layout seoTitle={`${project_name} | Case Study`} type={type} uid={uid}>
         <PageHeaderCaseStudy
           title={project_name}
-          description={case_study_page_title.raw}
+          description={case_study_page_title.richText}
         />
-        <CaseStudyDetails ourRole={our_role.raw} inANutshell={in_a_nutshell.raw} />
+        <CaseStudyDetails ourRole={our_role.richText} inANutshell={in_a_nutshell.richText} />
         {/* Hide for now until we figure out how we want to handle this */}
         {/* <CaseStudyInPageNav
           navAccessibleName={accessible_name}

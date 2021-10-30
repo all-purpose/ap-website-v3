@@ -18,33 +18,33 @@ export const query = graphql`
           type
           data {
             home_page_title {
-              raw
+              richText
             }
             home_page_description {
-              raw
+              richText
             }
             home_services_brand_title {
-              raw
+              richText
             }
             home_services_section_title {
-              raw
+              richText
             }
             home_services_category_listing {
               service_category_title {
-                raw
+                richText
               }
               services_listing {
-                raw
+                richText
               }
             }
             home_services_listing {
-              raw
+              richText
             }
             home_design_good_section_title {
-              raw
+              richText
             }
             home_design_good_description {
-              raw
+              richText
             }
             home_design_good_logos {
               logo_image {
@@ -53,11 +53,11 @@ export const query = graphql`
               }
             }
             home_projects_brand_title {
-              raw
+              richText
             }
             home_projects_listing_accessible_name
             home_projects_section_title {
-              raw
+              richText
             }
             projects_listing {
               case_study {
@@ -82,12 +82,12 @@ export const query = graphql`
                   id
                   data {
                     call_to_action_statement {
-                      raw
+                      richText
                     }
                     call_to_action_buttons {
                       button_action_text
                       button_sub_text {
-                        raw
+                        richText
                       }
                       button_link_target {
                         document {
@@ -148,27 +148,27 @@ const IndexPage = (props) => {
   return (
     <Layout seoTitle={"Home"} palette={selectedPalette} type={type}>
       <PageHeaderHome
-        title={home_page_title.raw}
-        description={home_page_description.raw}
+        title={home_page_title.richText}
+        description={home_page_description.richText}
       />
       <div className="page-sections">
         <HomePageServices
-          sectionTitle={home_services_section_title.raw}
-          brandTitle={home_services_brand_title.raw}
+          sectionTitle={home_services_section_title.richText}
+          brandTitle={home_services_brand_title.richText}
           serviceCategoryListings={home_services_category_listing}
           servicesListing={home_services_listing}
         />
         <HomePageProjects
           pageType={type}
           pageUid={'home'}
-          sectionTitle={home_projects_section_title.raw}
-          brandTitle={home_projects_brand_title.raw}
+          sectionTitle={home_projects_section_title.richText}
+          brandTitle={home_projects_brand_title.richText}
           projectsAccessibleName={home_projects_listing_accessible_name}
           projects={projects_listing}
         />
         <HomePageDesignGood
-          sectionTitle={home_design_good_section_title.raw}
-          description={home_design_good_description.raw}
+          sectionTitle={home_design_good_section_title.richText}
+          description={home_design_good_description.richText}
           logos={home_design_good_logos}
         />
         <CallToAction callToAction={call_to_action} />

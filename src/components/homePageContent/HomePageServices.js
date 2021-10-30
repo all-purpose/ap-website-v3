@@ -18,9 +18,9 @@ const HomePageServices = ({
       return (
         <div key={i} className="col-12 col-lg-3">
           <div className="sr-only">
-            <RichText render={service_category_title.raw} />
+            <RichText render={service_category_title.richText} />
           </div>
-          <RichText render={services_listing.raw} />
+          <RichText render={services_listing.richText} />
         </div>
       )
     })
@@ -28,14 +28,14 @@ const HomePageServices = ({
 
   // TODO: Put this data into Prismic
   let embedCode = {
-    raw: [
+    richText: [
       {
         text: `<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe title='All Purpose Media Reel' src='https://player.vimeo.com/video/481387602' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>`,
       },
     ],
   }
   let transcript = {
-    raw: [
+    richText: [
       {
         text: null,
       },

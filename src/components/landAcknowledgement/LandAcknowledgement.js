@@ -8,7 +8,7 @@ const landAcknowledgementQuery = graphql`
       nodes {
         data {
           land_acknowledgment_statement {
-            raw
+            richText
           }
         }
       }
@@ -22,7 +22,7 @@ const LandAcknowledgement = () => {
     <StaticQuery
       query={`${landAcknowledgementQuery}`}
       render={(data) => {
-        const statement = data.allPrismicFooter.nodes[0].data.land_acknowledgment_statement.raw;
+        const statement = data.allPrismicFooter.nodes[0].data.land_acknowledgment_statement.richText;
         if (!statement) {
           return false;
         }

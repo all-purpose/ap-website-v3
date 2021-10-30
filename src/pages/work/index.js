@@ -15,10 +15,10 @@ export const query = graphql`
           data {
             accessible_name
             page_description {
-              raw
+              richText
             }
             page_title {
-              raw
+              richText
             }
             case_studies {
               case_study {
@@ -44,12 +44,12 @@ export const query = graphql`
                   id
                   data {
                     call_to_action_statement {
-                      raw
+                      richText
                     }
                     call_to_action_buttons {
                       button_action_text
                       button_sub_text {
-                        raw
+                        richText
                       }
                       button_link_target {
                         document {
@@ -98,8 +98,8 @@ const WorkPage = (props) => {
   } = node.data
 
   return (
-    <Layout seoTitle={page_title.raw[0].text} palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral title={page_title.raw} description={page_description.raw} />
+    <Layout seoTitle={page_title.richText[0].text} palette={selectedPalette} type={type} uid={uid}>
+      <PageHeaderGeneral title={page_title.richText} description={page_description.richText} />
       <div className="page-sections">
         <div className="container py-24">
           <CaseStudyExcerpts

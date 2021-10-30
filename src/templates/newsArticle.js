@@ -13,10 +13,10 @@ export const query = graphql`
         node {
           data {
             article_feature_text {
-              raw
+              richText
             }
             article_title {
-              raw
+              richText
             }
             seo_title
             body {
@@ -24,7 +24,7 @@ export const query = graphql`
                 slice_type
                 items {
                   item_content {
-                    raw
+                    richText
                   }
                   item_id
                   item_css_class
@@ -43,7 +43,7 @@ export const query = graphql`
                     call_to_action_buttons {
                       button_action_text
                       button_sub_text {
-                        raw
+                        richText
                       }
                       button_link_target {
                         document {
@@ -54,7 +54,7 @@ export const query = graphql`
                       }
                     }
                     call_to_action_statement {
-                      raw
+                      richText
                     }
                   }
                 }
@@ -107,8 +107,8 @@ const NewsArticle = (props) => {
       uid={uid}
     >
       <PageHeaderGeneral
-        title={article_title.raw}
-        description={article_feature_text.raw}
+        title={article_title.richText}
+        description={article_feature_text.richText}
         headingClass="heading-02 mb-4"
       />
       <article className="container py-32">

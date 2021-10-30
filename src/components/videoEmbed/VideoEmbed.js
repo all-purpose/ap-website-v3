@@ -4,7 +4,7 @@ import './VideoEmbed.scss';
 
 const VideoEmbed = ({sectionId, sectionCssClass, embedCode, transcriptBtnText, transcript}) => {
 
-  let embedCodeText = embedCode.raw[0].text || '';
+  let embedCodeText = embedCode.richText[0].text || '';
 
   const [transcriptExpanded, setTranscriptExpanded] = useState(false);
 
@@ -37,7 +37,7 @@ const VideoEmbed = ({sectionId, sectionCssClass, embedCode, transcriptBtnText, t
 
   const outputTranscript = (transcriptBtnText, transcript) => {
 
-    if (!transcript.raw[0].text) {
+    if (!transcript.richText[0].text) {
       return false;
     }
 
@@ -57,7 +57,7 @@ const VideoEmbed = ({sectionId, sectionCssClass, embedCode, transcriptBtnText, t
           </button>
         </div>
         <div className="transcript-content body-long-02" aria-hidden={!transcriptExpanded}>
-          <RichText render={transcript.raw} />
+          <RichText render={transcript.richText} />
         </div>
       </div>
 

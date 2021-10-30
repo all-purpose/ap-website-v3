@@ -5,9 +5,6 @@ require("dotenv").config({
 const linkResolver = require('./src/utils/linkResolver')
 
 module.exports = {
-  flags: {
-    DEV_SSR: false
-  },
   siteMetadata: {
     siteUrl: `http://allpurpose.io`,
     title: `All Purpose`,
@@ -40,6 +37,7 @@ module.exports = {
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -138,8 +136,5 @@ module.exports = {
         manualLoad: false,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

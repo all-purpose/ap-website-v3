@@ -14,10 +14,10 @@ export const query = graphql`
           uid
           data {
             page_description {
-              raw
+              richText
             }
             page_title {
-              raw
+              richText
             }
             accessible_name
             team_profiles {
@@ -55,7 +55,7 @@ export const query = graphql`
                     call_to_action_buttons {
                       button_action_text
                       button_sub_text {
-                        raw
+                        richText
                       }
                       button_link_target {
                         document {
@@ -66,7 +66,7 @@ export const query = graphql`
                       }
                     }
                     call_to_action_statement {
-                      raw
+                      richText
                     }
                   }
                 }
@@ -108,10 +108,10 @@ const TeamPage = props => {
   } = node.data;
 
   return (
-    <Layout seoTitle={page_title.raw[0].text} palette={selectedPalette} type={type} uid={uid}>
+    <Layout seoTitle={page_title.richText[0].text} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral 
-        title={page_title.raw} 
-        description={page_description.raw} 
+        title={page_title.richText} 
+        description={page_description.richText} 
       />
       <div className="page-sections">
         <TeamMembers 
