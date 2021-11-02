@@ -44,13 +44,13 @@ const CallToAction = ({ callToAction }) => {
         return false
       }
 
-      if (button_sub_text.raw.length > 0) {
+      if (button_sub_text.richText.length > 0) {
         return (
           <div key={i} className="col-12 col-sm-6 col-lg-3">
             <Link to={`/${ctaBtnLinkTarget}`} className="cta-link ">
               <h3 className="cta-link-action-text serif">{ctaBtnActionText}</h3>
               <div className="cta-link-sub-text ">
-                <RichText render={button_sub_text.raw} />
+                <RichText render={button_sub_text.richText} />
               </div>
             </Link>
           </div>
@@ -81,7 +81,7 @@ const CallToAction = ({ callToAction }) => {
           <div className="cta-statement display-01 col-md-12 col-lg-6 ">
             <div className="row">
               <div className="col-md-6 col-lg-12">
-                <RichText render={call_to_action_statement.raw} />
+                <RichText render={call_to_action_statement.richText} />
               </div>
             </div>
           </div>

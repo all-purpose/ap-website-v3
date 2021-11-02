@@ -45,8 +45,8 @@ const FlexibleContentItem = ({ field }) => {
 
   const outputItemContent = (itemContent) => {
 
-    if (itemContent.raw[0].type === 'image') {
-      const image = itemContent.raw[0];
+    if (itemContent.richText[0].type === 'image') {
+      const image = itemContent.richText[0];
 
       if (!image.url) {
         return false;
@@ -64,7 +64,7 @@ const FlexibleContentItem = ({ field }) => {
       );
     } else {
       return (
-        <RichText render={itemContent.raw} />
+        <RichText render={itemContent.richText} />
       );
     }
   }

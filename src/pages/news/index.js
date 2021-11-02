@@ -15,10 +15,10 @@ export const pageQuery = graphql`
           uid
           data {
             page_description {
-              raw
+              richText
             }
             page_title {
-              raw
+              richText
             }
             call_to_action {
               document {
@@ -26,12 +26,12 @@ export const pageQuery = graphql`
                   id
                   data {
                     call_to_action_statement {
-                      raw
+                      richText
                     }
                     call_to_action_buttons {
                       button_action_text
                       button_sub_text {
-                        raw
+                        richText
                       }
                       button_link_target {
                         document {
@@ -78,8 +78,8 @@ const NewsPage = (props) => {
   } = node.data
 
   return (
-    <Layout seoTitle={page_title.raw[0].text} palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral title={page_title.raw} description={page_description.raw} />
+    <Layout seoTitle={page_title.richText[0].text} palette={selectedPalette} type={type} uid={uid}>
+      <PageHeaderGeneral title={page_title.richText} description={page_description.richText} />
       <div className="page-sections apply-color-theme">
         <div className="container pb-24">
           <hr className="theme-color mb-48 mt-0" />

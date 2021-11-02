@@ -13,10 +13,10 @@ export const query = graphql`
           type
           data {
             page_description {
-              raw
+              richText
             }
             page_title {
-              raw
+              richText
             }
             seo_title
           }
@@ -55,7 +55,7 @@ const ContactPage = (props) => {
 
   return (
     <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral title={page_title.raw} description={page_description.raw} />
+      <PageHeaderGeneral title={page_title.richText} description={page_description.richText} />
       <div className="page-sections apply-color-theme ">
         <div className="container">
           <hr className="theme-color mb-48 mt-0" />

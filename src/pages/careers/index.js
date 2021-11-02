@@ -17,16 +17,16 @@ export const query = graphql`
           uid
           data {
             page_description {
-              raw
+              richText
             }
             page_title {
-              raw
+              richText
             }
             mission_header {
-              raw
+              richText
             }
             mission_statement {
-              raw
+              richText
             }
             job_listings {
               job_listing {
@@ -35,10 +35,10 @@ export const query = graphql`
                     id
                     data {
                       job_title {
-                        raw
+                        richText
                       }
                       location {
-                        raw
+                        richText
                       }
                       external_url {
                         url
@@ -49,19 +49,19 @@ export const query = graphql`
               }
             }
             diversity_header {
-              raw
+              richText
             }
             diversity_statement {
-              raw
+              richText
             }
             fineprint {
               item {
-                raw
+                richText
               }
             }
             benefits {
               benefit {
-                raw
+                richText
               }
             }
             culture_photos {
@@ -71,10 +71,10 @@ export const query = graphql`
               }
             }
             remote_header {
-              raw
+              richText
             }
             remote_statement {
-              raw
+              richText
             }
             remote_team_vid {
               url
@@ -135,7 +135,7 @@ const CareersPage = (props) => {
 
   const generalApps = job_listings.find(
     (job) =>
-      job.job_listing.document.data.job_title.raw[0].text ===
+      job.job_listing.document.data.job_title.richText[0].text ===
       "General Applications"
   )
 
@@ -144,7 +144,7 @@ const CareersPage = (props) => {
       // if there's only 1 job listing and it's the General Application posting, or if there's no job listings, show a message about not having any open positions. This is to prevent a situation when one CtaCard shows up, looks weird when there's only one stand alone CtaCard.
       if (
         (job_listings.length === 1 &&
-          job.job_listing.document.data.job_title.raw[0].text ===
+          job.job_listing.document.data.job_title.richText[0].text ===
             "General Applications") ||
         job_listings.length === 0
       ) {
@@ -177,8 +177,8 @@ const CareersPage = (props) => {
           >
             <div>
               <CtaCard
-                title={job.job_listing.document.data.job_title.raw[0].text}
-                subtitle={job.job_listing.document.data.location.raw[0].text}
+                title={job.job_listing.document.data.job_title.richText[0].text}
+                subtitle={job.job_listing.document.data.location.richText[0].text}
                 cssClass=""
                 href={job.job_listing.document.data.external_url.url}
               />
@@ -193,28 +193,28 @@ const CareersPage = (props) => {
     return props.map((item, index) => {
       return (
         <li key={index} className="list__item">
-          {item.benefit.raw[0].text}
+          {item.benefit.richText[0].text}
         </li>
       )
     })
   }
 
-  let seoTitle = seo_title ? seo_title : page_title.raw[0].text
+  let seoTitle = seo_title ? seo_title : page_title.richText[0].text
 
   return (
     <Layout seoTitle={seoTitle} palette={selectedPalette} type={type} uid={uid}>
       <PageHeaderGeneral
-        title={page_title.raw}
-        description={page_description.raw}
+        title={page_title.richText}
+        description={page_description.richText}
       />
       <div className="page-sections  ">
         <div className="container pt-48 pb-24">
           <div className="row">
             <div className="col-md-3">
-              <h2 className="">{mission_header.raw[0].text}</h2>
+              <h2 className="">{mission_header.richText[0].text}</h2>
             </div>
             <div className="col-md-9 ">
-              <p className="heading-01">{mission_statement.raw[0].text}</p>
+              <p className="heading-01">{mission_statement.richText[0].text}</p>
 
               <div className="mt-20">
                 <AnchorLink
@@ -279,7 +279,7 @@ const CareersPage = (props) => {
             {/* Only show this message when there's more than 1 job listing, in theory 'General Applications' will always be a job listing that we have */}
             <div className="col-lg-6 offset-lg-3 ">
               {job_listings.length > 1 &&
-              job_listings[0].job_listing.document.data.job_title.raw[0]
+              job_listings[0].job_listing.document.data.job_title.richText[0]
                 .text === "General Applications" ? (
                 <p className="mt-16">
                   Don’t see anything that fits your expertise? Feel free to
@@ -309,7 +309,7 @@ const CareersPage = (props) => {
             <div className="col-md-6">
               <ul className="list">{outputBenefits(benefits)}</ul>
 
-              <p className="py-24">{fineprint[0].item.raw[0].text}</p>
+              <p className="py-24">{fineprint[0].item.richText[0].text}</p>
             </div>
           </div>
         </div>
@@ -318,10 +318,10 @@ const CareersPage = (props) => {
             <div className="row">
               <div className="offset-sm-2 offset-md-2 offset-lg-3 col-sm-8 col-md-8 col-lg-6 col-xl-6 offset-xl-3">
                 <h2 className="heading-01 pb-10 md:pb-0">
-                  {diversity_header.raw[0].text}
+                  {diversity_header.richText[0].text}
                 </h2>
 
-                <p>{diversity_statement.raw[0].text}</p>
+                <p>{diversity_statement.richText[0].text}</p>
               </div>
             </div>
           </div>
@@ -345,10 +345,10 @@ const CareersPage = (props) => {
         <div className="row items-center">
           <div className="col-md-6">
             <h2 className="heading-01 pb-10 md:pb-0">
-              {remote_header.raw[0].text}
+              {remote_header.richText[0].text}
             </h2>
           </div>
-          <div className="col-md-6">{remote_statement.raw[0].text}</div>
+          <div className="col-md-6">{remote_statement.richText[0].text}</div>
         </div>
       </div>
     </Layout>

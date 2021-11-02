@@ -9,7 +9,7 @@ const newsArticlesQuery = graphql`
       node {
         data {
           article_title {
-            raw
+            richText
           }
         }
         first_publication_date
@@ -38,7 +38,7 @@ const NewsArticlesExcerpts = () => {
             <NewsArticleExcerpt
               slug={uid}
               pubDate={first_publication_date}
-              title={article_title.raw}
+              title={article_title.richText}
             />
           </li>
         )
