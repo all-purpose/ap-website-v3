@@ -4,7 +4,6 @@ import Layout from "../../components/layout/Layout"
 import PageHeaderGeneral from "../../components/pageHeader/PageHeaderGeneral"
 import CallToAction from "../../components/callToAction/CallToAction"
 import NewsArticlesExcerpts from "../../components/newsArticlesExcerpts/NewsArticlesExcerpts"
-import MediaContact from "../../components/mediaContact/MediaContact"
 
 export const pageQuery = graphql`
   query NewsPageQuery {

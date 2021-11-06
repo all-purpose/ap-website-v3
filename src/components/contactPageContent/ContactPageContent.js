@@ -1,5 +1,4 @@
 import React from "react"
-import MediaContact from "../mediaContact/MediaContact"
 
 const ContactPageContent = (props) => {
   return (
