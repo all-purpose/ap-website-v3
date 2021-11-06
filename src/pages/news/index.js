@@ -48,7 +48,7 @@ export const pageQuery = graphql`
           }
         }
       }
-    }   
+    }
   }
 `
 
@@ -71,23 +71,23 @@ const NewsPage = (props) => {
 
   const { uid, type } = node
 
-  const {
-    page_title,
-    page_description,
-    call_to_action,
-  } = node.data
+  const { page_title, page_description, call_to_action } = node.data
 
   return (
-    <Layout seoTitle={page_title.richText[0].text} palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral title={page_title.richText} description={page_description.richText} />
+    <Layout
+      seoTitle={page_title.richText[0].text}
+      palette={selectedPalette}
+      type={type}
+      uid={uid}
+    >
+      <PageHeaderGeneral
+        title={page_title.richText}
+        description={page_description.richText}
+      />
       <div className="page-sections apply-color-theme">
         <div className="container pb-24">
           <hr className="theme-color mb-48 mt-0" />
           <NewsArticlesExcerpts />
-          <div className="pt-24">
-            <h2 className="eyebrow mt-16 block">Media Contact</h2>
-            <MediaContact showMediaKit />
-          </div>
           <hr className="theme-color mt-48 mb-0" />
         </div>
       </div>
