@@ -1,5 +1,4 @@
 import React from "react"
-import MediaContact from "../mediaContact/MediaContact"
 
 const ContactPageContent = (props) => {
   return (
@@ -21,20 +20,26 @@ const ContactPageContent = (props) => {
             (Squamish) and səl̓ílwətaʔɬ (Tseil-Waututh) Nations.
           </p>
           <h2 className="eyebrow mt-16 block">Email</h2>
-          <a href="mailto:hello@allpurpose.io" className="body-short-02 serif underline">
+          <a
+            href="mailto:hello@allpurpose.io"
+            className="body-short-02 serif underline"
+          >
             hello@allpurpose.io
           </a>
-          <div className="pt-12">
-            <h2 className="eyebrow mt-16 block">Media Contact</h2>
-            <MediaContact />
-          </div>
         </div>
         <div className="col-md-6">
           <h2 className="sr-only">Send us a message</h2>
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
             <input type="hidden" name="form-name" value="contact" />
             <div className="hidden">
-              <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+              <label>
+                Don’t fill this out if you’re human: <input name="bot-field" />
+              </label>
             </div>
             <label className="form-field-label">
               <span className="eyebrow">Name</span>
@@ -55,7 +60,7 @@ const ContactPageContent = (props) => {
             <label className="form-field-label">
               <span>
                 <span className="eyebrow">Message</span>
-                <textarea 
+                <textarea
                   className="form-field apply-color-theme body-short-01"
                   name="message"
                 ></textarea>
