@@ -91,7 +91,8 @@ $palettes: (
       }
     }
 
-    .nav-link, .skip-link {
+    .nav-link,
+    .skip-link {
       color: $fontcolor;
       background-color: $bgcolor;
     }
@@ -110,7 +111,8 @@ $palettes: (
       border-top: solid 1px $fontcolor;
     }
 
-    .svg-logo {
+    .svg-logo,
+    .svg-icon {
       path {
         fill: $fontcolor;
       }
