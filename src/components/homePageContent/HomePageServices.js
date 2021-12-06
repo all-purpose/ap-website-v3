@@ -56,6 +56,9 @@ const HomePageServices = ({
         </div>
       </div>
       <div className="pb-48">
+        <div className="container eyebrow">
+          <h2>Our media reel</h2>
+        </div>
         <VideoEmbed embedCode={embedCode} transcript={transcript} />
       </div>
     </>
