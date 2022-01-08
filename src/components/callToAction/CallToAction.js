@@ -47,7 +47,7 @@ const CallToAction = ({ callToAction }) => {
       if (button_sub_text.richText.length > 0) {
         return (
           <div key={i} className="col-12 col-sm-6 col-lg-3">
-            <Link to={`/${ctaBtnLinkTarget}`} className="cta-link ">
+            <Link to={`/${ctaBtnLinkTarget}`} className="cta-link card">
               <h3 className="cta-link-action-text serif">{ctaBtnActionText}</h3>
               <div className="cta-link-sub-text ">
                 <RichText render={button_sub_text.richText} />
