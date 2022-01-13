@@ -61,7 +61,14 @@ const FooterNav = () => {
                 data.allPrismicFooter.nodes[0].data.footer_navigation_accessible_name
               }
             >
-            <ul>{outputNavLinks(data)}</ul>
+            <ul>
+              <li>
+                <Link to={'/'} className="nav-link">
+                  Home
+                </Link>
+              </li>
+              {outputNavLinks(data)}
+            </ul>
             </nav>
           </>
         )
