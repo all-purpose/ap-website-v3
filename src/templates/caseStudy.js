@@ -24,7 +24,7 @@ const CustomStyleWrapper = styled.div`
   .case-study-section-title {
     color: ${(props) => props.highlightColor};
   }
-  .svg-logo path {
+  .svg-logo path, .svg-icon path {
     fill: ${(props) => props.textColor};
   }
 
