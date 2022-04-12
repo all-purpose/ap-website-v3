@@ -29,8 +29,8 @@
     "postcss": "^8.2.8",
     "prismic-reactjs": "^1.3.1",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-helmet": "^6.1.0",
     "sass": "^1.47.0",
     "smooth-scroll": "^16.1.3",
@@ -41,17 +41,14 @@
     "prettier": "^2.0.5"
   },
   "resolutions": {
-    "gatsby/**/browserslist": "^4.16.5",
-    "gatsby/**/ws": "^8.4.0",
+    "gatsby/**/ansi-html": "^0.0.9",
     "gatsby/**/immer": "^9.0.7",
-    "gatsby/**/ansi-regex": "^5.0.1",
-    "gatsby-cli/**/ansi-regex": "^5.0.1",
+    "gatsby/**/browserslist": "^4.16.5",
+    "gatsby/**/node-fetch": "^2.6.7",
+    "gatsby/**/ws": "^8.4.0",
     "gatsby-plugin-sharp/**/nth-check": "^2.0.1",
-    "gatsby-plugin-sass/**/postcss": "^8.2.14",
-    "gatsby-transformer-remark/**/postcss": "^8.2.14",
     "gatsby-transformer-remark/**/sanitize-html": "^2.3.2",
-    "gatsby-source-prismic/**/node-fetch": "^2.6.7",
-    "gatsby/**/node-fetch": "^2.6.7"
+    "tailwindcss/**/minimist": "^1.2.6"
   },
   "keywords": [
     "gatsby"
