@@ -20,9 +20,9 @@ const HomePageDesignGood = ({ sectionTitle, description, logos }) => {
       }
 
       return (
-        <div className="col-sm-3 flex items-center py-16" key={i}>
+        <div className="col-sm-6 flex items-center" key={i}>
           <img 
-            className="mx-auto" 
+            className="mx-auto p-12" 
             src={logo_image.url} 
             alt={logo_image.alt || ''} 
           />
@@ -34,7 +34,7 @@ const HomePageDesignGood = ({ sectionTitle, description, logos }) => {
   return (
     <div className="container py-48">
       <div className="row">
-        <div className="col-md-6 ">
+        <div className="col-lg-6 mb-24">
           <div className="heading-02 mb-16">
             <RichText render={sectionTitle} />
           </div>
@@ -42,7 +42,11 @@ const HomePageDesignGood = ({ sectionTitle, description, logos }) => {
             <RichText render={description} />
           </div>
         </div>
-        {outputLogos(logos)}
+        <div className="col-lg-6">
+          <div className="row">
+            {outputLogos(logos)}
+          </div>
+        </div>
       </div>
     </div>
   )

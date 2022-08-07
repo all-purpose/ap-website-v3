@@ -37,7 +37,7 @@ const VideoEmbed = ({sectionId, sectionCssClass, embedCode, transcriptBtnText, t
 
   const outputTranscript = (transcriptBtnText, transcript) => {
 
-    if (!transcript.richText[0].text) {
+    if (!transcript.richText[0]?.text) {
       return false;
     }
 
@@ -78,7 +78,9 @@ const VideoEmbed = ({sectionId, sectionCssClass, embedCode, transcriptBtnText, t
     sectionCssClass,
     <div className="container">
       <div className="embed" dangerouslySetInnerHTML={{__html: embedCodeText}}></div>
-      {outputTranscript(transcriptBtnText, transcript)}
+      {transcript && (
+        outputTranscript(transcriptBtnText, transcript)
+      )}
     </div>
   )
 

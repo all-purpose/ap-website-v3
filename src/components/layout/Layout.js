@@ -5,6 +5,7 @@ import Footer from "../footer/Footer"
 import VisibleGrid from "../visibleGrid/VisibleGrid"
 
 const Layout = ({ seoTitle, palette, type, uid, children }) => {
+
   const addContentClasses = (type, uid) => {
     let className = "site-content"
     if (type) {
@@ -24,7 +25,9 @@ const Layout = ({ seoTitle, palette, type, uid, children }) => {
         {children}
       </main>
       <Footer />
-      <VisibleGrid />
+      {process.env.NODE_ENV === 'development' && (
+        <VisibleGrid />
+      )}
     </div>
   )
 }

@@ -35,7 +35,7 @@ const CaseStudySection = ({
       <div className="col-md-3 case-study-section-title heading-01 mb-8">
         <RichText render={title.richText} />
       </div>
-      <div className="col-md-8 body-long-02">
+      <div className="content-rt col-md-8 body-long-02">
         <RichText render={content.richText} />
       </div>
     </div>

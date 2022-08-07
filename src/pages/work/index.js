@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../../components/layout/Layout"
 import PageHeaderGeneral from "../../components/pageHeader/PageHeaderGeneral"
+import PageIntro from "../../components/pageIntro/PageIntro";
 import CaseStudyExcerpts from "../../components/caseStudyExcerpts/CaseStudyExcerpts"
 import CallToAction from '../../components/callToAction/CallToAction';
 
@@ -63,6 +64,9 @@ export const query = graphql`
                 }
               }
             }
+            intro_text {
+              richText
+            }
           }
         }
       }
@@ -91,17 +95,22 @@ const WorkPage = (props) => {
 
   const {
     page_title,
-    page_description,
     accessible_name,
     case_studies,
-    call_to_action
+    call_to_action,
+    intro_text,
   } = node.data
 
   return (
     <Layout seoTitle={page_title.richText[0].text} palette={selectedPalette} type={type} uid={uid}>
-      <PageHeaderGeneral title={page_title.richText} description={page_description.richText} />
+      <PageHeaderGeneral title={page_title.richText} />
       <div className="page-sections">
         <div className="container py-24">
+          <div className="row">
+            <div className="col-md-11 col-lg-8 body-long-02 mb-24">
+              <PageIntro text={intro_text.richText} />
+            </div>
+          </div>
           <CaseStudyExcerpts
             pageType={type}
             pageUid={uid}
