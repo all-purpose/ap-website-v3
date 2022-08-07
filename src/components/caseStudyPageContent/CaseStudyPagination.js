@@ -62,7 +62,6 @@ const CaseStudyPagination = ({ currentCaseStudyUid }) => {
   };
 
   const outputPrevCaseStudyLink = () => {
-
     const prevCaseStudy = getPrevCaseStudy();
     
     if (!prevCaseStudy) {
