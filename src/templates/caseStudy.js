@@ -4,7 +4,6 @@ import styled from "styled-components"
 import Layout from "../components/layout/Layout"
 import PageHeaderCaseStudy from "../components/pageHeader/PageHeaderCaseStudy"
 import CaseStudyDetails from "../components/caseStudyPageContent/CaseStudyDetails"
-// import CaseStudyInPageNav from "../components/caseStudyPageContent/CaseStudyInPageNav"
 import SliceZone from "../components/sliceZone/SliceZone"
 import CaseStudyPagination from "../components/caseStudyPageContent/CaseStudyPagination"
 import CallToAction from "../components/callToAction/CallToAction"
@@ -207,11 +206,7 @@ const CaseStudy = (props) => {
     highlight_color,
     body,
     call_to_action,
-    //    accessible_name,
-    //    in_page_navigation,
   } = node.data
-
-  const { previous, next } = props.pageContext;
 
   return (
     <CustomStyleWrapper
@@ -225,15 +220,9 @@ const CaseStudy = (props) => {
           description={case_study_page_title.richText}
         />
         <CaseStudyDetails ourRole={our_role.richText} inANutshell={in_a_nutshell.richText} />
-        {/* Hide for now until we figure out how we want to handle this */}
-        {/* <CaseStudyInPageNav
-          navAccessibleName={accessible_name}
-          inPageNavItems={in_page_navigation}
-        /> */}
         <SliceZone palette={null} body={body} pageType={type} uid={uid} />
         <CaseStudyPagination
-          prevCaseStudy={previous}
-          nextCaseStudy={next}
+          currentCaseStudyUid={uid}
         />
         <CallToAction callToAction={call_to_action} />
       </Layout>

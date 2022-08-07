@@ -13,19 +13,20 @@ const CaseStudyExcerpts = ({pageType, pageUid, accessibleName, fields}) => {
 
   const outputCaseStudyExcerpts = fields => {
     return fields.map((field, index) => {
-
       const {
         case_study_excerpt_image,
         case_study_excerpt_roles,
         project_name
-      } = field.case_study.document.data;
+      } = field?.case_study?.document?.data;
+
 
       const uid = field.case_study.document.uid;
 
       return (
         <li 
-          key={index}
-          className="col-sm-6">
+          key={`cs-${index}`}
+          className="col-sm-6 mb-12"
+        >
           <CaseStudyExcerpt
             pageType={pageType}
             pageUid={pageUid}

@@ -70,5 +70,15 @@
           "placeholder" : "Choose a call to action"
         }
       }
+    },
+    "Intro": {
+      "intro_text": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph, strong, em, hyperlink, image, list-item, o-list-item, rtl",
+          "allowTargetBlank": true,
+          "label": "Intro Text"
+        }
+      }
     }
   }

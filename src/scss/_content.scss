@@ -1,0 +1,13 @@
+// Rich Text Content 
+.content-rt { 
+  p, ul, ol, dl, table, blockquote {
+    margin-bottom: 3.2rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.variable-content {
+  margin-bottom: 3.2rem;
+}
