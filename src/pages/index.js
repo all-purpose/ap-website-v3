@@ -5,6 +5,7 @@ import PageHeaderHome from "../components/pageHeader/PageHeaderHome"
 import HomePageServices from "../components/homePageContent/HomePageServices"
 import HomePageProjects from "../components/homePageContent/HomePageProjects"
 import HomePageDesignGood from "../components/homePageContent/HomePageDesignGood"
+import HomePageFeaturedClients from "../components/homePageContent/HomePageFeaturedClients"
 import CallToAction from "../components/callToAction/CallToAction"
 import "bootstrap/dist/css/bootstrap-grid.min.css"
 
@@ -101,6 +102,18 @@ export const query = graphql`
                 }
               }
             }
+            featured_clients_section_title {
+              richText
+            }
+            featured_clients_section_description {
+              richText
+            }
+            featured_clients_logos {
+              logo_image {
+                url
+                alt
+              }
+            }
           }
         }
       }
@@ -140,6 +153,9 @@ const IndexPage = (props) => {
     home_design_good_section_title,
     home_design_good_description,
     home_design_good_logos,
+    featured_clients_section_title,
+    featured_clients_section_description,
+    featured_clients_logos,
     call_to_action,
   } = node.data
 
@@ -157,6 +173,11 @@ const IndexPage = (props) => {
           brandTitle={home_services_brand_title.richText}
           serviceCategoryListings={home_services_category_listing}
           servicesListing={home_services_listing}
+        />
+        <HomePageFeaturedClients
+          sectionTitle={featured_clients_section_title.richText}
+          description={featured_clients_section_description.richText}
+          logos={featured_clients_logos}
         />
         <HomePageProjects
           pageType={type}

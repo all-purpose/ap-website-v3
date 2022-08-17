@@ -7,7 +7,7 @@ import "./Header.scss"
 
 const Header = () => {
   return (
-    <header className="site-header apply-color-theme--font">
+    <header aria-label="Site header" className="site-header apply-color-theme--font">
       <SkipLinks />
       <div className="container">
         <div className="row">
