@@ -9,11 +9,19 @@ const HomePageDesignGood = ({ sectionTitle, description, logos }) => {
 
     return logos.map((logo, i) => {
 
-      const { logo_image } = logo;
+      const { 
+        logo_image,
+        left_offset,
+        top_offset
+      } = logo;
 
       if (!logo_image.url) {
         return false;
       }
+
+      // (Optional) - offset the logo from left or top for minor alignment adjustments within the logos grid
+      const leftOffset = left_offset ? `${left_offset}rem` : '0';
+      const topOffset = top_offset ? `${top_offset}rem` : '0';
       
       if (process.env.NODE_ENV === 'development' && !logo_image.alt) {
         console.warn('No alt text for image: %s. Is this intentional?', logo_image.url);
@@ -22,7 +30,11 @@ const HomePageDesignGood = ({ sectionTitle, description, logos }) => {
       return (
         <div className="col-sm-6 flex items-center" key={i}>
           <img 
-            className="mx-auto p-12" 
+            style={(left_offset || top_offset) ? {
+              left: leftOffset,
+              top: topOffset
+            } : null}
+            className="mx-auto p-12 sm:relative" 
             src={logo_image.url} 
             alt={logo_image.alt || ''} 
           />

@@ -51,7 +51,9 @@ export const query = graphql`
               logo_image {
                 url
                 alt
-              }
+              },
+              left_offset
+              top_offset
             }
             home_projects_brand_title {
               richText
@@ -113,6 +115,8 @@ export const query = graphql`
                 url
                 alt
               }
+              left_offset
+              top_offset
             }
           }
         }

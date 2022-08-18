@@ -13,3 +13,12 @@
   padding-top: 128px;
   padding-bottom: 128px;
 }
+
+// Maybe put following in own component later...
+// .logo {
+//   img {
+//     @include sm-up {
+//       position: relative;
+//     }
+//   }
+// }

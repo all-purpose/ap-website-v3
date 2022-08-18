@@ -156,6 +156,20 @@
                 "label" : "Logo Link",
                 "placeholder" : "Enter a logo link"
               }
+            },
+            "left_offset": {
+              "type": "Number",
+              "config": {
+                "label": "Left offset (optional)",
+                "placeholder": "Left offset \"rem\" units"
+              }
+            },
+            "top_offset": {
+              "type": "Number",
+              "config": {
+                "label": "Top offset (optional)",
+                "placeholder": "Top offset \"rem\" units"
+              }
             }
           },
           "label" : "Design For Good Logos"
@@ -210,6 +224,20 @@
                 "label" : "Logo Link",
                 "placeholder" : "Enter a link",
                 "select" : null
+              }
+            },
+            "left_offset": {
+              "type": "Number",
+              "config": {
+                "label": "Left offset (Optional)",
+                "placeholder": "Left offset \"rem\" units"
+              }
+            },
+            "top_offset": {
+              "type": "Number",
+              "config": {
+                "label": "Top offset (Optional)",
+                "placeholder": "Top offset \"rem\" units"
               }
             }
           },
