@@ -41,17 +41,8 @@
     "prettier": "^2.0.5"
   },
   "resolutions": {
-    "gatsby/**/ansi-html": "^0.0.9",
-    "gatsby/**/cross-fetch": "^3.1.5",
     "gatsby/**/got": "^11.8.5",
-    "gatsby/**/jpeg-js": "^0.4.4",
-    "gatsby/**/parse-path": "^5.0.0",
-    "gatsby/**/ws": "^8.4.0",
     "gatsby-cli/**/got": "^11.8.5",
-    "gatsby-cli/**/parse-path": "^5.0.0",
-    "gatsby-plugin-sharp/**/jpeg-js": "^0.4.4",
-    "gatsby-plugin-sharp/**/nth-check": "^2.0.1",
-    "gatsby-source-filesystem/**/got": "^11.8.5",
     "gatsby-transformer-remark/**/sanitize-html": "^2.3.2"
   },
   "keywords": [
