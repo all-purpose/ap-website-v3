@@ -41,6 +41,7 @@
     "prettier": "^2.0.5"
   },
   "resolutions": {
+    "gatsby/**/engine.io": "^6.4.2",
     "gatsby/**/got": "^11.8.5",
     "gatsby-cli/**/got": "^11.8.5",
     "gatsby-transformer-remark/**/sanitize-html": "^2.3.2"
