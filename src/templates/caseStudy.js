@@ -10,41 +10,41 @@ import CallToAction from "../components/callToAction/CallToAction"
 
 const CustomStyleWrapper = styled.div`
   .site {
-    --bg-color: ${(props) => props.bgColor};
-    --font-color: ${(props) => props.textColor};
+    --bg-color: ${(props) => props.$bgColor};
+    --font-color: ${(props) => props.$textColor};
   }
   .apply-color-theme {
-    background-color: ${(props) => props.bgColor};
-    color: ${(props) => props.textColor};
+    background-color: ${(props) => props.$bgColor};
+    color: ${(props) => props.$textColor};
   }
   .page-title,
   .nutshell-title,
   .role-title,
   .case-study-section-title {
-    color: ${(props) => props.highlightColor};
+    color: ${(props) => props.$highlightColor};
   }
   .svg-logo path, .svg-icon path {
-    fill: ${(props) => props.textColor};
+    fill: ${(props) => props.$textColor};
   }
 
   .pagination {
-    background-color: ${(props) => props.textColor};
-    color: ${(props) => props.bgColor};
+    background-color: ${(props) => props.$textColor};
+    color: ${(props) => props.$bgColor};
   }
 
   .transcript-btn:hover, .transcript-btn:focus {
-    background-color: ${(props) => props.bgColor};
+    background-color: ${(props) => props.$bgColor};
   }
 
   .transcript-btn[aria-expanded="true"] {
-    background-color: ${(props) => props.textColor};
-    color: ${(props) => props.bgColor};
+    background-color: ${(props) => props.$textColor};
+    color: ${(props) => props.$bgColor};
     svg {
-      fill: ${(props) => props.bgColor};
+      fill: ${(props) => props.$bgColor};
     }
   }
   .transcript-content {
-    border-top-color: ${(props) => props.textColor};
+    border-top-color: ${(props) => props.$textColor};
   }
 `
 
@@ -210,9 +210,9 @@ const CaseStudy = (props) => {
 
   return (
     <CustomStyleWrapper
-      bgColor={background_header_color}
-      textColor={text_color}
-      highlightColor={highlight_color}
+      $bgColor={background_header_color}
+      $textColor={text_color}
+      $highlightColor={highlight_color}
     >
       <Layout seoTitle={`${project_name} | Case Study`} type={type} uid={uid}>
         <PageHeaderCaseStudy

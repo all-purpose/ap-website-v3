@@ -4,7 +4,7 @@ import styled from "styled-components"
 import "./PageHeader.scss"
 
 const BgWrapper = styled.div`
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: url(${(props) => props.$backgroundImage});
 `
 
 const PageHeader = ({ pageType, title, description, heroImage }) => {
@@ -14,7 +14,7 @@ const PageHeader = ({ pageType, title, description, heroImage }) => {
   const outputHeader = (heroImage, children) => {
     if (heroImage) {
       return (
-        <BgWrapper backgroundImage={heroImage.url} className="page-header">
+        <BgWrapper $backgroundImage={heroImage.url} className="page-header">
           {children}
         </BgWrapper>
       )
