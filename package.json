@@ -41,7 +41,8 @@
     "prettier": "^3.0.3"
   },
   "resolutions": {
-    "gatsby-plugin-sass/**/postcss": "^8.4.31"
+    "gatsby-plugin-sass/**/postcss": "^8.4.31",
+    "gatsby/**/axios": "^1.6.0"
   },
   "keywords": [
     "gatsby"

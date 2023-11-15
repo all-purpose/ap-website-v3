@@ -2,7 +2,7 @@
 
 ## 💻 Install locally 
 
-Assuming at least NodeJS 12.x.
+Node.js 18.x.
 
 1. Clone the repo to local folder
 
